@@ -1,0 +1,35 @@
+<div class="person">
+    <div class="photo">
+        {for photo in person.photos}
+            <a href="${photo.original}" rel="fancybox-person-${person.person_id}"><img src="${photo.thumbnail}"></a>
+        {/for}
+    </div>
+    
+    <div class="title">
+        ${person.name} 
+    </div>
+    <div class="subtitle">
+        ${person.international_name} 
+    </div>
+    <div class="info">
+        ${person.info}
+        {if person.url}
+            <br> 
+            <a class="link minibutton" target="_blank" href="${person.url}"><span>Подробности на ${person.url.match(/http:\/\/(?:www\.)?([^\/]+)/)[1]}</span></a>
+        {/if}
+    </div>
+    <br style="clear: both;">
+    <div class="movies">
+        {for movie in person.movies}
+            <div class="movie-row">
+                <a href="#/movie/id/${movie.movie_id}">
+                    ${movie.name} {if movie.year} (${movie.year}){/if}
+                </a>
+                <span class="roles">
+                    (${movie.roles.join(', ')})
+                </span>
+            </div>
+        {/for}
+    </div>
+    <br style="clear: both;">
+</div> 

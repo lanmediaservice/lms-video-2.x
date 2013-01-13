@@ -1,0 +1,55 @@
+<div class="messages">
+    {for comment in comments}
+        <div class="message" cid="${comment.comment_id}">
+            <div class="title">
+                <div class="info">
+                    <span class="user-name">${comment.user_name}</span>            
+                </div>
+                {if USER_GROUP==2 || USER_GROUP==3 || USER_GROUP==5}
+                    <ul class="built-in">
+                        <li class="settings">
+                            <a>Настройки</a>
+                            <ul class="right">
+                                <li><a onclick="window.ui.beginEditComment(${comment.comment_id});">Редактировать</a></li>
+                                <li><a onclick="window.ui.deleteComment(${comment.comment_id});">Удалить</a></li>
+                                <li><span>IP: ${comment.ip}</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                {/if}
+                <div class="date">
+                    {var date = LMS.Date.datetimeStrToDate(comment.created_at)}
+                    <span title="${date.format('d mmmm yyyy г. HH:MM')}" class="live-datetime" mode="1" time="${Math.round(date.getTime()/1000)}">${LMS.LiveDatetime.dateToStr(date, 1)}</span>
+                </div>
+            </div>
+            <div class="text">
+                ${window.ui.htmlizeText(comment.text)}
+            </div>
+        </div>
+    {/for}
+</div>
+{if USER_GROUP!=0}
+    <div class="message">
+        <div class="title"><div class="subtitle">Отзыв</div></div>
+        <div class="new-text">
+            <textarea id="comment_text"></textarea>
+        </div>
+    </div>
+    <div class="submit-panel">
+        <a class="minibutton" onclick="window.ui.postComment(${movie_id});"><span>Отправить</span></a>
+    </div>
+{else}
+    <div class="message">
+        <div class="title"><div class="subtitle">Отзыв</div></div>
+        <div class="new-text">
+            <textarea id="comment_text" readonly></textarea>
+            <div class="message-overlay">
+                Только зарегистрированные пользователи могут оставлять отзывы.<br>
+                <a href="?register=1">Зарегистрируйтесь</a> или <a onclick="window.action.logout();">войдите</a> под своим логином
+            </div>
+        </div>
+    </div>
+    <div class="submit-panel">
+        <a class="minibutton"><span>Отправить</span></a>
+    </div>
+{/if}

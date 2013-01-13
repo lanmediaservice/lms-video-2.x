@@ -1,0 +1,31 @@
+<p>Текущая версия: ${current}</p>
+{if current!=last}
+    <p>Обнаружена новая версия: ${last}</p>
+
+    {if changelog && changelog.length}
+        <div class="table-wrapper">
+            <table class="silver">
+                <thead>
+                    <tr>
+                        <th>Дата правки</th>
+                        <th>Сообщение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {for commit in changelog}
+                        <tr>
+                            <td>${commit.date}</td>
+                            <td>${commit.message}</td>
+                        </tr>
+                    {/for}
+                </tbody>
+            </table>
+        </div>
+    {/if}
+    <div class="actions">
+        <a onclick="window.action.upgrade(false);" class="minibutton" title="Показать файлы, которые будут перезаписаны и SQL-запросы обновления базы данных"><span>Тестировать</span></a> 
+        <a onclick="if (confirm('Установить обновление?')) {window.action.upgrade(true);}"  class="minibutton" title="Установить, и дело с концом"><span>Установить</span></a>
+    </div>
+{else}
+    <p>Установлена последняя версия</p>
+{/if}

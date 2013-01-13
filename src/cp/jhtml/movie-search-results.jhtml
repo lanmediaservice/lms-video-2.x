@@ -1,0 +1,23 @@
+<ul class="results-list">
+    {for item in items}
+        <li data-url="${item.url}" data-engine="kinopoisk">
+            <span class="icon kinopoisk float_right"></span>
+            <div class="cover">
+                <a href="${item.url}" onclick="return false">
+                    <img src="{if item.image}../imageproxy.php?url=${encodeURIComponent(item.image)}{else}img/noposter/kinopoisk.png{/if}">
+                </a>
+            </div>
+            <div class="info clearfix">
+                <a href="${item.url}" onclick="return false">
+                    <strong>${item.names.join(" / ")}</strong> {if item.year} (${item.year}){/if}<br>
+                </a>
+                <span class="info-more">
+                    <div>{if item.country}${item.country}{/if}{if item.genre}{if item.country}, {/if}${item.genre}{/if}</div>
+                    <div>{if item.director}реж. ${item.director}{/if}{if item.actors}{if item.director}, {/if}в ролях ${item.actors}{/if}</div>
+                    {if item.rating}<div>рейтинг: ${item.rating}</div>{/if}
+                    {if item.info}<div>${item.info}</div>{/if}
+                </span>
+            </div>
+        </li>
+    {/for}
+</ul>

@@ -1,0 +1,106 @@
+I. Системные требования.
+    ОС: Linux, FreeBSD, Windows
+    Вебсервер: Apache, nginx
+    PHP: 5.3/5.4 с поддержкой mbstring, iconv, mcrypt, mysql, hash, session, gd, dom, bcmath, ctype, json, simplexml, curl
+    MySQL: 5.1 и выше
+
+II. Инсталляция.
+    
+a) Автоматизированная
+    1. Создать директорию для скрипта и распаковать содержимое папки video архива. Например, чтобы
+       /home/mysite.com/www/video/[app, index.php...]
+       было доступно как:  http://mysite.com/video/
+    
+    2. Открыть в браузере каталог install/ (например, http://mysite.com/video/install/)
+       и провести инсталляцию.
+
+    3. Для большей безопасности убедиться, что каталог http://mysite.com/video/app/ не доступен через браузер.
+
+    4. Удалить каталоги install/ и update/
+
+    6. Войти в http://mysite.com/video/cp/ и зарегистрироваться. Первый зарегистрированный
+       пользователь получает права  администратора.
+    
+    7. После добавления нескольких фильмов убедиться, что скрипт периодического обслуживания индекса поиска, отбора бестселлеров работает:
+        /app/tasks/batch-daily.sh или /app/tasks/batch-daily.bat
+
+        и добавить его в crontab (Unix):
+        0 5 * * * /path/to/video/app/tasks/batch-daily.sh 2>&1 >/dev/null
+
+        или в планировщик Windows (запуск 1 раз в сутки или по желанию):
+        c:\www\video\app\tasks\batch-daily.bat
+        
+    8. После добавления нескольких фильмов убедиться, что скрипт генерации кадров и информации о файлах, парсинга персоналий работает:
+        /app/tasks/batch-5m.sh или /app/tasks/batch-5m.bat
+
+        и добавить его в crontab (Unix):
+        */5 * * * * /path/to/video/app/tasks/batch-5m.sh 2>&1 >/dev/null
+
+        или в планировщик Windows (каждые 5 минут или по желанию):
+        c:\www\video\app\tasks\batch-5m.bat
+
+        Примечание: для Windows в файле php.bat и php-forced.bat необходимо прописать полный путь к php.exe
+
+
+б) Ручная
+    1. Создать директорию для скрипта и распаковать содержимое папки video архива. Например, чтобы
+       /home/mysite.com/www/video/[app, index.php...]
+       было доступно как:  http://mysite.com/video/
+
+    2. Переименовать /app/local.settings.dist.php в /app/local.settings.php и прописать параметры доступа к базе MySQL. 
+
+    3. Создать базу данных MySQL в кодировке cp1251 и запустить в ней SQL-скрипты 
+        sql/schema.sql и sql/data.sql
+ 
+    4. Для большей безопасности убедиться что каталог http://mysite.com/video/app/ не доступен через браузер.
+
+    5. Удалить каталоги install/ и update/
+
+    6. Войти в http://mysite.com/video/cp/ и зарегистрироваться. Первый зарегистрированный
+       пользователь получает права  администратора 
+    
+    7. После добавления нескольких фильмов убедиться, что скрипт периодического обслуживания индекса поиска, отбора бестселлеров работает:
+        /app/tasks/batch-daily.sh или /app/tasks/batch-daily.bat
+
+        и добавить его в crontab (Unix):
+        0 5 * * * /path/to/video/app/tasks/batch-daily.sh 2>&1 >/dev/null
+
+        или в планировщик Windows (запуск 1 раз в сутки или по желанию):
+        c:\www\video\app\tasks\batch-daily.bat
+
+    8. После добавления нескольких фильмов убедиться, что скрипт генерации кадров и информации о файлах, парсинга персоналий работает:
+        /app/tasks/batch-5m.sh или /app/tasks/batch-5m.bat
+
+        и добавить его в crontab (Unix):
+        */5 * * * * /path/to/video/app/tasks/batch-5m.sh 2>&1 >/dev/null
+
+        или в планировщик Windows (каждые 5 минут или по желанию):
+        c:\www\video\app\tasks\batch-5m.bat
+        
+        Примечание: для Windows в файле php.bat и php-forced.bat необходимо прописать полный путь к php.exe
+
+Внимание! После установки скрипта его необходимо обновить (см. вкладку "Обновления")
+
+Если после установки скрипта и добавления нескольких фильмов в пользовательском интферфейсе 
+в IE 8/9 выдается ошибка "Не удалось завершить действие. Ошибка c00ce56e.",
+то необходимо на сервере указать кодировку. Для Apache:
+
+    AddDefaultCharset windows-1251
+
+Для nginx:
+
+    charset windows-1251;
+
+
+III. Обновление с версий 1.x
+    См. файл UPDATING
+
+IV. Документация
+http://www.lanmediaservice.com/products/video/docs
+
+По всем вопросам обращаться:
+WWW:   http://support.lanmediaservice.com/
+Email: support@lanmediaservice.com
+
+© ООО «ЛанМедиаСервис», 2006—2013
+http://www.lanmediaservice.com/

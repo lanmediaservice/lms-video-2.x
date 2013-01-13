@@ -1,0 +1,74 @@
+<table class="incoming">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                Файл
+            </th>
+            <th>
+                Размер
+            </th>
+            <th>
+                Название для поиска
+            </th>
+            <th>
+                Видео
+            </th>
+            <th>
+                Статус
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {for file in files}
+            <tr class="row {if parseInt(file.hidden)} file-hidden{/if} {if parseInt(file.is_duplicate)} duplicate{/if}" fid="${file.incoming_id}">
+                {if file.expanded}
+                    <td>
+                    </td>
+                    <td style="padding-left:${(parseInt(file.level)+1)*16}px">
+                        <span class="expander expanded" style="" onclick="window.action.collapseIncoming(${file.incoming_id})"></span>
+                        <span class="file type-${file.type}">${file.path}</span>
+                    </td>
+                    <td colspan="4">
+                    </td>
+                {else}
+                    <td class="narrow">
+                        <input type="checkbox" onclick="window.ui.incoming.selectHandler(${file.incoming_id}, this)" fid="${file.incoming_id}">
+                    </td>
+                    <td style="padding-left:${(parseInt(file.level)+1)*16}px">
+                        {if file.is_dir}
+                            <span class="expander" style="" onclick="window.action.expandIncoming(${file.incoming_id})"></span>
+                        {/if}
+                        <a onclick="window.ui.incoming.toggleIncomingDetails(${file.incoming_id})"><span class="file type-${file.type}" title="${file.path}">
+                                {if parseInt(file.level)==0}
+                                    ${file.path}
+                                {else}
+                                    ${file.basename}
+                                {/if}
+                        </span></a>
+                    </td>
+                    <td class="size narrow">
+                        {if file.size}<span title="${file.size}">${LMS.Utils.HumanSize(file.size)}</span>{/if}
+                    </td>
+
+                    <td class="narrow">
+                        <input class="name" type="text" title="${file.name}" value="${file.name}" data-field="name" data-fid="${file.incoming_id}"/>
+                    </td>
+
+                    <td class="metainfo narrow">
+                        {if file.metainfo}
+                            <span title="${file.metainfo.video.info}">${file.metainfo.video.label}</span>
+                        {/if}
+                    </td>
+
+                    <td class="status">
+                        <span class="pictos duplicate-sign" title="В каталоге возможно есть дубликат этого фильма. Попробуйте использовать локальный поиск.">!</span>
+                        <span class="pictos status {if file.is_searched} searched{/if} {if file.is_result_selected} result-selected{/if} {if file.is_parsed}parsed{/if}" title="Степень готовности">2</span>
+                    </td>
+                {/if}
+            </tr>
+        {/for}
+    </tbody>
+</table>

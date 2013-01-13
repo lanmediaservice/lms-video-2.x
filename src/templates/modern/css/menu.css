@@ -1,0 +1,108 @@
+/**
+ * Menu
+ *
+ * @copyright 2006-2011 LanMediaService, Ltd.
+ * @license    http://www.lanmediaservice.com/license/1_0.txt
+ * @author Ilya Spesivtsev <macondos@gmail.com>
+ * @version $Id: menu.css 700 2011-06-10 08:40:53Z macondos $
+ */
+ 
+.menu {
+    font-family: Tahoma,Verdana,Geneva,Arial,Helvetica,sans-serif;
+    padding: 5px 3px;
+    height: 18px;
+    background: #222;
+    background: -o-linear-gradient(top, #333333, #111111);
+    background: -moz-linear-gradient(top, #333333, #111111);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #333333),color-stop(1, #111111));
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#333333',endColorstr='#111111');
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111');
+    color: #ddd;
+}
+.menu a {
+    color: #ddd;
+}
+.menu .bold{
+    font-weight: bold;
+}
+
+.menu .selected {
+    font-weight: bold;
+    color: #fff;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    float: left;
+    padding: 0;
+    padding-left: 3px;
+    margin: 0;
+    margin-right: 3px;
+    display: block;
+    cursor: default;
+    position: relative;
+}
+
+.menu > ul > li {
+    background: url('../img/menu/splitter.png') no-repeat left top;
+}
+
+.menu > ul li:first-child {
+    background: transparent;
+}
+
+.menu ul li ul {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    z-index: 99;
+    padding-top: 5px;
+    background-color: white;
+    border: 1px solid silver;
+    left: 0;
+    top: 16px
+}
+
+.menu ul li ul.right {
+    right: 0;
+    left: auto;
+}
+
+
+.menu > ul li:hover ul,
+.menu > ul li:hover ul li,
+.menu > ul ul li:hover ul {
+    display: block;
+}
+
+.menu > ul li * {
+    /*display: block;*/
+    padding: 0px 2px 0px 5px;
+    white-space: nowrap;
+}
+
+.menu > ul li a:hover {
+
+}
+
+.menu > ul li ul li {
+    clear: both;
+    position: relative;
+    background-color: transparent;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 0px;
+    padding-left: 2px;
+    margin: 0px;
+}
+
+.menu > ul li ul li:hover a {
+
+}

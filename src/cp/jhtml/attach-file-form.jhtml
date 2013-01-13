@@ -1,0 +1,72 @@
+Присоединить <span class="af-source" title="${source.path}">${source.basename}</span>:<br>
+<label class="af-option"><input type="radio" name="attach-mode" onclick="$j('#attach_file').attr('data-mode', 'single');">&nbsp;&nbsp;отдельно (в соответствии с настройками обычного импорта)</label><br>
+<label class="af-option"><input type="radio" name="attach-mode" onclick="$j('#attach_file').attr('data-mode', 'move');" checked="checked" >&nbsp;&nbsp;с перемещением в:</label><br>
+<div class="af-target-location-selector">
+    <input type="text" class="form af-target-location">
+    <ul class="af-folders">
+        {for folder in folders}
+            {var level = parseInt(folder.level)}
+            <li>
+                <a style="padding-left:${parseInt(folder.level)*16}px" onclick="window.ui.incoming.selectTargetFolderHandler(this)" data-path="${folder.path|htmlspecialchars}/${source.basename|htmlspecialchars}">
+                    <span class="file type-folder" title="${folder.path}">
+                        {if level==0} 
+                            ${folder.path}
+                        {else}
+                            ${folder.basename}
+                        {/if}
+                    </span>
+                </a>
+            </li>
+        {/for}
+    </ul>
+</div>
+<label class="af-option"><input type="checkbox" onclick="$j('#attach_file').attr('data-delete', $j(this).is(':checked')? '1' : '0');">&nbsp;&nbsp;перед этим удалить с диска отмеченные файлы:</label><br>
+<div class="af-files">
+    <table class="files silver">
+        <tbody>
+            {for file in files}
+                {var level = parseInt(file.level)}
+                <tr class="row">
+                    <td class="narrow">
+                        <input type="checkbox" class="delete" data-fid="${file.file_id}">
+                    </td>
+                    <td style="padding-left:${parseInt(file.level)*16 + 5}px">
+                        <span class="file type-${file.type}" title="${file.path}">${file.basename}</span>
+                    </td>
+                    <td class="narrow">
+                        {if !file.is_dir}
+                            <span title="${file.size}">${LMS.Utils.HumanSize(file.size)}</span>
+                        {/if}
+                    </td>
+
+                    <td class="narrow">
+                        {if file.compact_metainfo}<span>${file.compact_metainfo.playtime}</span>{/if}
+                    </td>
+                    <td class="narrow">
+                        {if file.compact_metainfo}<span title="${file.compact_metainfo.video.info}">${file.compact_metainfo.video.label}</span>{/if}
+                    </td>
+                    {var a = $A($R(0, file.audio_tracks_count-1))}
+                    {for num in a}
+                        <td class="narrow">
+                            {if file.compact_metainfo}
+                                {var audio = file.compact_metainfo.audio[num]}
+                                <span title="${audio.info}">${audio.label}</span>
+                            {/if}
+                        </td>
+                    {/for}
+                    {if file.audio_tracks_count < audio_tracks_count}
+                        <td colspan="${(audio_tracks_count-file.audio_tracks_count)*1}">
+
+                        </td>
+                    {/if}
+                </tr>
+            {/for}
+        </tbody>
+    </table>
+</div>
+
+<label class="af-option"><input type="checkbox" onclick="$j('#attach_file').attr('data-up', $j(this).is(':checked')? '1' : '0');" checked="checked">&nbsp;&nbsp;установить текущее время обновления (поднять фильм)</label><br>
+
+<div class="af-control-panel">
+    <a class="minibutton" onclick="$j('#attach_file').dialog('close')"><span>Отмена</span></a> <a class="minibutton" onclick="window.ui.incoming.attachFile()"><span>Применить</span></a>
+</div>                

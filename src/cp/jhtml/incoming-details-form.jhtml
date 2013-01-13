@@ -1,0 +1,84 @@
+<table>
+    <tr>
+        <td>Название:</td>
+        <td><input type="text" value="${movie.name}" data-field="info/name" class="form"></td>
+    </tr>
+    <tr>
+        <td>Междунар. название:</td>
+        <td><input type="text" value="${movie.international_name}" data-field="info/international_name" class="form"></td>
+    </tr>
+    <tr>
+        <td>Год:</td>
+        <td><input type="text" value="${movie.year}" data-field="info/year" class="form"></td>
+    </tr>
+    <tr>
+        <td>Обложка:</td>
+        <td><textarea type="text" data-field="info/poster" class="form poster" wrap="off">{if movie.poster}${movie.poster|htmlspecialchars}{/if}</textarea></td>
+    </tr>
+    <tr>
+        <td>Страна:</td>
+        <td>
+            <select data-placeholder=" " data-field="info/countries" class="countries chzn-select" multiple style="width:350px;">
+                {for country in movie.countries}
+                    <option selected="selected">${country}</option>
+                {/for}
+            </select>                                    
+        </td>
+    </tr>
+    <tr>
+        <td>Жанр:</td>
+        <td>
+            <select data-placeholder=" " data-field="info/genres" class="genres chzn-select" multiple style="width:350px;">
+                {for genre in movie.genres}
+                    <option selected="selected">${genre}</option>
+                {/for}
+            </select>                                    
+        </td>
+    </tr>
+    <tr>
+        <td>Описание:</td>
+        <td>
+            <textarea data-field="info/description" class="form">${movie.description}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>IMDb:</td>
+        <td>
+            ID: <input type="text" value="${movie.imdb_id}" data-field="info/imdb_id" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Рейтинг: <input type="text" value="${movie.rating_imdb_value}" data-field="info/rating_imdb_value" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            голосов: <input type="text" value="${movie.rating_imdb_count}" data-field="info/rating_imdb_count" class="form" style="width:60px">
+        </td>
+    </tr>
+    <tr>
+        <td>KinoPoisk:</td>
+        <td>
+            ID: <input type="text" value="${movie.kinopoisk_id}" data-field="info/kinopoisk_id" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Рейтинг: <input type="text" value="${movie.rating_kinopoisk_value}" data-field="info/rating_kinopoisk_value" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            голосов: <input type="text" value="${movie.rating_kinopoisk_count}" data-field="info/rating_kinopoisk_count" class="form" style="width:60px">
+        </td>
+    </tr>
+    <tr>
+        <td>Рейтинг MPAA:</td>
+        <td><input type="text" value="${movie.mpaa}" data-field="info/mpaa" class="form"></td>
+    </tr>
+
+    <tr>
+        <td>Персоналии:</td>
+        <td>
+            <ul class="persones">
+                {for person in movie.persones}
+                    <li pid="${person_index}">
+                        <a class="pictos remove" onclick="window.action.removeIncomingPerson(${incoming_id}, ${person_index})">*</a> ${person.role} ${person.names.join('/')} {if person.character} (${person.character}){/if} ${person.url}
+                    </li>
+                {/for}
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Добавить персоналии:</td>
+        <td>
+            <textarea placeholder="Список через ; , или перевод строки" class="form persones-list" value="" onchange="$j(this).attr('value', $j(this).val());"></textarea>
+            <select class="roles form" style="width: 270px;"></select> <a onclick="window.ui.incoming.insertPersones(${incoming_id})" class="minibutton"><span>Добавить</span></a>
+        </td>
+    </tr>
+</table>

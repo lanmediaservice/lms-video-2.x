@@ -1,0 +1,32 @@
+<table class="silver">
+    <thead>
+        <tr>
+            <th>Создан</th>
+            <th>Источник</th>
+            <th>Приемник</th>
+            <th>Попыток</th>
+            <th>Прогресс</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {for fileTask in files_tasks}
+            <tr>
+                <td>${fileTask.created_at}</td>
+                <td>${fileTask.from}</td>
+                <td>${fileTask.to}</td>
+                <td>${fileTask.tries}</td>
+                <td>
+                    {if parseInt(fileTask.size)}
+                        ${LMS.Utils.HumanSize(fileTask.done)} из ${LMS.Utils.HumanSize(fileTask.size)}
+                    {/if}
+                </td>
+                <td>
+                    {if parseInt(fileTask.size)}
+                        ${Math.round(100*fileTask.done/fileTask.size)}%
+                    {/if}
+                </td>
+            </tr>
+        {/for}
+    </tbody>
+</table>

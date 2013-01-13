@@ -1,0 +1,263 @@
+{macro setChecked(key)}{if Object.isUndefined(db[key]) || !parseInt(db[key].active)} checked {/if}{/macro}
+{macro scalarValue(key)}{if Object.isUndefined(db[key])}${config[key]}{else}${db[key].value}{/if}{/macro}
+{macro jsonValue(key)}{if Object.isUndefined(db[key])}${Object.toJSON(config[key])}{else}${Object.toJSON(db[key].value)}{/if}{/macro}
+
+{macro readonlyOption(key, title, type, tip)}
+    {var inputType = type || 'text'}
+    <tr>
+        <td class="label">
+            <label title="${tip}">${title}:</label>
+        </td>
+        <td class="value-wrapper" title="${tip}">
+            <div class="default"><input type="${inputType}" value="${config[key]}" readonly="readonly"></div>
+        </td>
+    </tr>
+{/macro}
+
+{macro simpleOption(key, title, type, placeholder, tip)}
+    {var inputType = type || 'text'}
+    <tr data-param="${key}" data-default="0">
+        <td class="label">
+            <label title="${tip}">${title}:</label>
+        </td>
+        <td class="value-wrapper" title="${tip}">
+            <div class="default"><input type="${inputType}" value="${config[key]}" readonly="readonly"></div>
+            <div class="override"><input type="${inputType}" value="${scalarValue(key)}" data-param="${key}" data-type="scalar" {if !Object.isUndefined(placeholder)} placeholder="${placeholder}"{/if}></div>
+            {if type=='boolean'}
+                {eval}
+                    setTimeout(function () {
+                        $j('#settings tr[data-param="' + key + '"] .value-wrapper input').booleanize();
+                    }, 10);
+                {/eval}    
+            {/if}
+        </td>
+        <td class="reset">
+            <label title="Значения по-умолчанию установлены в файлах /app/default.settings.php и /app/local.settings.php"><input type="checkbox" class="default-switch" ${setChecked(key)} data-param="${key}"> по-умолчанию</label>
+        </td>
+    </tr>
+{/macro}
+
+{macro selectOption(key, title, options)}
+    <tr data-param="${key}" data-default="0">
+        <td class="label">
+            <label>${title}:</label>
+        </td>
+        <td class="value-wrapper">
+            <div class="default">
+                <select value="${config[key]}" disabled="disabled">
+                    {for option in options}
+                        <option value="${option_index}" {if option_index==config[key]} selected{/if}>${option}</option>
+                    {/for}
+                </select>
+            </div>
+            <div class="override">
+                <select value="${scalarValue(key)}" data-param="${key}" data-type="scalar">
+                    {for option in options}
+                        <option value="${option_index}" {if option_index==scalarValue(key)} selected{/if}>${option}</option>
+                    {/for}
+                </select>
+            </div>
+        </td>
+        <td class="reset">
+            <label title="Значения по-умолчанию установлены в файлах /app/default.settings.php и /app/local.settings.php"><input type="checkbox" class="default-switch" ${setChecked(key)} data-param="${key}"> по-умолчанию</label>
+        </td>
+    </tr>
+{/macro}
+
+{macro complexOption(key, title, options)}
+    {var className = key.replace(/\//, '-')}
+    <tr data-default="0">
+        <td class="value-wrapper" colspan="2">
+            <label>${title}:</label>
+            <div class="default">
+                <textarea class="${className}" readonly="readonly">
+                    ${Object.toJSON(config[key])}
+                </textarea>
+            </div>
+            <div class="override">
+                <textarea class="${className}" data-param="${key}" data-type="array">
+                    ${jsonValue(key)}
+                </textarea>
+            </div>
+        </td> 
+        <td class="reset">
+            <label title="Значения по-умолчанию установлены в файлах /app/default.settings.php и /app/local.settings.php"><input type="checkbox" class="default-switch" ${setChecked(key)} data-param="${key}"> по-умолчанию</label>
+        </td>
+    </tr>
+    {eval}
+        setTimeout(function () {
+            $j('#settings .' + className).jsonTablize(options);
+        }, 10);
+    {/eval}    
+{/macro}
+
+{macro matrixOption(key, title, options)}
+    {var className = key.replace(/\//, '-')}
+    <tr data-default="0">
+        <td class="value-wrapper" colspan="2">
+            <label>${title}:</label>
+            <div class="default">
+                <textarea class="${className}" readonly="readonly">
+                    ${Object.toJSON(config[key])}
+                </textarea>
+            </div>
+            <div class="override">
+                <textarea class="${className}" data-param="${key}" data-type="array">
+                    ${jsonValue(key)}
+                </textarea>
+            </div>
+        </td> 
+        <td class="reset">
+            <label title="Значения по-умолчанию установлены в файлах /app/default.settings.php и /app/local.settings.php"><input type="checkbox" class="default-switch" ${setChecked(key)} data-param="${key}"> по-умолчанию</label>
+        </td>
+    </tr>
+    {eval}
+        setTimeout(function () {
+            $j('#settings .' + className).jsonMatrix(options);
+        }, 10);
+    {/eval}    
+{/macro}
+
+<div class="sidebar a">
+    <ul class="menu-vertical">
+        <li class="menu-item selected" data-page="view"><a href="#/settings/page/view">Вид</a></li>
+        <li class="menu-item" data-page="system"><a href="#/settings/page/system">Система</a></li>
+        <li class="menu-item" data-page="incoming"><a href="#/settings/page/incoming">Поступления и парсинг</a></li>
+        <li class="menu-item" data-page="download"><a href="#/settings/page/download">Скачивание</a></li>
+        <li class="menu-item" data-page="auth"><a href="#/settings/page/auth">Авторизация</a></li>
+        <li class="menu-item" data-page="references"><a href="#/settings/page/references">Справочники</a></li>
+        <li class="menu-item" data-page="ga"><a href="#/settings/page/ga">Google Analytics</a></li>
+    </ul>
+</div>
+<div class="view content" style="display: block;">
+    <table>
+        <tbody>
+            ${simpleOption('title', 'Заголовок')}
+            ${%complexOption('topmenu_links', 'Пункты верхнего меню', {map:[{key:'text', title:'Название'}, {key:'url', title:'URL'}, {key:'selected', title:'Выделено', type:'boolean', radioGroup:'topmenu_links_select'}]})%}
+            ${%complexOption('support_links', 'Элементы раздела техподдержки в футере', {map:[{key:'text', title:'Название'}, {key:'url', title:'URL'}]})%}
+            ${simpleOption('rating/count', 'Минимальное количество оценок', 'number', null, 'Минимальное количество оценок для отображения локального рейтинга')}
+
+            ${readonlyOption('timezone', 'Часовой пояс (только чтение)', 'text', 'Для изменения часового пояса необходимо в файл /app/local.settings.php добавить параметр date_default_timezone_set(\'Часовой/пояс\'), см. также http://en.wikipedia.org/wiki/List_of_tz_database_time_zones;')}
+        </tbody>
+    </table>
+</div>
+<div class="system content" style="display: none;">
+    <table>
+        <tbody>
+            ${simpleOption('filesystem/encoding/default', 'Кодировка файловой системы')}
+            ${%complexOption('filesystem/directories', 'Кодировка отдельных директорий', {map:[{key:'path', title:'Путь', width: 250}, {key:'encoding', title:'Кодировка', width: 70}]})%}
+            ${simpleOption('filesystem/ls_dateformat_in_iso8601', 'Команда ls работает в формате ISO8601', 'boolean')}
+            ${simpleOption('filesystem/disable_4gb_support', 'Отключить поддержку файлов >4GB для 32-битных систем', 'boolean')}
+            ${simpleOption('mplayer/bin', 'Путь к <a title="Скачать с mplayerhq.hu (см. раздел Binaries)" target="_blank" href="http://mplayerhq.hu/design7/dload.html">mplayer</a>', 'text', null, 'Например, /usr/bin/mplayer или C:\\mplayer\\mplayer.exe')}
+            ${simpleOption('mplayer/tmp', 'Временный каталог для mplayer')}
+            ${simpleOption('files/tth/enabled', 'Включить автоматичесукую генерацию TTH-хешей для DC++ ссылок', 'boolean')}
+            ${simpleOption('files/tth/bin', 'Путь к tthsum')}
+        </tbody>
+    </table>
+</div>                                
+<div class="incoming content" style="display: none;">
+    <table>
+        <tbody>
+            ${%complexOption('incoming/root_dirs', 'Источники файлов', {width: 200})%}
+            ${%complexOption('incoming/storages', 'Приемники файлов', {width: 200})%}
+            ${simpleOption('incoming/page_size', 'Поступлений на странице', 'number')}
+            ${simpleOption('incoming/limit', 'Общий лимит поступлений', 'number')}
+            ${simpleOption('incoming/hide_import', 'Добавлять скрытыми', 'boolean', null, 'Добавляемые фильмы будут помечены как скрытые')}
+            ${simpleOption('trailers/download', 'Скачивать трейлеры', 'boolean', null)}
+            <tr>
+                <td class="label" colspan="3">
+                    <label>Система парсинга:</label>
+                </td>
+            </tr>
+            ${simpleOption('parser_service/username', ' логин', 'text')}
+            ${simpleOption('parser_service/password', ' пароль', 'password')}
+        </tbody>
+    </table>
+</div>                                
+<div class="download content" style="display: none;">
+    <table>
+        <tbody>
+            ${%complexOption('download/masks', 'Маски замены', {map:[{key:'source', title:'Префикс источника'}, {key:'download', title:'Префикс ссылки'}, {key:'smb', title:'SMB-префикс'}], width: 200})%}
+            ${simpleOption('download/escape/enabled', 'Экранировать ссылки', 'boolean', null, 'Производить преобразование ссылок с русскими символами к виду %xx%xx%xx')}
+            ${simpleOption('download/escape/ie', 'Экранировать ссылки также в IE', 'boolean')}
+            ${simpleOption('download/escape/encoding', 'Кодировка ссылок', 'Например, UTF-8')}
+            ${simpleOption('download/license', 'Показывать лицензию перед скачиванием', 'boolean')}
+            ${simpleOption('download/smb', 'Просмотр по SMB включен', 'boolean')}
+            {var options}
+            {eval}
+                options = {
+                    map: {
+                        cols: [
+                            {key:'download', title:'Скачивание', type: 'boolean'},
+                            {key:'smb', title:'Просмотр', type: 'boolean'},
+                            {key:'dcpp', title:'DirectConnect (DC++)', type: 'boolean'}
+                        ]
+                    }
+                };
+            {/eval}
+            ${%matrixOption('download/selectable', 'Какие ссылки пользователь может включать/отключать в своих настройках', options)%}
+            {eval}
+                options = {
+                    map: {
+                        cols: [
+                            {key:'download', title:'Скачивание', type: 'boolean'},
+                            {key:'smb', title:'Просмотр', type: 'boolean'},
+                            {key:'dcpp', title:'DirectConnect (DC++)', type: 'boolean'}
+                        ]
+                    }
+                };
+            {/eval}
+            ${%matrixOption('download/defaults', 'Cсылки по-умолчанию', options)%}
+            <tr>
+                <td class="label" colspan="3">
+                    <label>Доступные плееры:</label>
+                </td>
+            </tr>
+            ${simpleOption('download/players/selectable/la', 'Light Alloy', 'boolean')}
+            ${simpleOption('download/players/selectable/mp', 'Windows Media Player', 'boolean')}
+            ${simpleOption('download/players/selectable/mpcpl', 'Media Player Classic', 'boolean')}
+            ${simpleOption('download/players/selectable/bsl', 'BSPlayer', 'boolean')}
+            ${simpleOption('download/players/selectable/crp', 'Crystal Player', 'boolean')}
+            ${simpleOption('download/players/selectable/tox', 'xine', 'boolean')}
+            ${simpleOption('download/players/selectable/kaf', 'kaffeine', 'boolean')}
+            ${simpleOption('download/players/selectable/pls', 'Winamp/Mplayer', 'boolean')}
+            ${simpleOption('download/players/selectable/xspf', 'VLC media player', 'boolean')}
+            ${%selectOption('download/players/default', 'Плеер по умолчанию', {'la':'Light Alloy', 'mp':'Windows Media Player', 'mpcpl':'Media Player Classic', 'bsl':'BSPlayer', 'crp':'Crystal Player', 'tox':'xine', 'kaf':'kaffeine', 'pls':'Winamp/Mplayer', 'xspf': 'VLC media player'})%}
+        </tbody>
+    </table>
+</div>                                
+<div class="auth content" style="display: none;">
+    <table>
+        <tbody>
+            ${simpleOption('auth/register_timeout', 'Таймаут регистрации на 1&nbsp;IP, мин.', 'number')}
+            ${simpleOption('auth/cookie/crypt', 'Шифровать cookie', 'boolean')}
+            ${simpleOption('auth/cookie/key', 'Ключ шифрования', 'password')}
+        </tbody>
+    </table>
+</div>
+<div class="references content" style="display: none;">
+    <table>
+        <tbody>
+            ${%complexOption('translation_options', 'Аудио', {width: 200})%}
+            ${%complexOption('quality_options', 'Видео', {width: 200})%}
+        </tbody>
+    </table>
+</div>
+<div class="ga content" style="display: none;">
+    <table>
+        <tbody>
+            <tr>
+                <td class="label" colspan="3">
+                    <label>Google Analytics:</label>
+                </td>
+            </tr>
+            ${simpleOption('ga/account', 'аккаунт', 'text', 'UA-XXXXXXXX-X')}
+            ${simpleOption('ga/domain_name', 'домен (необязательно)', 'text', location.hostname)}
+            ${simpleOption('ga/js', 'путь к ga.js (необязательно)')}
+        </tbody>
+    </table>
+</div>
+<div class="bottom-panel">
+    <a class="minibutton save" onclick="window.ui.saveSettings()" title="Изменения сохраняются в базу данных"><span>Сохранить</span></a>
+</div>                                
+

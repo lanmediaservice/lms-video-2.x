@@ -1,0 +1,15 @@
+<div class="inside">
+    <div class="title">
+        <a class="icon refresh" onclick="window.ui.movies.refresh();" original-title="Обновить"></a>
+        Фильмы
+    </div>
+    <div class="inside-body">
+        <ul>
+        {for movie in movies}
+            <li>
+                <a mid="${movie.movie_id}" href="#/movies/id/${movie.movie_id}">${movie.name} / ${movie.international_name} / ${movie.year}</a>
+            </li>
+        {/for}
+        </ul>
+    </div>
+</div>

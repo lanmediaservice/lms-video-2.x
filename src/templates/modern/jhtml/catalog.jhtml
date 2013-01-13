@@ -1,0 +1,54 @@
+{for movie in movies}
+    {if movie.movie_id}
+        <div class="item" mid="${movie.movie_id}">
+            <div class="cover">
+                <a href="#/movie/id/${movie.movie_id}">
+                    <img src="${movie.cover}" class="cover">
+                </a>
+            </div>
+            <div class="stat">
+                {if movie.rating_imdb_value>0}
+                    <div class="rating" title="Рейтинг IMDB: ${movie.rating_imdb_value|decimal:1}">
+                        <div class="starbar imdb">
+                            <div class="inner" style="width:${movie.rating_imdb_value * 10}%"></div>
+                        </div>
+                        <div class="value">${movie.rating_imdb_value|decimal:1}</div>
+                    </div>
+                {/if}
+                {if movie.rating_kinopoisk_value>0}
+                    <div class="rating" title="Рейтинг KinoPoisk.RU: ${movie.rating_kinopoisk_value|decimal:3}">
+                        <div class="starbar kinopoisk">
+                            <div class="inner" style="width:${movie.rating_kinopoisk_value * 10}%"></div>
+                        </div>
+                        <div class="value">${movie.rating_kinopoisk_value|decimal:1}</div>
+                    </div>
+                {/if}
+                {if movie.rating_local_value>0}
+                    <div class="rating" title="Локальный рейтинг: ${movie.rating_local_value|decimal:1} (${movie.rating_local_count} голосов)">
+                        <div class="starbar local">
+                            <div class="inner" style="width:${movie.rating_local_value * 10}%"></div>
+                        </div>
+                        <div class="value">${movie.rating_local_value|decimal:1}</div>
+                    </div>
+                {/if}
+            </div>
+            <div class="title">
+                <a href="#/movie/id/${movie.movie_id}">
+                    ${movie.name}
+                </a>
+                {if movie.hidden}(скрыт){/if}
+                {if movie.popular}<span class="popular">хит!</span>{/if}
+                {if USER_GROUP!=0}<div {if window.ui.bookmarkExists(movie.movie_id)} class="bookmark on" title="Удалить закладку" {else} class="bookmark" title="Добавить в закладки" {/if} mid="${movie.movie_id}" onclick="window.ui.toogleBookmark(${movie.movie_id})"></div>{/if}
+            </div>
+            <div class="subtitle">${movie.international_name} {if movie.year} (${movie.year}){/if}</div>
+            <div class="table main">
+                {if movie.genres}<div class="row"><div>Жанр:</div> <div>${movie.genres.join(' / ')}</div></div>{/if}
+                {if movie.countries}<div class="row"><div>Страна:</div> <div>${movie.countries.join(' / ')}</div></div>{/if}
+                {if movie.directors}<div class="row"><div>Режиссер:</div> <div>${movie.directors.join(', ')}</div></div>{/if}
+                {if movie.cast}<div class="row"><div>В ролях:</div> <div>${movie.cast.join(', ')}</div></div>{/if}
+                {if movie.description}<div class="row"><div>Описание:</div> <div>${movie.description}</div></div>{/if}
+            </div>            
+            <br style="clear: both;">
+        </div>
+    {/if}
+{/for} 

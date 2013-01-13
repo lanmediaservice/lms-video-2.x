@@ -1,0 +1,11 @@
+{for result in search_results}
+    <div class="image-wrapper">
+        <a target="_blank" href="${result.url|htmlspecialchars}">
+            <img src="${result.thumbnail_escaped}">
+        </a>
+        <br>${result.width}x${result.height}
+        <br><a class="minibutton" data-url="${result.url|htmlspecialchars}" onclick="window.ui.addImage($j(this).attr('data-url')); $j(this).parent().fadeTo('fast', 0.25); $j(this).remove();"><span>Добавить</span></a>
+    </div>    
+{forelse}
+    Ничего не найдено.
+{/for}

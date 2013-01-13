@@ -1,0 +1,9 @@
+{for movie in movies}
+    <li mid="${movie.movie_id}">
+        <div class="bookmark-action remove" onclick="window.action.deleteBookmark(${movie.movie_id})" title="Удалить закладку"></div>
+        <a href="#/movie/id/${movie.movie_id}" class="cover" title="${movie.name} / ${movie.international_name|htmlspecialchars} (${movie.year})">
+            <img src="${movie.cover}">
+            <span class="title">${movie.name} (${movie.year})</span>
+        </a>
+    </li>
+{/for}

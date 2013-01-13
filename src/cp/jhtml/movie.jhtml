@@ -1,0 +1,315 @@
+<div class="toolbar">
+    <ul class="remove built-in">
+        <li>
+            <a title="Удалить фильм из базы данных" onclick="window.ui.movies.beginRemoveMovie(${movie.movie_id})"><span class="pictos">*</span></a>
+        </li>
+    </ul>
+
+    <ul class="remove built-in">
+        <li>
+            <a title="Просмотр фильма в каталоге" target="_blank" href="../#/movie/id/${movie.movie_id}"><span class="pictos">E</span></a>
+        </li>
+    </ul>
+
+    <ul class="generate-frames built-in">
+        <li>
+            {var videoFiles = []}
+            {for file in movie.files}
+                {eval}
+                    if (file.type=='video') {
+                       videoFiles.push(file.file_id);
+                    }
+                {/eval}
+            {/for}
+            <a title="Перегенерировать кадры всех файлов" onclick="window.action.generateFrames(${JSON.stringify(videoFiles)|htmlspecialchars})"><span class="pictos">v</span></a>
+        </li>
+    </ul>
+
+    <ul class="reparse-files built-in">
+        <li>
+            {var topLevelFiles = []}
+            {for file in movie.files}
+                {eval}
+                    var level = parseInt(file.level);
+                    if (parseInt(file.level)==0) {
+                        topLevelFiles.push(file.file_id);
+                    }
+                {/eval}
+            {/for}
+            <a title="Обновить информацию о файлах" onclick="window.action.reparseFiles(${movie.movie_id}, ${JSON.stringify(topLevelFiles)|htmlspecialchars})"><span class="pictos">0</span></a>
+        </li>
+    </ul>
+
+    <ul class="refresh built-in">
+        <li>
+            <a title="Обновить страницу фильма" onclick="window.ui.movies.refreshMovie()"><span class="pictos">1</span></a>
+        </li>
+    </ul>
+    <a onclick="$j(this).parents('#movie').attr('data-mode', 'show-main-form')" class="tab-caption main-form">
+        Основная информация
+    </a>
+    <a onclick="$j(this).parents('#movie').attr('data-mode', 'show-files')" class="tab-caption files">
+        Файлы (${movie.files.length})
+    </a>
+    <a onclick="$j(this).parents('#movie').attr('data-mode', 'show-participants');" class="tab-caption participants">
+        Персоналии (${movie.participants.length})
+    </a>
+
+</div>
+
+<div class="main-form-wrapper">
+    <div class="table-wrapper">
+        <table class="main-form">
+            <tr>
+                <td>Название:</td>
+                <td>
+                    <input type="text" value="${movie.name|htmlspecialchars}" class="form" data-field="name" data-table="movies">
+                    {for externalSearchEngine in EXTERNAL_SEARCH_ENGINES}
+                        ${externalSearchEngine.replace(/%s/g, movie.name)}
+                    {/for}
+                    <a class="research-kinopoisk minibutton"><span>Поиск</span></a>
+                </td>
+            </tr>
+            <tr>
+                <td>Междунар. название:</td>
+                <td>
+                    <input type="text" value="${movie.international_name|htmlspecialchars}" class="form" data-field="international_name" data-table="movies">
+                    {for externalSearchEngine in EXTERNAL_SEARCH_ENGINES}
+                        ${externalSearchEngine.replace(/%s/g, movie.international_name)}
+                    {/for}
+                </td>
+            </tr>
+            <tr>
+                <td>Год:</td>
+                <td><input type="text" value="${movie.year}" class="form" data-field="year" data-table="movies"></td>
+            </tr>
+            <tr>
+                <td>Обложка:</td>
+                <td><textarea type="text" class="form covers" data-field="covers" data-table="movies" wrap="off">${movie.covers|htmlspecialchars}</textarea></td>
+            </tr>
+            <tr>
+                <td>Страна:</td>
+                <td>
+                    <select data-placeholder=" " class="countries chzn-select" multiple style="width:350px;" data-field="countries" data-table="movies">
+                        {for country in movie.countries}
+                            <option selected="selected">${country}</option>
+                        {/for}
+                    </select>                                    
+                </td>
+            </tr>
+            <tr>
+                <td>Жанр:</td>
+                <td>
+                    <select data-placeholder=" " class="genres chzn-select" multiple style="width:350px;" data-field="genres" data-table="movies">
+                        {for genre in movie.genres}
+                            <option selected="selected">${genre}</option>
+                        {/for}
+                    </select>                                    
+                </td>
+            </tr>
+            <tr>
+                <td>Описание:</td>
+                <td>
+                    <textarea class="form" data-field="description" data-table="movies">${movie.description|htmlspecialchars}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>IMDb:</td>
+                <td>
+                    ID: <input type="text" value="${movie.ratings.imdb.system_uid}" data-field="rating/imdb/system_uid" data-table="movies" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;
+                    Рейтинг: <input type="text" value="${movie.ratings.imdb.value}" data-field="rating/imdb/value" data-table="movies" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;
+                    голосов: <input type="text" value="${movie.ratings.imdb.count}" data-field="rating/imdb/count" data-table="movies" class="form" style="width:60px">
+                </td>
+            </tr>
+            <tr>
+                <td>KinoPoisk:</td>
+                <td>
+                    ID: <input type="text" value="${movie.ratings.kinopoisk.system_uid}" data-field="rating/kinopoisk/system_uid" data-table="movies" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;
+                    Рейтинг: <input type="text" value="${movie.ratings.kinopoisk.value}" data-field="rating/kinopoisk/value" data-table="movies" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;
+                    голосов: <input type="text" value="${movie.ratings.kinopoisk.count}" data-field="rating/kinopoisk/count" data-table="movies" class="form" style="width:60px">
+                </td>
+            </tr>
+            <tr>
+                <td>Рейтинг MPAA:</td>
+                <td><input type="text" value="${movie.mpaa}" class="form" data-field="mpaa" data-table="movies"></td>
+            </tr>
+            <tr>
+                <td>Группа:</td>
+                <td><input type="text" value="${movie.group}" class="form" data-field="group" data-table="movies"></td>
+            </tr>
+            <tr>
+                <td>Добавлен:</td>
+                <td><input type="type" value="${movie.created_at}" class="form" data-field="created_at" data-table="movies"></td>
+            </tr>
+            <tr>
+                <td>Обновлен:</td>
+                <td>
+                    <input type="type" value="${movie.updated_at}" class="form" data-field="updated_at" data-table="movies" style="width: 290px;">
+                    <a title="Установить текущее время" class="minibutton" onclick="$j(this).parent().find('input').val((new Date()).format('yyyy-mm-dd HH:MM:ss')).change()"><span>сейчас</span></a>
+                </td>
+            </tr>
+            <tr>
+                <td>Скрыт:</td>
+                <td><input type="checkbox" value="${movie.hidden}" onclick="$j(this).val($j(this).is(':checked')? 1 : 0).change()" class="" data-field="hidden" data-table="movies" {if movie.hidden=='1'} checked{/if}></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="files-wrapper">
+    <div class="table-wrapper">
+        <table class="files silver">
+            <thead>
+                <tr>
+                    <th>
+                        Файл
+                    </th>
+                    <th>
+                        Отбражаемое
+                        название
+                    </th>
+                    <th>
+                        Размер
+                    </th>
+                    <th>
+                        Длительн.
+                    </th>
+                    <th>
+                        Видео
+                    </th>
+                    <th class="narrow">
+                        Качество
+                        <br><input type="text" class="form quality" value="${movie.quality}" title="${movie.quality}" data-field="quality" data-table="movies">
+                    </th>
+                    {var a = $A($R(0, movie.audio_tracks_count-1))}
+                    {for num in a}
+                        <th>
+                            Аудио {if movie.audio_tracks_count>1} #${num+1}{/if}
+                        </th>
+                        <th class="narrow">
+                            Озвучивание {if movie.audio_tracks_count>1} #${num+1}{/if}
+                            <br><input type="text" class="form translation" data-field="translation/${num}" value="${movie.translation[num]}" title="${movie.translation[num]}" data-table="movies">
+                        </th>
+                    {/for}
+                    <th colspan="4"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {for file in movie.files}
+                    {var level = parseInt(file.level)}
+                    <tr class="row" data-fid="${file.file_id}" class="" data-parent="${file.parent}">
+                        <td style="padding-left:${parseInt(file.level)*16 + 5}px">
+                            <span class="file type-${file.type}" title="${file.path}">${file.basename}</span>
+                            <input type="text" class="form path" data-field="path" value="${file.path}" data-table="files" onchange="$j('span.file', $j(this).parent()).html(LMS.Text.basename($j(this).val())).attr('title', $j(this).val())">
+                        </td>
+                        <td class="narrow">
+                            <input type="text" class="form name" data-field="name" value="${file.name}" data-table="files">
+                        </td>
+                       <td class="narrow">
+                            {if !file.is_dir}
+                                <span title="${file.size}">${LMS.Utils.HumanSize(file.size)}</span>
+                            {/if}
+                        </td>
+
+                        <td class="narrow">
+                            {if file.compact_metainfo}<span>${file.compact_metainfo.playtime}</span>{/if}
+                        </td>
+                        <td class="narrow">
+                            {if file.compact_metainfo}<span title="${file.compact_metainfo.video.info}">${file.compact_metainfo.video.label}</span>{/if}
+                        </td>
+                        <td class="narrow">
+                            {if file.compact_metainfo || file.has_video}<input type="text" class="form quality" value="${file.quality}" title="${file.quality}" data-field="quality" data-table="files">{/if}
+                        </td>
+                        {var a = $A($R(0, file.audio_tracks_count-1))}
+                        {for num in a}
+                            <td class="narrow">
+                                {if file.compact_metainfo}
+                                    {var audio = file.compact_metainfo.audio[num]}
+                                    <span title="${audio.info}">${audio.label}</span>
+                                {/if}
+                            </td>
+                            <td class="narrow">
+                                <input type="text" class="form translation" data-field="translation/${num}" value="${file.translation[num]}" title="${file.translation[num]}" data-table="files">
+                            </td>
+                        {/for}
+                        {if file.audio_tracks_count < movie.audio_tracks_count}
+                            <td colspan="${(movie.audio_tracks_count-file.audio_tracks_count)*2}">
+
+                            </td>
+                        {/if}
+                        <td>
+                            <a title="Обновить информацию о {if file.is_dir} папке и вложенных файлах{else} файлe{/if}" class="pictos" onclick="window.action.reparseFiles(${movie.movie_id}, [${file.file_id}])">0</a>
+                        </td>
+                        <td>
+                            {if file.type=='video'}
+                                <a title="Перегенерировать кадры" class="pictos" onclick="window.action.generateFrames([${file.file_id}])">v</a>
+                            {/if}
+                        </td>
+                        <td>
+                            <a title="Режим редактирования" class="pictos" onclick="$j(this).parent().parent().toggleClass('edit-mode')">W</a>
+                        </td>
+                        <td>
+                            <a title="Удалить ссылку на {if file.is_dir} папку{else} файл{/if}" class="pictos" onclick="window.ui.movies.beginRemoveFile(${file.file_id})">*</a>
+                        </td>
+                    </tr>
+                {/for}
+            </tbody>
+        </table>
+        <hr>
+        Добавить файл или папку:<br>
+        <input type="text" class="form path new-file" placeholder="Полный путь к файлу или папке..." value="" onchange="$j(this).attr('value', $j(this).val());">
+        <a class="minibutton" onclick="window.ui.movies.addFile(${movie.movie_id})"><span>Добавить</span></a>
+    </div>
+</div>
+
+
+
+
+
+<div class="participants-wrapper">
+    <div class="table-wrapper">
+        <table class="participants silver">
+            <thead>
+                <tr>
+                    <th>
+                        Имя
+                    </th>
+                    <th>
+                        Роль
+                    </th>
+                    <th>
+                        Персонаж
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {for participant in movie.participants}
+                    <tr class="row" data-pid="${participant.participant_id}">
+                        <td>
+                            <a href="#/persones/id/${participant.person_id}">
+                                ${participant.name} {if participant.international_name} (${participant.international_name}){/if}
+                            </a>
+                        </td>
+                        <td>
+                            <select class="roles" data-field="role_id" data-value="${participant.role_id}"></select>
+                        </td>
+                        <td>
+                            <input type="text" data-field="character" value="${participant.character}" />
+                        </td>
+                        <td>
+                            <a class="pictos" onclick="window.action.removeParticipant(${participant.participant_id})">*</a>
+                        </td>
+                    </tr>
+                {/for}
+            </tbody>
+        </table>
+        <div class="persones-add">
+            Добавить персоналии:<br>
+            <textarea placeholder="Список через ; , или перевод строки" class="form persones-list" value="" onchange="$j(this).attr('value', $j(this).val());"></textarea><br>
+            <select class="roles form" style="width: 270px;"></select> <a onclick="window.ui.movies.insertPersones(${movie.movie_id})" class="minibutton"><span>Добавить</span></a>
+        </di>
+
+    </div>
+</div>

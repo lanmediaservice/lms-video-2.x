@@ -1,0 +1,273 @@
+{if movie}
+    {var qualities = []}
+    {var translations = []}
+    {eval} 
+        for (var i=0; i<movie.files.length; i++) {
+            var file = movie.files[i];
+            if (!file.is_dir) {
+                if (file.metainfo.video && file.quality) {
+                    qualities.push(file.quality);
+                }
+                if (file.metainfo.audio) {
+                    for (var n=0; n<file.metainfo.audio.length; n++) {
+                        if (file.translation[n]) {
+                            translations.push(file.translation[n]);
+                        }
+                    }
+                }
+            }
+        }
+        qualities = qualities.uniq();
+        translations = translations.uniq();
+    {/eval}
+    <div class="sidebar a">
+        <div class="movie-info">
+            <div class="title">
+                ${movie.name|escape}
+                {if movie.hidden}(скрыт){/if}
+                {if movie.popular}<span class="popular">хит!</span>{/if}
+                {if USER_GROUP!=0}<div {if window.ui.bookmarkExists(movie.movie_id)} class="bookmark on" title="Удалить закладку" {else} class="bookmark" title="Добавить в закладки" {/if} mid="${movie.movie_id}" onclick="window.ui.toogleBookmark(${movie.movie_id})"></div>{/if}
+            </div>
+            <div class="covers-wrapper">
+                <ul class="covers">
+                    {for cover in movie.covers}
+                        <li>
+                            <a href="${cover.original}" rel="fancybox-cover-${movie.movie_id}">
+                                <img class="cover" src="${cover.thumbnail}" {if cover_index=="0"} onload="window.ui.slideCover(0);"{/if}>
+                            </a>
+                        </li>
+                    {/for}
+                </ul>
+            </div>
+            {if movie.covers.length>1}
+                <div class="covers-nav-wrapper">
+                    <ul class="covers-nav">
+                        {for cover in movie.covers}
+                            <li><a {if cover_index=="0"} class="active"{/if} onclick="window.ui.slideCover(${cover_index});">${cover_index}</a></li>
+                        {/for}
+                    </ul>
+                </div>
+            {/if}
+            {if movie.rating_imdb_value>0}
+                <div class="rating" title="Рейтинг IMDB: ${movie.rating_imdb_value|decimal:1} {if movie.rating_imdb_count} (${movie.rating_imdb_count}){/if}">
+                    <a {if movie.imdb_url} href="${movie.imdb_url}" {/if} target="_blank">
+                        <div class="starbar big imdb">
+                            <div class="inner" style="width:${movie.rating_imdb_value * 10}%"></div>
+                        </div>
+                        <div class="value">${movie.rating_imdb_value|decimal:1}</div>
+                    </a>
+                </div>
+            {/if}
+            {if movie.rating_kinopoisk_value>0}
+                <div class="rating" title="Рейтинг KinoPoisk.RU: ${movie.rating_kinopoisk_value|decimal:3} {if movie.rating_kinopoisk_count} (${movie.rating_kinopoisk_count}){/if}">
+                    <a {if movie.kinopoisk_url} href="${movie.kinopoisk_url}" {/if} target="_blank">
+                        <div class="starbar big kinopoisk">
+                            <div class="inner" style="width:${movie.rating_kinopoisk_value * 10}%"></div>
+                        </div>
+                        <div class="value">${movie.rating_kinopoisk_value|decimal:1}</div>
+                    </a>
+                </div>
+            {/if}
+            <div class="rating"  title="Локальный рейтинг: ${movie.rating_local_value|decimal:1} (${movie.rating_local_count} голосов)" id="local_rating" {if !parseFloat(movie.rating_local_value)} style="display:none" {/if}>
+                <div class="starbar big local">
+                    <div class="inner" style="width:${movie.rating_local_value * 10}%"></div>
+                </div>
+                <div class="value">${movie.rating_local_value|decimal:1}</div>
+            </div>
+            {if USER_GROUP!=0}
+                <div class="rating" id="personal_rating" data-value="${movie.rating_personal_value}" title="Моя оценка">
+                    <div class="starbar big personal">
+                        <div class="inner" style="width:${movie.rating_personal_value * 10}%"></div>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(1);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 1)"><span>1</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(2);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 2)"><span>2</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(3);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 3)"><span>3</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(4);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 4)"><span>4</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(5);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 5)"><span>5</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(6);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 6)"><span>6</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(7);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 7)"><span>7</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(8);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 8)"><span>8</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(9);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 9)"><span>9</span></a>
+                        <a class="rate" onmouseover="window.ui.rateMouseOverHandler(10);" onmouseout="window.ui.rateMouseOutHandler();" onclick="window.action.setRating(${movie.movie_id}, 10)"><span>10</span></a>
+                    </div>
+                    <div class="value">${movie.rating_personal_value}</div>
+                    <a class="remove" title="Удалить оценку" onclick="window.action.setRating(${movie.movie_id}, 0);" {if !movie.rating_personal_value} style="display:none" {/if}></a>
+                </div>
+            {/if}
+            <div class="summary movieinfo">
+                {if movie.international_name}<div class="row"><div>Название:</div> <div>${movie.international_name}</div></div>{/if}
+                {if movie.year}<div class="row"><div>Год:</div> <div>${movie.year}</div></div>{/if}
+                {if movie.countries && movie.countries.length}<div class="row"><div>Страна:</div> <div>${movie.countries.join('<br>')}</div></div>{/if}
+                {if movie.genres && movie.genres.length}<div class="row"><div>Жанр:</div> <div>${movie.genres.join('<br>')}</div></div>{/if}
+                {if movie.mpaa}<div class="row"><div>MPAA:</div> <div title="${movie.mpaa}">${movie.mpaa.truncate(14)}</div></div>{/if}
+            </div> 
+            <br>
+            <div class="summary techinfo">
+                {if qualities.length}<div class="row"><div>Видео:</div> <div>${qualities.join('<br>')}</div></div>{/if}
+                {if translations.length}<div class="row"><div>Аудио:</div> <div>${translations.join('<br>')}</div></div>{/if}
+                {var date = LMS.Date.datetimeStrToDate(movie.created_at)}
+                <div class="row"><div>Добавлен:</div> <div><span time="${Math.round(date.getTime()/1000)}" mode="3" class="live-datetime" title="${date.format('d mmmm yyyy г. HH:MM')}">${LMS.LiveDatetime.dateToStr(date, 3)}</span> (${movie.created_by})</div></div>
+                {if movie.updated_at!=movie.created_at}
+                    {var date = LMS.Date.datetimeStrToDate(movie.updated_at)}
+                    <div class="row"><div>Обновлен:</div> <div><span time="${Math.round(date.getTime()/1000)}" mode="3" class="live-datetime" title="${date.format('d mmmm yyyy г. HH:MM')}">${LMS.LiveDatetime.dateToStr(date, 3)}</span></div></div>
+                {/if}
+                <div class="row"><div>Скачиваний:</div> <div>${movie.hit}</div></div>
+            </div> 
+        </div>
+    </div>  
+
+
+    <div class="content">
+        <div id="movie" class="movie">
+            <ul class="tabset">
+                <li class="movie-overview active"><a href="#/movie/id/${movie.movie_id}"><span>обзор</span></a></li>
+                <li class="movie-comments"><a href="#/movie/id/${movie.movie_id}/page/comments"><span>отзывы {if movie.comments_count>0} (${movie.comments_count}){/if}</span></a></li>
+            </ul>
+            <div class="tabset-body clearfix movie-overview">
+                <div class="frames-slider-wrapper" style="">
+                    <ul class="frames-slider" style="">
+                        {var c = 0}
+                        {for file in movie.files.reverse(false)}
+                            {if file.frames && file.frames.length}
+                                {var c = c + 1}
+                                <li style="">
+                                    <ul class="frames-gallery" data-fid="${file.file_id}" data-filename="${file.name|htmlspecialchars}">
+                                        {for frame in file.small_frames}
+                                            {if frame_index<6}
+                                                <li>
+                                                    <a href="${file.frames[frame_index]}" rel="fancybox-frame-${file.file_id}" title="Кадр #${parseInt(frame_index)+1}"><img class="frame" data-original="${frame}" src="templates/${TEMPLATE}/img/empty225px.png"></a>
+                                                </li>
+                                            {/if}
+                                        {/for}
+                                    </ul>
+                                </li>
+                            {/if}
+                        {/for}
+                    </ul>
+                </div>
+                {if movie.trailer}
+                    <div class="trailer" style="float:left">
+                        <a class="minibutton" onclick="window.ui.showTrailer($j(this).attr('data-link'), $j(this).attr('data-name'));" data-name="${movie.trailer.name|htmlspecialchars}" data-link="${movie.trailer.video|htmlspecialchars}" ><span><span class="icon play"></span>${movie.trailer.name}</span></a>
+                    </div>
+                {/if}
+                {if c>1}
+                    <div class="frames-slider-nav">
+                        <div class="actions" style="float:right">
+                            <a style="" class="prev" onclick="var i=$j(this).attr('data-index'); if(i) {window.ui.slideFrames(i);}" data-index="">&lt;-</a>
+                            <a style="" class="next" onclick="var i=$j(this).attr('data-index'); if(i) {window.ui.slideFrames(i);}" data-index="">-&gt;</a>
+                        </div>
+                        Кадры из "<span class="filename"></span>"
+                    </div>
+                {/if}
+                {if movie.description.length}
+                    <div class="info">
+                        <div class="header">Описание</div>
+                        ${movie.description}
+                    </div>
+                {/if}
+
+                <div class="files">
+                    <div class="header">Файлы</div>
+                    {var videoplayer = SETTINGS.DOWNLOAD_PLAYER.SELECTABLE? ($j.Storage.get("videoplayer") || SETTINGS.DOWNLOAD_PLAYER.DEFAULT) : SETTINGS.DOWNLOAD_PLAYER.DEFAULT}
+                    <table cellspacing="0">
+                        <tbody>
+                        {var c = 0}
+                        {for file in movie.files}
+                            {if !file.is_dir}
+                                {var c = c + 1}
+                                <tr fid="${file.file_id}" class="{if (window.ui.isFileDownloaded(file.file_id))}downloaded{/if}">
+                                    <td class="name">${file.name.replace(/\./g, ".&shy;")}</td>
+                                    <td class="metainfo">
+                                        {if file.metainfo}<span title="${file.metainfo.playtime}">${file.metainfo.playtime_seconds|time}</span>{/if}
+                                    </td>
+                                    <td class="metainfo">
+                                        {if file.metainfo}<span title="{if file.quality}${file.quality}, {/if} ${file.metainfo.video.info}<br>{for audio in file.metainfo.audio}${audio.info|htmlspecialchars} {if file.translation[audio_index]} (${file.translation[audio_index]|htmlspecialchars}){/if}<br>{/for}">{if file.quality && qualities.length>1}${file.quality}, {/if} ${file.metainfo.video.label}</span>{/if}
+                                    </td>
+                                    {if file.active}
+                                        {if window.ui.isLinkTypeEnabled('download')}
+                                            {if file.links.download}
+                                                <td><span class="minibutton"><span><a onclick="window.ui.hitMovie(${movie.movie_id});window.ui.setFileDownloaded(${file.file_id});" href="${file.links.download|escape}">Скачать (${LMS.Utils.HumanSize(file.size)})</a></span></span></td>
+                                            {/if}
+                                            {if file.links.license}
+                                                <td><a target="_blank" onclick="window.ui.hitMovie(${movie.movie_id});window.ui.setFileDownloaded(${file.file_id});" class="minibutton iframe" href="${file.links.license|escape}"><span>Скачать (${LMS.Utils.HumanSize(file.size)})</span></a></td>
+                                            {/if}
+                                        {/if}
+                                        {if window.ui.isLinkTypeEnabled('dcpp')}
+                                            <td>{if file.links.dcpp}<a onclick="window.ui.hitMovie(${movie.movie_id});window.ui.setFileDownloaded(${file.file_id});" class="minibutton" href="${file.links.dcpp|escape}"><span>DC++</span></a>{/if}</td>
+                                        {/if}
+                                        {if window.ui.isLinkTypeEnabled('smb')}
+                                            <td>{if movie.smb}<a rel="videoplayer-${file.file_id}" onclick="window.ui.hitMovie(${movie.movie_id});window.ui.setFileDownloaded(${file.file_id});" class="minibutton" href="play.php?p=${videoplayer}&f=${file.file_id}"><span>Смотреть</span></a>{/if}</td>
+                                        {/if}
+                                    {else}
+                                        <td colspan="4" class="non-active">Файл временно не доступен, попробуйте позже</td>
+                                    {/if}
+                                </tr>
+                            {/if}
+                        {/for}
+                        </tbody>
+                    </table>
+                    {if movie.smb && window.ui.isLinkTypeEnabled('smb') && c>1}
+                        <div class="files-all"><a rel="videoplayer" class="minibutton" href="play.php?p=${videoplayer}&m=${movie.movie_id}"><span>Смотреть все</span></a></div>
+                    {/if}
+                </div>
+
+                <div class="persones-wrapper">
+                    <ul class="persones collapsed">
+                        {for person in movie.persones}
+                            <li onclick="window.ui.personPreviewClickHandler(${person.person_id}, this, ${person_index});" 
+                                pid="${person.person_id}" 
+                                class="person-preview{if person_index>5} more m${person_index} defer{/if} {if person_index==5} premore{/if}" 
+                                style="z-index:${100-person_index}" 
+                                {if person_index>=5}onmouseout="window.ui.cancelSlidePersones()" onmouseover="window.ui.slidePersones(1000)"{/if}
+                            >
+                                {if person.photo}
+                                    <div style="background-image: url(${person.photo});" class="photo"></div>
+                                {else}
+                                    <div class="photo no"></div>
+                                {/if}
+                                <div class="title">
+                                    <a href="#/person/id/${person.person_id}" onclick="return false;">
+                                        ${person.names[0]}
+                                    </a>
+                                    <div class="role">
+                                        {for role in person.roles}{if role_index>0},{/if} ${role.role}{if role.character}: ${role.character}{/if}{/for}
+                                    </div>
+                                </div>
+                            </li>
+                        {/for}
+                    </ul>
+                    <div class="person-detail">
+                        <div class="top-panel">
+                            <a class="minibutton btn-expand" onclick="window.ui.hidePerson();return false;"><span>X</span></a>
+                        </div>
+                        <div class="ident"></div>
+                    </div>
+                </div>
+                {if movie.other_movies}
+                    <div class="other-movies">
+                        <div class="header">См. также</div>
+                        <ul class="movies">
+                        {for otherFilm in movie.other_movies}
+                            <li title="${otherFilm.name|htmlspecialchars} / ${otherFilm.international_name|htmlspecialchars} / ${otherFilm.year|escape}">
+                                <div class="cover">
+                                    <a href="#/movie/id/${otherFilm.movie_id}">
+                                        <img src="${otherFilm.cover}" class="cover">
+                                    </a>
+                                </div>
+                                <a class="title" href="#/movie/id/${otherFilm.movie_id}">
+                                    ${otherFilm.name|escape}
+                                </a>
+                                <a class="subtitle" href="#/movie/id/${otherFilm.movie_id}">
+                                    ${otherFilm.international_name} {if otherFilm.year} (${otherFilm.year}){/if}
+                                </a>
+                            </li>
+                        {/for}
+                    </div>
+                {/if}
+            </div>
+            <div class="tabset-body clearfix movie-comments" id="movie_comments" style="display:none">
+            </div>
+        </div>
+    </div>  
+{else}
+    Фильм не найден.
+{/if}

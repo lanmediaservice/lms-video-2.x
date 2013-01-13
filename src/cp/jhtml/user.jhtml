@@ -1,0 +1,54 @@
+<div class="toolbar">
+    <a onclick="$j(this).parents('#user').attr('data-mode', 'show-main-form')" class="tab-caption main-form">
+        Основная информация
+    </a>
+
+    <ul class="merge-selector built-in">
+        <li>
+            <a title="Обновить страницу пользователя" onclick="window.ui.users.refreshUser()"><span class="pictos">1</span></a>
+        </li>
+    </ul>
+
+</div>
+
+<table>
+    <tr>
+        <td>ID:</td>
+        <td>${user.ID}</td>
+    </tr>
+    <tr>
+        <td>Логин:</td>
+        <td><input type="text" value="${user.Login}" class="form" data-field="Login"></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><input type="text" value="${user.Email}" class="form" data-field="Email"></td>
+    </tr>
+    <tr>
+        <td>IP:</td>
+        <td><input type="text" value="${user.IP}" class="form" data-field="IP"></td>
+    </tr>
+    <tr>
+        <td>Группа:</td>
+        <td>
+            <select value="${user.UserGroup}" class="form" data-field="UserGroup">
+                <option value="0" {if user.UserGroup=="0"} selected{/if}>Гость (0)</option>
+                <option value="1" {if user.UserGroup=="1"} selected{/if}>Пользователь (1)</option>
+                <option value="2" {if user.UserGroup=="2"} selected{/if}>Модератор (2)</option>
+                <option value="4" {if user.UserGroup=="4"} selected{/if}>Модератор аудио-каталога (4)</option>
+                <option value="5" {if user.UserGroup=="5"} selected{/if}>Модератор видео-каталога (5)</option>
+                <option value="3" {if user.UserGroup=="3"} selected{/if}>Администратор (3)</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Включен:</td>
+        <td>
+            <input type="checkbox" value="${user.Enabled}" onclick="$j(this).val($j(this).is(':checked')? 1 : 0).change()" class="" data-field="Enabled" {if user.Enabled=='1'} checked{/if}>
+        </td>
+    </tr>
+    <tr>
+        <td>Зарегистрирован:</td>
+        <td>${user.RegisterDate}</td>
+    </tr>
+</table>

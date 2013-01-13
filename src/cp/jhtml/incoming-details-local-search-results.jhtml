@@ -1,0 +1,29 @@
+{if !movies.length}
+    <div class="central-message">
+        <div>
+            <p>Ничего не найдено.</p>
+            <p>Попробуйте изменить запрос.</p>
+        </div>
+    </div>
+{else}
+<ul>
+    {for movie in movies}
+        <li>
+            <div class="actions">
+                
+            </div>
+            <a class="attach-file-button" title="Открыть диалог приcоединения или замены файла к этому фильму" href="" onclick="window.ui.incoming.beginAttachFile(${incoming_id}, ${movie.movie_id}); return false;" ><span class="pictos">+</span></a>
+            <a href="../#/movie/id/${movie.movie_id}" class="cover" target="_blank">
+                <img src="${movie.cover}">
+            </a>
+            <div class="suggestionlabel">
+                <a href="../#/movie/id/${movie.movie_id}" target="_blank">
+                    <span class="title">${movie.name}</span>
+                </a>
+                <a class="edit-movie-button" title="Перейти в редактор" href="#/movies/id/${movie.movie_id}"><span class="pictos">x</span></a>
+                <div class="detail">${movie.international_name} (${movie.year})</div>
+            </div>
+        </li>
+    {/for}
+</ul>
+{/if}

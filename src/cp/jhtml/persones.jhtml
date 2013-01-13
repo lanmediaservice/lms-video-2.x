@@ -1,0 +1,16 @@
+<div class="inside">
+    <div class="title">
+        <a class="icon refresh" onclick="window.ui.persones.refresh();" original-title="Обновить"></a>
+        Персоналии
+    </div>
+    <div class="inside-body">
+        <ul>
+        {for person in persones}
+            <li>
+                <a pid="${person.person_id}" href="#/persones/id/${person.person_id}">${person.person_id}: ${person.name} / ${person.international_name}</a>
+            </li>
+        {/for}
+        </ul>
+    </div>
+</div>
+

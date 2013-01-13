@@ -1,0 +1,318 @@
+/**
+ * @copyright 2006-2011 LanMediaService, Ltd.
+ * @license    http://www.lanmediaservice.com/license/1_0.txt
+ * @author Ilya Spesivtsev <macondos@gmail.com>
+ * @version $Id: movies.less 700 2011-06-10 08:40:53Z macondos $
+ */
+ 
+ #JHRControllerLoaderBox {
+    .box-shadow(0, 1px, 4px, 0.5);
+    position: fixed; 
+    z-index: 9999; 
+    background-color: #000; 
+    .border-radius(5px);
+    left: 50%; 
+    top: 50%; 
+    padding: 8px; 
+    margin-left: -20px;
+    margin-top: -20px;
+    opacity: 0.7;
+} 
+
+ .wrapper {  
+    width: 100%;  
+    margin: 0;  
+    padding: 0;
+    overflow: hidden;
+    .sidebar {
+        &.a {  
+            width: 230px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            font-size: 12px;
+            float: left;
+            padding-bottom: 50000px;
+            margin-bottom: -50000px;
+        }
+    }
+    .content {  
+        background-color: white;
+        width: 100%;
+        line-height: 1em;
+    }  
+}  
+
+.ie6, 
+.ie7 {
+    #catalog_wrapper {
+        margin-left: 231px;
+    }
+    #movie_wrapper {
+        overflow: visible;
+        .content {
+            margin-left: 231px;
+            width: 729px;
+        }
+        .sidebar.a {
+            height: 700px;
+        }
+    }
+}
+
+.ie6,
+.ie7 {
+    #catalog_wrapper {
+        width: 729px
+    }
+}
+
+#movie_wrapper .sidebar.a {
+    width: 225px;
+    border: none;
+}
+
+
+#nav { 
+    padding: 0;
+    margin: 0;
+    height: 35px;
+    float: left;
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        .border-radius(15px);
+        float: left;
+        margin: 5px;
+        padding: 0;
+        cursor: pointer;
+        border: 1px solid transparent;
+        a {
+            float: left;
+            height: auto;
+            border-top: none;
+            text-shadow: 0 1px 0 #FFFFFF;
+            display: block;
+            font-weight: bold;
+            line-height: normal;
+            margin: 0;
+            padding: 4px 11px 6px 9px;
+            text-decoration: none;
+            color: #333333;
+        }
+        &:hover {
+            background: #DDDDDD;
+        }
+        &.selected {
+            background: #DDDDDD;
+            border-color: #CCCCCC #DDDDDD #FFFFFF;
+            border-style: solid;
+            border-width: 1px;
+            .box-shadow-none;
+            a {
+                padding: 5px 10px;
+            }
+        }
+    }
+}
+
+
+.toolbar.top {
+    height: 35px;
+    background: transparent;
+    z-index: 1002;
+    ul.built-in > li > a {
+        height: 29px;
+        line-height: 29px;
+    }
+    ul.built-in.hoverable:hover,
+    ul.built-in.clickable.active {
+        height: 35px;
+    }
+    ul ul {
+        top: 35px;
+    }
+}
+
+ul.menu-vertical { 
+    margin: 0;
+    padding: 0;
+    li {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;        
+        a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            padding: 8px 8px 8px 15px;
+            color: #666;
+            background: url("../img/navarrows.png") no-repeat scroll 207px 0 transparent !important;
+            cursor: pointer;
+        }
+
+        &:hover {
+            a {
+                background-position: 207px -69px !important;
+                color: #0088CC;
+            }
+        }
+        &.selected,
+        &.selected:hover {
+            .gradient(#f5f5f5, #E3E3E3);
+            a {
+                background-position: 207px -33px !important;
+                color: #333;
+                text-shadow: 1px 1px #FFFFFF;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+div.inside {
+    margin: 15px;
+    .box-shadow(0, 1px, 1px, 0.3);
+    .border-radius(5px);
+    overflow: hidden;
+    &.random-movie {
+        img {
+            width: 100px;
+            .border-radius(5px);
+            .box-shadow(1px, 1px, 3px, 0.3);
+            margin: 0 auto;
+        }
+        * {
+            text-align: center;
+        }
+
+        .movie-title {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .subtitle {
+            margin:2px;
+            margin-bottom:5px;
+            color:gray;
+        }
+        .genre {
+            margin:2px;
+            margin-bottom:5px;
+            .ellipsis;
+            display: none;
+        }
+        .country {
+            margin:2px;
+            .ellipsis;
+            display: none;
+        }
+    }
+
+    .title {
+        .gradient(#F2F2F2, #E3E3E3);
+        font-size: 12px;
+        height: 16px;
+        margin: 0;
+        padding: 5px;
+        text-shadow: 0 1px 0 #FFFFFF;
+        color: #444;
+        font-weight: bold;
+        line-height: 16px;
+        text-align: center;
+        a.refresh {
+            color: #444;
+            float: right;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+    
+    .inside-body {
+        font-size: 11px;
+        .gradient(#ffffff, #FBFBFB);
+        padding: 10px;
+        .border-radius(5px, bottom);
+        table {
+            td {
+                padding: 2px;
+                a {
+                    text-decoration: none;
+                }
+                &.rating {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+}
+
+.no-boxshadow {
+    div.inside {
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+
+
+
+
+#movie_wrapper,
+#person_wrapper,
+#settings_wrapper,
+#main_wrapper,
+#catalog_wrapper,
+#bestsellers,
+#search_results,
+#sort_menu_item,
+#countries_menu_item,
+#genres_menu_item,
+#movie_moder_menu_item {
+    display: none;
+}
+
+#container.mode-movie {
+    #movie_wrapper,
+    #movie_moder_menu_item {
+        display: block;
+    }
+}
+#container.mode-person #person_wrapper {
+    display: block;
+}
+#container.mode-settings #settings_wrapper {
+    display: block;
+}
+#container.mode-catalog {
+    #main_wrapper,
+    #catalog_wrapper,
+    #sort_menu_item,
+    #countries_menu_item,
+    #genres_menu_item,
+    .page-marker,
+    .scroll-up {
+        display: block;
+    }
+}
+#container.mode-bestsellers {
+    #main_wrapper,
+    #bestsellers {
+        display: block;
+    }
+    .sidebar {
+        display: none;
+    }
+}
+#container.mode-search {
+    #main_wrapper,
+    #search_results {
+        display: block;
+    }
+    .sidebar {
+        display: none;
+    }
+}
+

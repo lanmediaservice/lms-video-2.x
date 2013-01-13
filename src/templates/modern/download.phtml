@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Скачать</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script>
+    function agree(){
+        document.getElementById("downloadbox").style.display = "";
+    }
+</script>
+</head>
+<body>
+<h1>Соглашение</h1>
+Все видеоматериалы представлены исключительно для ознакомления, без целей коммерческого использования.<br>
+Права в отношении фильмов принадлежат их законным правообладателям. <br>
+Любое коммерческое использование без разрешения законных правообладателей запрещено. <br>
+После ознакомительного просмотра приобретите лицензионный DVD- или Blu-ray-диск с понравившимся фильмом.<br><br>
+
+<button onclick='agree();' >Я согласен</button><br><br>
+<div style='display:none' id='downloadbox'>
+Скачать:<br>
+<?php echo $downloadLink;?>
+</div>
+<body>
+</html>

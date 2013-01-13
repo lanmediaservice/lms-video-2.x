@@ -1,0 +1,13 @@
+Журнал обновления скриптовой части:
+<ul>
+{for message in src}
+    <li>${message}</li>
+{/for}
+</ul>
+<br>
+Журнал обновления базы данных:
+<ul>
+{for message in db}
+    <li>${message}</li>
+{/for}
+</ul>

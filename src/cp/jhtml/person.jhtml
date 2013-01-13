@@ -1,0 +1,55 @@
+<div class="toolbar">
+    <a onclick="$j(this).parents('#person').attr('data-mode', 'show-main-form')" class="tab-caption main-form">
+        Основная информация
+    </a>
+
+    <ul class="parse-meta-info built-in">
+        <li>
+            <a title="Перепарсить информацию" onclick="window.action.parsePerson(${person.person_id})"><span class="pictos">0</span></a>
+        </li>
+    </ul>
+
+    <ul class="merge-selector built-in">
+        <li>
+            <a title="Обновить страницу персоналии" onclick="window.ui.persones.refreshPerson()"><span class="pictos">1</span></a>
+        </li>
+    </ul>
+
+</div>
+
+<table>
+    <tr>
+        <td>ID:</td>
+        <td>${person.person_id}</td>
+    </tr>
+    <tr>
+        <td>Имя:</td>
+        <td><input type="text" value="${person.name}" class="form" data-field="name"></td>
+    </tr>
+    <tr>
+        <td>Междунар. имя:</td>
+        <td><input type="text" value="${person.international_name}" class="form" data-field="international_name"></td>
+    </tr>
+    <tr>
+        <td>Информация:</td>
+        <td>
+            <textarea class="form" data-field="info">${person.info}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>Фото:</td>
+        <td>
+            <textarea class="form photos" data-field="photos" wrap="off">${person.photos}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>URL:</td>
+        <td><input type="text" value="${person.url}" class="form" data-field="url"></td>
+    </tr>
+    <tr>
+        <td>Обновлено:</td>
+        <td>
+            <input type="text" value="${person.updated_at}" class="form" data-field="updated_at">
+        </td>
+    </tr>
+</table>

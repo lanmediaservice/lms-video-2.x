@@ -1,0 +1,32 @@
+<ul class="results-list">
+    {var more = false}
+    {var limit = Math.max(6/sections.length, 2)}
+    {for section in sections}
+        {for item in section.items}
+            <li data-url="${item.url}" data-engine="${section.name}" {if item_index>(limit-1)} class="more"{var more = true}{/if}>
+                <span class="icon ${section.name} float_right"></span>
+                <div class="cover">
+                    <a href="${item.url}" onclick="return false">
+                        <img src="{if item.image}../imageproxy.php?url=${encodeURIComponent(item.image)}{else}img/noposter/${section.name}.png{/if}">
+                    </a>
+                </div>
+                <div class="info clearfix">
+                    <a href="${item.url}" onclick="return false">
+                        <strong>${item.names.join(" / ")}</strong> {if item.year} (${item.year}){/if}<br>
+                    </a>
+                    <span class="info-more">
+                        <div>{if item.country}${item.country}{/if}{if item.genre}{if item.country}, {/if}${item.genre}{/if}</div>
+                        <div>{if item.director}реж. ${item.director}{/if}{if item.actors}{if item.director}, {/if}в ролях ${item.actors}{/if}</div>
+                        {if item.rating}<div>рейтинг: ${item.rating}</div>{/if}
+                        {if item.info}<div>${item.info}</div>{/if}
+                    </span>
+                </div>
+            </li>
+        {/for}
+    {/for}
+</ul>
+{if more}
+    <div class="show-more-button">
+        <a class="button show-all" onclick="$j(this).parents('.wrapper-info').removeClass('hide-more-results')">Показать все...</a>
+    </div>
+{/if}

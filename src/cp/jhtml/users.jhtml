@@ -1,0 +1,16 @@
+<div class="inside">
+    <div class="title">
+        <a class="icon refresh" onclick="window.ui.users.refresh();" original-title="Обновить"></a>
+        Пользователи
+    </div>
+    <div class="inside-body">
+        <ul>
+        {for user in users}
+            <li>
+                <a pid="${user.ID}" href="#/users/id/${user.ID}">${user.ID}: ${user.Login}</a>
+            </li>
+        {/for}
+        </ul>
+    </div>
+</div>
+

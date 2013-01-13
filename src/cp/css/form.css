@@ -1,0 +1,129 @@
+/**
+ * Forms CSS File
+ *
+ * @copyright 2006-2009 LanMediaService, Ltd.
+ * @license    http://www.lms.by/license/1_0.txt
+ * @author Ilya Spesivtsev
+ * @author Alex Tatulchenkov
+ * @version $Id: form.css 270 2009-12-03 21:35:33Z macondos $
+ */
+
+textarea, input, select{
+    margin:0;
+    padding: 1px;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, select:focus{
+    border: 1px solid silver;
+}
+
+select {
+    background-color: #fff;
+    color: #000;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+}
+
+input[type="checkbox"]{
+    color: #000;
+}
+
+input[type="radio"]{
+    background-color: #fff;
+    color: #000;
+    padding: 0.5em;
+}
+
+option {
+    background-color:#fff;
+    color:#000;
+}
+
+optgroup {
+    background-color: #ccc;
+    color: #000;
+}
+
+textarea, input[type="text"], input[type="password"]{
+    border: 1px solid #e0e0e0;
+}
+
+input[type="submit"], button{
+    background: url("../img/buttons/button.png") no-repeat left top;
+    color: black;
+    margin: 2px 2px 0 0;
+    padding: 3px 5px;
+    border: 1px solid #e0e0e0;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+input[type="submit"]:hover, button:hover{
+    border: 1px solid #f0f0f0;
+}
+
+input[disabled], button[disabled] {
+    border: 1px solid #dcdcdc;
+    color: gray;
+}
+
+input[type="submit"].pushed, button.pushed{
+    background: url("../img/buttons/button.pushed.png") no-repeat left top;
+}
+
+.datetimebox {
+    display: inline;
+}
+
+fieldset {
+    font-size: 8pt;
+    border: 1px solid silver;
+    margin-left:2px;
+    margin-right:2px;
+    padding: 0.35em 0.625em 0.75em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+legend {
+    border:medium none;
+    padding-left:2px;
+    padding-right:2px;
+    width: auto;
+}
+
+form input.failed {
+    border: 1px solid #DD3c10;
+}
+
+form p.description {
+    margin: 0;
+    color: gray;
+    font-size: 8pt;
+}
+
+form label {
+}
+
+form label.required {
+    color: black;
+}
+
+form ul.errors {
+    color: #d03010
+}
+
+form td {
+    vertical-align: top;
+    padding: 5px;
+}
+
+textarea.errors, 
+input.errors, 
+select.errors {
+    border: 1px solid #DD3c10;
+}

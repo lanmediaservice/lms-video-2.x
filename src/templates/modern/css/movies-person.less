@@ -1,0 +1,65 @@
+/**
+ * @copyright 2006-2011 LanMediaService, Ltd.
+ * @license    http://www.lanmediaservice.com/license/1_0.txt
+ * @author Ilya Spesivtsev <macondos@gmail.com>
+ * @version $Id: movies.less 700 2011-06-10 08:40:53Z macondos $
+ */
+ 
+
+.person { 
+    padding: 20px;
+    .photo {
+        img {
+            .box-shadow(0, 1px, 2px, 0.3);
+            height: 190px;
+            margin: 0 10px 10px 0;
+            border: 0;
+            .border-radius(5px);
+            float: left;
+        }
+    }
+
+    .title,
+    .subtitle,
+    .info,
+    .movies,
+    .top-panel,
+    .bottom-panel {
+        padding: 10px;
+        font-size: 11px;
+        color: #888;
+    }
+
+    .title {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0 25px 0 0;
+        clear: both;
+    }
+
+    .subtitle {
+        padding-left: 0;
+    }
+    .summary .row > div {
+        max-width: 120px;
+    }
+    .movies {
+        padding: 10px 0 0;
+        border-top: 1px dashed #DDDDDD;
+    }
+
+    .movie-row {
+        margin-top: 5px;
+        img {
+            vertical-align: middle;
+        }
+        .roles {
+            color: #888;
+        }
+    }
+    .info {
+        padding: 10px 0;
+        text-align: justify;
+    }
+
+}

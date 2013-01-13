@@ -1,0 +1,125 @@
+/**
+ * Tabs
+ *
+ * @copyright 2006-2009 LanMediaService, Ltd.
+ * @license    http://www.lms.by/license/1_0.txt
+ * @author Ilya Spesivtsev
+ * @version $Id: tabs.css 270 2009-12-03 21:35:33Z macondos $
+ */
+ 
+ @import "functions.less?v=1.2.1&";
+
+.tab-selector {
+    width: 100%;
+    min-width: 700px;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    float: left;
+    font-size: 10pt;
+    color: #666;
+
+    .border-radius(5px, top);
+
+    .box-shadow(0, 0, 3px, 0.3);
+
+    .gradient(#eeeeee, #dddddd);
+    overflow:hidden;
+}
+
+.tab-selector ul {
+    margin: 0;
+    padding: 5px 3px 4px;
+    line-height: 100%;
+}
+
+.tab-selector li {
+    margin: 0 5px;
+    padding: 0;
+    float: left;
+    position: relative;
+    list-style: none;
+    cursor: pointer;
+    line-height: normal;
+}
+
+.tab-selector a {
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    padding: 5px 15px 7px;
+    margin: 0;
+    .border-radius(20px);
+    color: #222;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+    text-decoration: none !important;
+}
+
+.tab-selector ul .active a, .tab-selector ul li:hover > a {
+/*        color: #444;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .8);*/
+}
+
+.tab-selector ul li:hover > a {
+    background: #f7f7f7;
+    .gradient-css3(#dddddd, #ffffff);
+    border-bottom: 0;
+    .box-shadow(0, 1px, 1px, 0.3);
+}
+
+.tab-selector ul li.active a {
+    background: #FDFDFD !important;
+
+    padding-top: 6px;
+    padding-bottom: 5px;
+    border-top: 0 !important;
+    border-bottom: solid 1px #FFFFFF !important;
+    .box-shadow(0, 1px, 2px, 0.4, inset);
+    color: #444;
+}
+
+.tab-selector ul:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.tab-selector ul {
+    display: inline-block;
+}
+html[xmlns] .tab-selector ul {
+    display: block;
+}
+* html .tab-selector ul {
+    height: 1%;
+}
+
+.tab {
+    position:relative;
+    clear: both;
+    padding: 0;
+    min-height: 550px;
+    height: auto !important;
+    height: 550px;
+    min-width: 700px;
+    border: 1px solid; 
+    border-color: #e5e5e5 #dbdbdb #d2d2d2;
+    background: white;
+}
+.boxshadow .tab {
+    border: none;
+    .box-shadow(0, 1px, 3px, 0.3); 
+}
+.borderradius .tab {
+    .border-radius(5px, bottom);
+} 
+.tab > *:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}

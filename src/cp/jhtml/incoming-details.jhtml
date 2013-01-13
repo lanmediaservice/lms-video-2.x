@@ -1,0 +1,79 @@
+<tr class="info" fid="${incoming_id}">
+    <td colspan="6">
+        <div class="wrapper-info hide-more-results" data-mode="show-search-form" data-merge="auto">
+            <div class="toolbar">
+                <a class="close" onclick="window.ui.incoming.toggleIncomingDetails(${incoming_id})"><span class="pictos">D</span></a>
+                
+                <ul class="import-button built-in">
+                    <li>
+                        <a title="Импортировать фильм в базу данных" onclick="window.ui.incoming.beginImport(${incoming_id})">Импорт</a>
+                    </li>
+                </ul>
+
+                <ul class="parse-files built-in">
+                    <li>
+                        <a title="Обновить информацию о файлах" onclick="window.action.parseIncomingFiles(${incoming_id})"><span class="pictos">0</span></a>
+                    </li>
+                </ul>
+                
+                <ul class="clear-button built-in">
+                    <li>
+                        <a onclick="window.action.clearIncomingInfo(${incoming_id})">Очистить форму</a>
+                    </li>
+                </ul>
+                <ul class="parse-button built-in">
+                    <li>
+                        <a onclick="window.action.parseMovie(${incoming_id})">Парсить</a>
+                    </li>
+                </ul>
+
+                <a class="tab-caption search-form-caption" onclick="$j(this).parents('.wrapper-info').attr('data-mode', 'show-search-form')">
+                    Поиск
+                </a>
+                <!--
+                <a class="tab-caption search-results" onclick="$j(this).parents('.wrapper-info').attr('data-mode', 'show-search-results')">
+                    Результат
+                </a> -->
+                <a class="tab-caption files-caption" onclick="$j(this).parents('.wrapper-info').attr('data-mode', 'show-files'); window.ui.incoming.initFilesForm(${incoming_id});">
+                    Файлы
+                </a>
+                <a class="tab-caption local-search-caption" onclick="$j(this).parents('.wrapper-info').attr('data-mode', 'show-local-search')">
+                    Локальный поиск
+                </a>
+            </div>
+            <div class="parser-box">
+                <div class="parser-box-inner">
+                    <div class="search-box">
+                        <div class="search-box-form">
+                            <a class="open-settings" onclick="$j(this).parents('.search-box-form').toggleClass('show-settings')"><span class="icon settings"></span></a>
+                            <input type="text" class="query form" value="{if last_query}${last_query}{/if}" placeholder="Найти...">
+                            <a onclick="window.ui.incoming.searchMovie(${incoming_id})" class="minibutton"><span>Найти</span></a>
+                            <div class="search-box-form-settings clearfix">
+                                <ul class="engine-selector">
+                                    <li class="kinopoisk"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'kinopoisk'); return false;"><span class="icon kinopoisk"></span> Кинопоиск</a></li>
+                                    <li class="ozon"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'ozon'); return false;"><span class="icon ozon"></span> Озон</a></li>
+                                    <li class="world-art"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'world-art'); return false;"><span class="icon world-art"></span> World-Art</a></li>
+                                    <li class="sharereactor"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'sharereactor'); return false;"><span class="icon sharereactor"></span> ShareReactor</a></li>
+                                    <li class="imdb"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'imdb'); return false;"><span class="icon imdb"></span> IMDb</a></li>
+                                </ul>
+                                <a onclick="$j(this).parents('.search-box-form').removeClass('show-settings')" class="close"><span class="icon close"></span></a>
+                            </div>
+                        </div>
+                        <div class="search-box-results"></div>
+                    </div>
+                    <div class="parsed-info-box"></div>
+                </div>
+            </div>
+            <div class="info-form"></div>
+            <div class="files-form"></div>
+            <div class="local-search">
+                <div class="local-search-form">
+                    <input type="text" class="query form" value="{if name}${name}{/if}" placeholder="Найти...">
+                    <a onclick="window.action.localSearch(${incoming_id}, $j(this).parent().find('.form.query').val())" class="minibutton"><span>Найти</span></a>
+                </div>
+                <div class="local-search-results"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </td>
+</tr>

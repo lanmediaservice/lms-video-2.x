@@ -1,0 +1,13 @@
+config.php
+logon.php
+.htaccess
+VERSION
+UPDATE.LOG
+bigposters
+frames
+/images
+photos
+posters
+smallposters
+!media/frames
+!media/images

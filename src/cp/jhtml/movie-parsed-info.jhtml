@@ -1,0 +1,61 @@
+<table>
+    <tr>
+        <td>Название:</td>
+        <td>${movie.name}</td>
+    </tr>
+    <tr>
+        <td>Междунар. название:</td>
+        <td>${movie.international_name}</td>
+    </tr>
+    <tr>
+        <td>Год:</td>
+        <td>${movie.year}</td>
+    </tr>
+    <tr>
+        <td>Постер:</td>
+        <td>{if movie.poster}<img src="../imageproxy.php?url=${encodeURIComponent(movie.poster)}" style="max-width: 120px">{/if}</td>
+    </tr>
+    {if movie.countries && movie.countries.length}
+        <tr>
+            <td>Страна:</td>
+            <td>${movie.countries.join(', ')}</td>
+        </tr>
+    {/if}
+    {if movie.genres && movie.genres.length}
+        <tr>
+            <td>Жанр:</td>
+            <td>${movie.genres.join(', ')}</td>
+        </tr>
+    {/if}
+    {if movie.kinopoisk_id && movie.rating_kinopoisk_value}
+        <tr>
+            <td>KinoPoisk:</td>
+            <td>
+                ID: ${movie.kinopoisk_id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Рейтинг: ${movie.rating_kinopoisk_value}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                голосов: ${movie.rating_kinopoisk_count}
+            </td>
+        </tr>
+    {/if}
+    {if movie.imdb_id && movie.rating_imdb_value}
+        <tr>
+            <td>IMDb:</td>
+            <td>
+                ID: ${movie.imdb_id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Рейтинг: ${movie.rating_imdb_value}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                голосов: ${movie.rating_imdb_count}
+            </td>
+        </tr>
+    {/if}
+    <tr>
+        <td>Описание:</td>
+        <td>
+            ${movie.description}
+        </td>
+    </tr>
+</table>
+
+<div class="actions">
+    <label><input type="checkbox" id="research_kinopoisk_merge"> Только дополнить описание</label>
+    <a class="minibutton apply" data-url="${url}" onclick="window.ui.movies.beginReplaceKinopoiskMovie($j(this).attr('data-url'))"><span>Применить</span></a>
+</div>

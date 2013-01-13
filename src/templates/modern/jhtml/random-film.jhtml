@@ -1,0 +1,19 @@
+{if movie}
+    <div class="title">
+        <a onclick="window.action.getRandomMovie();" title="Обновить" class="icon refresh"></a>
+        Случайный фильм
+    </div>
+    <div class="inside-body">
+        <a href="#/movie/id/${movie.movie_id}">
+            <img src="${movie.cover}" class="cover">
+        </a>
+        <div class="movie-title">
+            <a href="#/movie/id/${movie.movie_id}">
+                ${movie.name|escape}
+            </a>
+        </div>
+        <div class="subtitle">${movie.international_name} {if movie.year} (${movie.year}){/if}</div>
+        {if movie.genres && movie.genres.length}<div class="genre">${movie.genres.join(' / ')}</div>{/if}
+        {if movie.countries && movie.countries.length}<div class="country">${movie.countries.join(' / ')}</div>{/if}
+    </div>
+{/if}

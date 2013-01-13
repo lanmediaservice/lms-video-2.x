@@ -1,0 +1,80 @@
+{if files}
+    <div class="files-wrapper">
+        <table class="files silver">
+            <thead>
+                <tr>
+                    <th>
+                        Файл
+                    </th>
+                    <th>
+                        Размер
+                    </th>
+                    <th>
+                        Длительн.
+                    </th>
+                    <th>
+                        Видео
+                    </th>
+                    <th class="narrow">
+                        Качество
+                        <br><input type="text" class="form quality" data-field-group="quality" data-field="quality/global" value="${quality.global}" title="${quality.global}">
+                    </th>
+                    {var a = $A($R(0, audio_tracks_count-1))}
+                    {for num in a}
+                        <th>
+                            Аудио {if audio_tracks_count>1} #${num+1}{/if}
+                        </th>
+                        <th class="narrow">
+                            Озвучивание {if audio_tracks_count>1} #${num+1}{/if}
+                            <br><input type="text" class="form translation" data-field-group="translation/${num}"  data-field="translation/global/${num}" value="{if translation.global}${translation.global[num]}{/if}" title="{if translation.global}${translation.global[num]}{/if}">
+                        </th>
+                    {/for}
+                </tr>
+            </thead>
+            <tbody>
+                {for file in files}
+                    {var level = parseInt(file.level)}
+                    {if !(file.is_dir && level==0)}
+                        <tr class="row" data-num="${file_index}" data-parent="${file.parent}">
+                            <td style="padding-left:${parseInt(file.level)*16 + 5}px">
+                                <span class="file type-${file.type}" title="${file.path}">${file.basename}</span>
+                            </td>
+                            <td class="narrow">
+                                {if !file.is_dir}
+                                    <span title="${file.size}">${LMS.Utils.HumanSize(file.size)}</span>
+                                {/if}
+                            </td>
+
+                            <td class="narrow">
+                                {if file.metainfo}<span>${file.metainfo.playtime}</span>{/if}
+                            </td>
+                            <td class="narrow">
+                                {if file.metainfo}<span title="${file.metainfo.video.info}">${file.metainfo.video.label}</span>{/if}
+                            </td>
+                            <td class="narrow">
+                                {if file.metainfo || file.has_video}<input type="text" class="form quality" data-num="${file_index}" data-field-group="quality" data-field="quality/${file_index}" value="${quality[file_index]}" title="${quality[file_index]}">{/if}
+                            </td>
+                            {var a = $A($R(0, file.audio_tracks_count-1))}
+                            {for num in a}
+                                <td class="narrow">
+                                    {if file.metainfo}
+                                        {var audio = file.metainfo.audio[num]}
+                                        <span title="${audio.info}">${audio.label}</span>
+                                    {/if}
+                                </td>
+                                <td class="narrow">
+                                    <input type="text" class="form translation" data-num="${file_index}" data-field-group="translation/${num}" data-field="translation/${file_index}/${num}" value="{if translation[file_index]}${translation[file_index][num]}{/if}" title="{if translation[file_index]}${translation[file_index][num]}{/if}">
+                                </td>
+                            {/for}
+                            {if file.audio_tracks_count < audio_tracks_count}
+                                <td colspan="${(audio_tracks_count-file.audio_tracks_count)*2}">
+
+                                </td>
+                            {/if}
+                        </tr>
+                    {/if}
+                {/for}
+            </tbody>
+        </table>
+    </div>
+{/if}

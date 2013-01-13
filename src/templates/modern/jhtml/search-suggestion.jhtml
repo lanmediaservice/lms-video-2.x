@@ -1,0 +1,25 @@
+{for movie in movies}
+    <a href="#/movie/id/${movie.movie_id}" class="cover">
+        <img src="${movie.cover}">
+        <div class="suggestionlabel">
+            <span class="title">${movie.name}</span>
+            <div class="detail">${movie.international_name} (${movie.year})</div>
+        </div>
+    </a>
+{/for}
+{for person in persones}
+    <a href="#/person/id/${person.person_id}" class="photo">
+        {if person.photo}
+            <div style="background-image: url(${person.photo});" class="photo"></div>
+        {else}
+            <div class="photo no"></div>
+        {/if}
+        <div class="suggestionlabel">
+            <span class="title">${person.name}</span>
+            <div class="detail">${person.international_name}</div>
+        </div>
+    </a>
+{/for}
+<a class="moreResults" href="#/search/query/${query|escape}">
+    <span class="message">Все результаты для "<span class="query">${query}</span>"</span>&nbsp;<span class="raquo">»</span>
+</a>
