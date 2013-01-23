@@ -146,7 +146,7 @@
                 </div>
                 {if movie.trailer}
                     <div class="trailer" style="float:left">
-                        <a class="minibutton" onclick="window.ui.showTrailer($j(this).attr('data-link'), $j(this).attr('data-name'));" data-name="${movie.trailer.name|htmlspecialchars}" data-link="${movie.trailer.video|htmlspecialchars}" ><span><span class="icon play"></span>${movie.trailer.name}</span></a>
+                        <a class="minibutton" onclick="window.ui.showTrailer($j(this).attr('data-link'), $j(this).attr('data-name'));" data-name="${movie.trailer.name|default:"Трейлер"|htmlspecialchars}" data-link="${movie.trailer.video|htmlspecialchars}" ><span><span class="icon play"></span>${movie.trailer.name|default:"Трейлер"}</span></a>
                     </div>
                 {/if}
                 {if c>1}
