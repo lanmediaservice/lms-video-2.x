@@ -125,7 +125,7 @@ try {
     foreach ($movies as $movieId => $movie) { 
         $weight = $movie['rank'];
         if (genreExist('Сериал', $movieId)) { 
-            if (countryExist('Россия', $movieId) || countryExist('Украина', $movieId) || countryExist('Беларусь', $movieId)) {
+            if (countryExist('СССР', $movieId) || countryExist('Россия', $movieId) || countryExist('Украина', $movieId) || countryExist('Беларусь', $movieId)) {
                 $categoryIndex[CATEGORY_RUSSIAN_SERIES][$movieId] = $weight; 
             } else {
                 $categoryIndex[CATEGORY_SERIES][$movieId] = $weight; 
