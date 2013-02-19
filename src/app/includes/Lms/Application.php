@@ -732,7 +732,7 @@ class Lms_Application
     
     public static function getType($path, $isDir)
     {
-        $videoExtensions = array('avi', 'mkv', 'mp4', 'mov', 'flv', 'vob');
+        $videoExtensions = array('avi', 'mkv', 'mp4', 'mov', 'flv', 'vob', 'ts');
         $ext = pathinfo($path, PATHINFO_EXTENSION);
         if ($isDir) {
             return 'folder';

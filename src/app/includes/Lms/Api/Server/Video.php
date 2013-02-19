@@ -1165,7 +1165,7 @@ class Lms_Api_Server_Video extends Lms_Api_Server_Abstract
             }
             
             $movieId = $params['movie_id'];
-            $text = trim($params['text']);
+            $text = trim(strip_tags($params['text']));
             
             if ($text && $movieId) {
                 $comment = Lms_Item::create('Comment');
@@ -1188,7 +1188,7 @@ class Lms_Api_Server_Video extends Lms_Api_Server_Abstract
                 return new Lms_Api_Response(403, 'Forbidden');
             }
             $commentId = $params['comment_id'];
-            $text = trim($params['text']);
+            $text = trim(strip_tags($params['text']));
 
             $comment = Lms_Item::create('Comment', $commentId);
             $comment->setText($text)
