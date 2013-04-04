@@ -139,7 +139,7 @@ class Lms_Ufs
     static private function _purify($path)
     {
         $purePath = str_replace('/./', '/', $path);
-        $purePath = str_replace('//', '/', $purePath);
+        $purePath = substr($purePath, 0, 1) . preg_replace('{/+}', '/', substr($purePath, 1));
         //Если путь вида url/../../chunk
 //        НЕ тестировалось
 //        if (false !== strpos($purePath, '../')) {
