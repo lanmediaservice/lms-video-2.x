@@ -183,7 +183,7 @@ class Lms_Api_Server_Video extends Lms_Api_Server_Abstract
             }
             
             $rows = $db->select(
-                "SELECT movie_id, p.`name`, p.`international_name`, r.`name` as `role`, r.`sort` FROM participants LEFT JOIN roles r USING(role_id) LEFT JOIN persones p USING(person_id) WHERE participants.movie_id IN(?a) ORDER BY `sort`, LENGTH(`photos`) DESC",
+                "SELECT movie_id, p.`name`, p.`international_name`, r.`name` as `role`, r.`sort` FROM participants LEFT JOIN roles r USING(role_id) LEFT JOIN persones p USING(person_id) WHERE participants.movie_id IN(?a) ORDER BY `sort`, participant_id",
                 $moviesIds
             );
             foreach ($rows as $row) {

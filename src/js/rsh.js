@@ -31,6 +31,7 @@ window.dhtmlHistory = {
 	isSafari: false,
 	isKonquerer: false,
 	isGecko: false,
+	isIOS: false,
 	isSupported: false,
 	
 	/*Public: Create the DHTML history infrastructure*/
@@ -58,6 +59,9 @@ window.dhtmlHistory = {
 			this.isSupported = true;
 		} else if (typeof document.all !== "undefined") {
 			this.isIE = true;
+			this.isSupported = true;
+		} else if (platform.indexOf("iphone") || platform.indexOf("ipad") || platform.indexOf("ipod")) {
+			this.isIOS = true;
 			this.isSupported = true;
 		} else if (vendor.indexOf("Apple Computer, Inc.") > -1  && version<5) {
 			this.isSafari = true;

@@ -99,7 +99,7 @@ try {
     $scannedDirectories = array();
     
     $t1 = microtime(true);
-    for ($i=0; $i<=count($directories); $i++) {
+    while ($directory = array_shift($directories)) {
         $directory = $directories[$i];
         if (array_key_exists($directory, $scannedDirectories)) {
             continue;
@@ -123,7 +123,7 @@ try {
         }
         if ((microtime(true) - $t1)>2) {
             $t1 = microtime(true);
-            $message = "Сканируется '$directory', осталось " . (count($directories)-$i) . " (исп. память: " . round(memory_get_usage()/1024/1024, 2) . "MiB)";
+            $message = "Сканируется '$directory', осталось " . count($directories) . " (исп. память: " . round(memory_get_usage()/1024/1024, 2) . "MiB)";
             $log->progress($message);
         }
     }     

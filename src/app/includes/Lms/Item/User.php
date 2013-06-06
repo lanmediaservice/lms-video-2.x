@@ -35,7 +35,7 @@ class Lms_Item_User extends Lms_Item_Abstract {
         
         $db = Lms_Db::get('main');
         $row = $db->selectRow(
-            'SELECT * FROM users WHERE `Login`=? {AND `Password`=?}', 
+            'SELECT * FROM users WHERE `Login`=? {AND `Password`=?} AND `enabled`=1', 
             $userName,
             $password!==false? md5($password) : DBSIMPLE_SKIP
         );
