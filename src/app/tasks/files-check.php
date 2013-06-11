@@ -100,7 +100,6 @@ try {
     
     $t1 = microtime(true);
     while ($directory = array_shift($directories)) {
-        $directory = $directories[$i];
         if (array_key_exists($directory, $scannedDirectories)) {
             continue;
         }
