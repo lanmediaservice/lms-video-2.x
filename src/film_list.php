@@ -94,7 +94,7 @@ TABLE TH{
             ."<th nowrap>Страна</th>"
             ."<th nowrap>Режиссер</th>"
             ."<th nowrap>В ролях</th>"
-            ."<th nowrap>Размер <a title='Сортировать по возрастанию' href='?order=ssize'>&#9650;</a> <a title='Сортировать по убыванию' href='?order=ssize&dir=desc'>&#9660;</a></th>"
+            ."<th nowrap>Размер <a title='Сортировать по возрастанию' href='?order=size'>&#9650;</a> <a title='Сортировать по убыванию' href='?order=size&dir=desc'>&#9660;</a></th>"
             ."</tr>";
     foreach ($movies as $movie) {
         $movieId = $movie['movie_id'];
