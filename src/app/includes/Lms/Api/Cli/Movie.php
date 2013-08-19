@@ -250,5 +250,37 @@ class Lms_Api_Cli_Movie {
         }
     }
     
-    
+    public static function search()
+    {
+        $opts = new Zend_Console_Getopt(
+            array(
+                'help|h'    => 'показать справку',
+                'name|n=s'    => 'название',
+                'year|y=s'    => 'год'
+            )
+        );
+        $opts->parse();
+        
+        if ($opts->getOption('h')) {
+            Lms_Api_Cli::showUsageAndExit($opts, 0);
+        }
+
+        $name = $opts->getOption('n');
+        $year = $opts->getOption('y');
+
+        $kinopoiskId = null;
+        file_put_contents('php://stderr', "search ... ");
+        $ids = Lms_Service_Movie::searchKinopoiskId($name, $year);
+        $count = count($ids);
+        file_put_contents('php://stderr', "$count results - ");
+        if ($count==1) {
+            $kinopoiskId = $ids[0]; 
+            file_put_contents('php://stderr', "OK ");
+        } else if ($count>1) {
+            file_put_contents('php://stderr', "FAIL (too many)\n");
+        } else if ($count==0) {
+            file_put_contents('php://stderr', "FAIL\n");
+        }
+        return $kinopoiskId;
+    }
 }

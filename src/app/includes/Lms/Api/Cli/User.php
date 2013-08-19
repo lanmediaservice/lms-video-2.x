@@ -42,7 +42,7 @@ class Lms_Api_Cli_User {
                 ->setUserGroup($opts->getOption('g')?: Lms_Item_User::USER_GROUP_USER)
                 ->setBalans(1)
                 ->setIp($opts->getOption('ip'))
-                ->setsetRegisterDate($opts->getOption('r'))
+                ->setRegisterDate($opts->getOption('r'))
                 ->setEnabled($opts->getOption('enabled')?: 1)
                 ->setPreferences('')
                 ->save();

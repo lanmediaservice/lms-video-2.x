@@ -9,9 +9,12 @@ class Lms_Api_Cli_File {
                 'help|h'    => 'показать справку',
                 'movie-id|m=i'    => 'ID фильма, к которому будет добавлен файл или папка',
                 'path|p=s'    => 'путь к файлу или папке (вложенные файлы также будут добавлены)',
+                'size|s=s'    => 'размер файла (используется только при отстутствии файла и параметре --skip-errors)',
+                'is-dir|d'    => 'признак директории (используется только при отстутствии файла и параметре --skip-errors)',
                 
                 'quality|q=s'    => 'качество видео (если файл или папка уже будут существовать, параметр все равно применится)',
                 'translation|t=s'    => 'перевод(ы) <перевод1[,перевод2[,перевод3...]]> (если файл или папка уже будут существовать, параметр все равно применится)',
+                'skip-errors' => 'игнорировать ошибки',
             )
         );
         $opts->parse();
@@ -27,20 +30,28 @@ class Lms_Api_Cli_File {
         $path = $opts->getOption('p');
         $path = Lms_Application::normalizePath($path);
         
-        if (!Lms_Ufs::file_exists($path)) {
-            throw new Zend_Console_Getopt_Exception(
-                "Файл $path не найден",
-                $opts->getUsageMessage());
-        }
-
         $db = Lms_Db::get('main');
         $db->transaction();
-
-        $files = Lms_Item_File::parseFiles($path);
         
-        Lms_Debug::debug($files);
-        
-        $movie->updateFilesByStruct($files);
+        if (!Lms_Ufs::file_exists($path)) {
+            if ($opts->getOption('skip-errors')) {
+                $isDir = $opts->getOption('d')? 1 : 0;
+                $files = array(array(
+                    'path' => $path,
+                    'basename' => basename($path),
+                    'size' => !$isDir? $opts->getOption('s') : null,
+                    'is_dir' => $isDir
+                ));
+                $movie->updateFilesByStruct($files);
+            } else {
+                throw new Zend_Console_Getopt_Exception(
+                    "Файл $path не найден",
+                    $opts->getUsageMessage());
+            }
+        } else {
+            $files = Lms_Item_File::parseFiles($path);
+            $movie->updateFilesByStruct($files);
+        }
         
         $quality = null;
         if ($opts->getOption('q')) {

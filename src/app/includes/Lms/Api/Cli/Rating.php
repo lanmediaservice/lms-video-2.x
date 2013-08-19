@@ -52,19 +52,14 @@ class Lms_Api_Cli_Rating {
                 $opts->getUsageMessage());
         }
         
-        $userRating = Lms_Item::create('MovieUserRating');
-        $userRating->setMovieId($movieId)
-                   ->setUserId($userId)
-                   ->setRating($rating)
-                   ->setCreatedAt($opts->getOption('c'))
-                   ->save();
+        $movieUserRatingId = Lms_Item_MovieUserRating::replaceRating($movieId, $rating, $userId, $opts->getOption('c'));
 
         if ($opts->getOption('force-update')) {
             Lms_Item_Movie::updateLocalRating($movieId);
         }
         
         
-        return $userRating->getId();
+        return $movieUserRatingId;
     }
     
     public static function update()

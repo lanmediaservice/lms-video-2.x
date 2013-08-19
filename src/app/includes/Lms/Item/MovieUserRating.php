@@ -27,18 +27,21 @@ class Lms_Item_MovieUserRating extends Lms_Item_Abstract {
         }
     }
     
-    public static function replaceRating($movieId, $rating)
+    public static function replaceRating($movieId, $rating, $userId = null, $date = null)
     {
         $db = Lms_Db::get('main');
 
-        $sql = "INSERT INTO " . self::getTableName() . " SET user_id=?d, movie_id=?d, rating=?d, `created_at`=NOW() ON DUPLICATE KEY UPDATE rating=?d, `created_at`=NOW()";
-        $db->query(
+        $sql = "INSERT INTO " . self::getTableName() . " SET user_id=?d, movie_id=?d, rating=?d, `created_at`=? ON DUPLICATE KEY UPDATE movie_user_rating_id=LAST_INSERT_ID(movie_user_rating_id), rating=?d, `created_at`=?";
+        $movieUserRatingId = $db->query(
             $sql,
-            Lms_User::getUser()->getId(),
+            $userId?: Lms_User::getUser()->getId(),
             $movieId,
             $rating,
-            $rating
+            $date?: date('Y-m-d H:i:s'),    
+            $rating,
+            $date?: date('Y-m-d H:i:s')
         );
+        return $movieUserRatingId;
     }
     
     public static function deleteRating($movieId)
