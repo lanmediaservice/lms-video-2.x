@@ -59,7 +59,7 @@ class Lms_ExternalBin_Mplayer extends  Lms_ExternalBin_Generic
         if ($audioTrackId!==false) {
             $commandStr .= " -aid $audioTrackId ";
         }
-        $commandStr .= escapeshellarg($pathToFile);
+        $commandStr .= Lms_Text::escapeshellarg($pathToFile);
         $lines = array();
         exec($commandStr, $lines);
 
@@ -96,7 +96,7 @@ class Lms_ExternalBin_Mplayer extends  Lms_ExternalBin_Generic
         for ($i=0; $i<$count*2; $i++) {
             $time = intval($partTime*$i + rand(1, $partTime-1));
             $cmd = escapeshellcmd($this->_locationMplayer);
-            $cmd .=  " -nosound -vf screenshot " . escapeshellarg($pathToFile) . " -ss $time -frames 1 -vo jpeg";
+            $cmd .=  " -nosound -vf screenshot " . Lms_Text::escapeshellarg($pathToFile) . " -ss $time -frames 1 -vo jpeg";
             exec($cmd, $res, $ret);
             if ($ret!=0) {
                 throw new Lms_Exception("Command $cmd return $ret");

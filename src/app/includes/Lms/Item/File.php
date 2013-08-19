@@ -182,7 +182,7 @@ class Lms_Item_File extends Lms_Item_Abstract_Serialized {
             Lms_Debug::debug("Calc TTH (#" . $this->getId() . ")");
             $path = Lms_Ufs::encodeUrl($this->getPath());
             if ($bin = Lms_Application::getConfig('files', 'tth', 'bin')) {
-                $cmd = "$bin " . escapeshellarg($path) . " | awk '{print $1}'";
+                $cmd = "$bin " . Lms_Text::escapeshellarg($path) . " | awk '{print $1}'";
                 $tthSum = exec($cmd, $res, $ret);
                 if ($ret!=0) {
                     throw new Lms_Exception("Command $cmd return $ret");

@@ -144,7 +144,7 @@ class Lms_Ufs_Local
         if(function_exists('exec')) {
             if (!$res && !(Lms_Text::uppercase(Lms_Text::substring(PHP_OS, 0, 3)) === 'WIN'))
             {
-                exec("cp -r ".escapeshellarg($sourcePath)." ".escapeshellarg($destinationPath));
+                exec("cp -r " . Lms_Text::escapeshellarg($sourcePath). " " . Lms_Text::escapeshellarg($destinationPath));
                 return true;
             }
         } else {
@@ -176,11 +176,11 @@ class Lms_Ufs_Local
             if(function_exists('exec')){
                 if (strtoupper(PHP_OS) === 'LINUX') 
                 {
-                    $res = exec('stat -c %Y '.escapeshellarg($filePath));
+                    $res = exec('stat -c %Y ' . Lms_Text::escapeshellarg($filePath));
                 }
                 elseif(strtoupper(PHP_OS) === 'FREEBSD') 
                 {
-                    $res = exec('stat -f %m '.escapeshellarg($filePath));
+                    $res = exec('stat -f %m ' . Lms_Text::escapeshellarg($filePath));
                 }
             } else {
                 throw new Exception("Can't perform shell command. Probably 'exec' is disabled in your php.ini file");
@@ -267,7 +267,7 @@ class Lms_Ufs_Local
             $list = array();
             if(function_exists('exec')) {
                 if (!isset($cache[$file])) {
-                    exec("ls -l ".escapeshellarg($dir) . '/', $list);
+                    exec("ls -l " . Lms_Text::escapeshellarg($dir) . '/', $list);
                     $files = self::_ParseUnixList($list, @Lms_Ufs::$config['ls_dateformat_in_iso8601']);
                     foreach ($files as $v){
                         $cache[$dir."/".$v['name']] = $v['size'];

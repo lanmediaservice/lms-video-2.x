@@ -873,6 +873,11 @@ class Lms_Text {
         $en = Lms_Text::testText($text, $freqIndex);
         $ru = Lms_Text::testText($detranslitedText, $freqIndex);
         return ($ru>$en)? $detranslitedText : $text;
-        
     }    
+    
+    public static function escapeshellarg($arg)
+    {
+        return "'" . str_replace("'", "'\\''", $arg) . "'";
+    }
+    
 }
