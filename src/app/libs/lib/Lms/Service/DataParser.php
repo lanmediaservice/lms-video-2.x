@@ -67,6 +67,7 @@ class Lms_Service_DataParser extends Lms_Logable{
                                           ->setHeaders('Accept-Language', 'ru,en-us;q=0.7,en;q=0.3')
                                           ->setHeaders('Accept-Encoding', 'gzip, deflate')
                                           ->setHeaders('Accept-Charset', 'windows-1251,utf-8;q=0.7,*;q=0.7')
+                                          ->setHeaders('Referer', dirname($url))
                                           ->request();
             $request['action'] = 'parseResponse';
             $request['response'] = $response->asString();
