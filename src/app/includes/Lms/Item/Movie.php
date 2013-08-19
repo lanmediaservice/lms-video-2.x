@@ -107,32 +107,34 @@ class Lms_Item_Movie extends Lms_Item_Abstract_Serialized
         }
         
         $participantsIndex = array();
-        foreach ($info['persones'] as $person) {
-            if (array_filter($person['names']) || $person['url']) {
-                $personItem = Lms_Item_Person::getByMiscOrCreate($person['names'], $person['url']);
-                if (!empty($person['url']) && !$personItem->getUrl()) {
-                    $personItem->setUrl($person['url'])
-                               ->save();
+        if (isset($info['persones'])) {
+            foreach ($info['persones'] as $person) {
+                if (array_filter($person['names']) || $person['url']) {
+                    $personItem = Lms_Item_Person::getByMiscOrCreate($person['names'], $person['url']);
+                    if (!empty($person['url']) && !$personItem->getUrl()) {
+                        $personItem->setUrl($person['url'])
+                                   ->save();
+                    }
+                    $roleItem = Lms_Item_Role::getByNameOrCreate($person['role']);
+
+                    if (isset($participantsIndex[$movie->getId()][$roleItem->getId()][$personItem->getId()])) {
+                        Lms_Debug::warn("Participant " . $movie->getId() . " - " . $roleItem->getId() . " - " . $personItem->getId() . " already exists");
+                        continue;
+                    }
+
+                    $item = Lms_Item::create('Participant');
+                    $item->setMovieId($movie->getId())
+                        ->setRoleId($roleItem->getId())
+                        ->setPersonId($personItem->getId());
+                    if (isset($person['character'])) {
+                        $item->setCharacter($person['character']);
+                    }
+                    $item->save();
+                    $participantsIndex[$movie->getId()][$roleItem->getId()][$personItem->getId()] = true;
                 }
-                $roleItem = Lms_Item_Role::getByNameOrCreate($person['role']);
-                
-                if (isset($participantsIndex[$movie->getId()][$roleItem->getId()][$personItem->getId()])) {
-                    Lms_Debug::warn("Participant " . $movie->getId() . " - " . $roleItem->getId() . " - " . $personItem->getId() . " already exists");
-                    continue;
-                }
-                
-                $item = Lms_Item::create('Participant');
-                $item->setMovieId($movie->getId())
-                    ->setRoleId($roleItem->getId())
-                    ->setPersonId($personItem->getId());
-                if (isset($person['character'])) {
-                    $item->setCharacter($person['character']);
-                }
-                $item->save();
-                $participantsIndex[$movie->getId()][$roleItem->getId()][$personItem->getId()] = true;
+                //$item = Lms_Item_Genre::getByNameOrCreate($name);
+                //$movie->add($item);
             }
-            //$item = Lms_Item_Genre::getByNameOrCreate($name);
-            //$movie->add($item);
         }
         $item = Lms_Item::create('Rating');
         $item->setSystem('local');

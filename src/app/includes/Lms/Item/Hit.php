@@ -43,7 +43,7 @@ class Lms_Item_Hit extends Lms_Item_Abstract {
         $hits = $db->selectCol("SELECT movie_id AS ARRAY_KEY, count(*) FROM hits GROUP BY movie_id");
         
         foreach ($hits as $movieId => $hit) {
-            $db->query('UPDATE movies SET hit=?d WHERE movie_id', $hit, $movieId);
+            $db->query('UPDATE movies SET hit=?d WHERE movie_id=?d', $hit, $movieId);
         }
         return;
     }

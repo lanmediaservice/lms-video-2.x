@@ -150,7 +150,7 @@
             ${simpleOption('filesystem/disable_4gb_support', 'Отключить поддержку файлов >4GB для 32-битных систем', 'boolean')}
             ${simpleOption('mplayer/bin', 'Путь к <a title="Скачать с mplayerhq.hu (см. раздел Binaries)" target="_blank" href="http://mplayerhq.hu/design7/dload.html">mplayer</a>', 'text', null, 'Например, /usr/bin/mplayer или C:\\mplayer\\mplayer.exe')}
             ${simpleOption('mplayer/tmp', 'Временный каталог для mplayer')}
-            ${simpleOption('files/tth/enabled', 'Включить автоматичесукую генерацию TTH-хешей для DC++ ссылок', 'boolean')}
+            ${simpleOption('files/tth/enabled', 'Включить автоматическую генерацию TTH-хешей для DC++ ссылок', 'boolean')}
             ${simpleOption('files/tth/bin', 'Путь к tthsum')}
         </tbody>
     </table>

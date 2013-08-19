@@ -41,7 +41,8 @@ class Lms_Playlist {
             
             $filesArray[] = array(
                 'name' => $file->getName(),
-                'path' => $path
+                'path' => $path,
+                'movie_id' => $file->getChilds('Movie')->getId()
             );
         }
         $moduleClass::generatePlaylist($filesArray);

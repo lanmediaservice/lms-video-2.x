@@ -157,14 +157,14 @@ class Lms_Service_Movie
         return $currentData;
     }    
     
-    private function getFieldWeight($engine, $field)
+    private static function getFieldWeight($engine, $field)
     {
         $defaultWeight = Lms_Application::getConfig('automerge', $engine, 'default') || 1;
         $weight = Lms_Application::getConfig('automerge', $engine, $field);
         return $weight!==null? $weight : $defaultWeight;
     }
 
-    private function compareValue($oldValue, $oldWeight, $newValue, $newWeight)
+    private static function compareValue($oldValue, $oldWeight, $newValue, $newWeight)
     {
         
         if (is_array($newValue)) {
