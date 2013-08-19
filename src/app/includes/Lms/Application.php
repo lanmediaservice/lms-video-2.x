@@ -412,6 +412,9 @@ class Lms_Application
         }
         if (preg_match('{\.php$}i', self::$_rootUrl)) {
             self::$_rootUrl = dirname(self::$_rootUrl);
+            if (self::$_rootUrl=='\\') {
+                self::$_rootUrl = '';
+            }
         }
 
         Lms_Item::setDb(Lms_Db::get("main"), Lms_Db::get("main"));
