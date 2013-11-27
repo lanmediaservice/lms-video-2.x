@@ -25,7 +25,7 @@ class Lms_DataParser_Google_Images extends Lms_DataParser_Generic{
     
     static public function constructPathSearch($params)
     {
-        return '/images?q=' . urlencode($params['query']) . '&hl=ru&imgsz=small%7cmedium%7clarge%7cxlarge';
+        return '/search?q=' . urlencode($params['query']) . '&safe=off&tbm=isch&ijn=1&start=0&csl=1';
     }
     
 
