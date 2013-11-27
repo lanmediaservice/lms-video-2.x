@@ -1576,7 +1576,11 @@ LMS.Video.UI = {
     {
         var links = $j.Storage.get("links");
         links = links? JSON.parse(links) : {};
-        return (!Object.isUndefined(links[type]))? links[type] : SETTINGS.DOWNLOAD_DEFAULTS[type];
+        var res = (!Object.isUndefined(links[type]))? links[type] : SETTINGS.DOWNLOAD_DEFAULTS[type];
+        if (res=="0") {
+            res = false;
+        }
+        return res;
     },
     
     imageViewer: function(elements)
