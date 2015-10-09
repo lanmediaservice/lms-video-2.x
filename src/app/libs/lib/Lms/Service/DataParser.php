@@ -60,6 +60,10 @@ class Lms_Service_DataParser extends Lms_Logable{
         if ($result['success']) {
             $res = $result['response'];
         } elseif (in_array($result['response'], array(404, 500))) {
+            if ($module=='kinopoisk') {
+                $url = $url . ((strpos($url, "?")===FALSE)? '?' : '&');
+                $url .= 'nocookiesupport=yes';
+            }
             $response = $this->_httpClient->resetParameters()
                                           ->setUri($url)
                                           ->setMethod(Zend_Http_Client::GET)
@@ -69,6 +73,21 @@ class Lms_Service_DataParser extends Lms_Logable{
                                           ->setHeaders('Accept-Charset', 'windows-1251,utf-8;q=0.7,*;q=0.7')
                                           ->setHeaders('Referer', dirname($url))
                                           ->request();
+            if ($module=='kinopoisk') {
+                $body = $response->getBody();
+                if (preg_match('{<meta http-equiv="Refresh"[^>]*url=(.*?)">}is', $body, $matches)) {
+                    $newUrl = html_entity_decode($matches[1]);
+                    $response = $this->_httpClient->setUri($newUrl)
+                                                  ->setMethod(Zend_Http_Client::GET)
+                                                  ->setHeaders('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
+                                                  ->setHeaders('Accept-Language', 'ru,en-us;q=0.7,en;q=0.3')
+                                                  ->setHeaders('Accept-Encoding', 'gzip, deflate')
+                                                  ->setHeaders('Accept-Charset', 'windows-1251,utf-8;q=0.7,*;q=0.7')
+                                                  ->setHeaders('Referer', $url)
+                                                  ->request();
+                }
+            }
+            
             $request['action'] = 'parseResponse';
             $request['response'] = $response->asString();
             $result = $this->execServiceAction($request);
