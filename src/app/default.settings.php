@@ -416,3 +416,6 @@ $config['short_description'] = 0;
  * Разрешить скачивание трейлеров 
  */
 $config['trailers']['download'] = true;
+
+//временное включение парсинга старого кинопоиска
+$config['parser_service']['old_kinopoisk_mode'] = true;

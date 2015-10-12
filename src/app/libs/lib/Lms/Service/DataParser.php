@@ -60,7 +60,7 @@ class Lms_Service_DataParser extends Lms_Logable{
         if ($result['success']) {
             $res = $result['response'];
         } elseif (in_array($result['response'], array(404, 500))) {
-            if ($module=='kinopoisk') {
+            if ($module=='kinopoisk' && !Lms_Application::getConfig('parser_service', 'old_kinopoisk_mode')) {
                 $url = $url . ((strpos($url, "?")===FALSE)? '?' : '&');
                 $url .= 'nocookiesupport=yes';
             }
@@ -73,7 +73,7 @@ class Lms_Service_DataParser extends Lms_Logable{
                                           ->setHeaders('Accept-Charset', 'windows-1251,utf-8;q=0.7,*;q=0.7')
                                           ->setHeaders('Referer', dirname($url))
                                           ->request();
-            if ($module=='kinopoisk') {
+            if ($module=='kinopoisk' && !Lms_Application::getConfig('parser_service', 'old_kinopoisk_mode')) {
                 $body = $response->getBody();
                 if (preg_match('{<meta http-equiv="Refresh"[^>]*url=(.*?)">}is', $body, $matches)) {
                     $newUrl = html_entity_decode($matches[1]);

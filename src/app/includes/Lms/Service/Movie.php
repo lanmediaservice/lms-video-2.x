@@ -75,7 +75,7 @@ class Lms_Service_Movie
         $adapter = self::getAdapter($module);
         $parserService = self::getParser();
         $moduleCode = isset(self::$modulesMaps[$module])? self::$modulesMaps[$module] : $module;
-        if ($moduleCode == 'kinopoisk') {
+        if ($moduleCode == 'kinopoisk' && !Lms_Application::getConfig('parser_service', 'old_kinopoisk_mode')) {
             $url .= 'details/cast/';
         }
         $data = $parserService->parseUrl(
