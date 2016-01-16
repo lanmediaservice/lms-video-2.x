@@ -24,8 +24,16 @@ try {
             try {
                 echo '.';
                 $log->progress("Обрабатывается файл: " . $file->getPath());
-                $file->generateFrames()
-                     ->save();
+                try {
+                    $file->generateFrames()
+                         ->save();
+                } catch (Lms_Db_Exception $e) {
+                    $oldDb = Lms_Db::get('main');
+                    Lms_Db::deleteInstance('main');
+                    $db = Lms_Db::get('main');
+                    $oldDb->link = $db->link;
+                    $file->save();
+                }
                 $i++;
                 $report .= "\nОбработан файл: " . $file->getPath();
             } catch (Lms_Exception $e) {

@@ -877,7 +877,12 @@ class Lms_Text {
     
     public static function escapeshellarg($arg)
     {
-        return "'" . str_replace("'", "'\\''", $arg) . "'";
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            return escapeshellarg($arg);
+        } else {
+            return "'" . str_replace("'", "'\\''", $arg) . "'";
+        }
+        
     }
     
 }

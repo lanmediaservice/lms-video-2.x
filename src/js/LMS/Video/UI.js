@@ -1328,9 +1328,7 @@ LMS.Video.UI = {
     
     searchButtonHandler: function()
     {
-        if (this.tabs.catalog.hash) {
-            this.gotoTab('search');
-        }
+        this.gotoTab('search');
     },
     
     setFavicon: function(url)

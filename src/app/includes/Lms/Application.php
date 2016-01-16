@@ -412,11 +412,10 @@ class Lms_Application
         }
         if (preg_match('{\.php$}i', self::$_rootUrl)) {
             self::$_rootUrl = dirname(self::$_rootUrl);
-            if (self::$_rootUrl=='\\') {
-                self::$_rootUrl = '';
-            }
         }
-
+        if (self::$_rootUrl=='\\' || self::$_rootUrl=='/') {
+            self::$_rootUrl = '';
+        }
         Lms_Item::setDb(Lms_Db::get("main"), Lms_Db::get("main"));
         Lms_Item_Preloader::setDb(Lms_Db::get("main"));
 
@@ -1187,7 +1186,7 @@ class Lms_Application
     
     public static  function pathToLocalizedVideo($url)
     {
-        $videoFolder = rtrim(dirname(APP_ROOT)) . '/media/trailers/video';
+        $videoFolder = rtrim(dirname(APP_ROOT), '/') . '/media/trailers/video';
         $ext = pathinfo($url, PATHINFO_EXTENSION);
         $hash = md5($url);
         
@@ -1198,7 +1197,7 @@ class Lms_Application
     public static function urlToLocalizedVideo($url)
     {
         $path = self::pathToLocalizedVideo($url);
-        $localUrl = self::$_rootUrl . str_replace(dirname(APP_ROOT), '', $path);
+        $localUrl = rtrim(self::$_rootUrl, '/') . str_replace(dirname(APP_ROOT), '', $path);
 //        $localUrl = str_replace('\\', '/', $path);
 //        $dr = str_replace('\\', '/', realpath(realpath($_SERVER['DOCUMENT_ROOT'])));
 //        $localUrl = str_replace($dr, '', $localUrl);
