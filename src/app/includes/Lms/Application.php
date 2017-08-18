@@ -517,9 +517,11 @@ class Lms_Application
         Lms_Debug::debug(
             'Used memory: ' . round(memory_get_usage()/1024) . ' KB'
         );
-        self::$_mainTimer->stop();
-        $time = round(1000 *self::$_mainTimer->getSumTime());
-        Lms_Debug::debug("Execution time: $time ms");
+        if (self::$_mainTimer) {
+            self::$_mainTimer->stop();
+            $time = round(1000 * self::$_mainTimer->getSumTime());
+            Lms_Debug::debug("Execution time: $time ms");
+        }
     }
     
     public static function getLang()
