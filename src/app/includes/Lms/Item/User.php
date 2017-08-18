@@ -106,7 +106,7 @@ class Lms_Item_User extends Lms_Item_Abstract {
             WHERE 1=1 
                 {AND Login LIKE ?}
                 {AND IP LIKE ?}
-            ORDER BY ?# $order {LIMIT ?d, }{?d}", 
+            ORDER BY ?# $order {LIMIT ?d, ?d}", 
             !empty($filter['login'])? "%{$filter['login']}%" : DBSIMPLE_SKIP,
             !empty($filter['ip'])? "%{$filter['ip']}%" : DBSIMPLE_SKIP,
             $sort,

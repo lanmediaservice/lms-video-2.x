@@ -74,7 +74,7 @@ class Lms_Item_File extends Lms_Item_Abstract_Serialized {
         $files = array();
         self::scanFiles($path, Lms_Application::calcLevel($path), $files);
         $mplayer = Lms_Application::getMplayer();
-        Lms_MetaParser::setLogger(function($this, $message, $caller) {
+        Lms_MetaParser::setLogger(function($self, $message, $caller) {
             Lms_Debug::debug($message);
         });
         Lms_MetaParser::setInstances(array("mplayer" => $mplayer));
@@ -132,7 +132,7 @@ class Lms_Item_File extends Lms_Item_Abstract_Serialized {
     {
         if (Lms_Ufs::is_file($this->getPath())) {
             $mplayer = Lms_Application::getMplayer();
-            Lms_MetaParser::setLogger(function($this, $message, $caller) {
+            Lms_MetaParser::setLogger(function($self, $message, $caller) {
                 Lms_Debug::debug($message);
             });
             Lms_MetaParser::setInstances(array("mplayer" => $mplayer));
@@ -300,6 +300,9 @@ class Lms_Item_File extends Lms_Item_Abstract_Serialized {
         foreach ($files as $parentFile) {
             foreach ($parentFile['childs'] as $childPath) {
                 $child =& $files[$childPath];
+                if (!is_array($child['translation'])) {
+                    $child['translation'] = [];
+                }
                 if (is_array($parentFile['translation'])) {
                     foreach ($parentFile['translation'] as $num => $translation) {
                         if (empty($child['translation'][$num])) {

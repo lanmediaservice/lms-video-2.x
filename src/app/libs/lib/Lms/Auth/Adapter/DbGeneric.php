@@ -17,7 +17,7 @@ class Lms_Auth_Adapter_DbGeneric implements Zend_Auth_Adapter_Interface
     /**
      * Database provider
      *
-     * @var DbSimple_Generic_Database
+     * @var DbSimple_Database
      */
     protected $_db = null;
 
@@ -93,7 +93,7 @@ class Lms_Auth_Adapter_DbGeneric implements Zend_Auth_Adapter_Interface
      * @param  string                   $credentialTreatment
      * @return void
      */
-    public function __construct(DbSimple_Generic_Database $db,
+    public function __construct(DbSimple_Database $db,
                                 $tableName = null, $identityColumn = null,
                                 $credentialColumn = null, 
                                 $credentialTreatment = null

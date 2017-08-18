@@ -167,16 +167,9 @@ class Lms_Api_Server_Cp extends Lms_Api_Server_Abstract
         $setMethod = "set$mainField";
         
         $sourceValue = $incoming->$getMethod();
-        
-        $ref =& $sourceValue; 
-        foreach ($keys as $key) {
-            if (!isset($ref[$key])) {
-                $ref[$key] = null;
-            }
-            $ref =& $ref[$key];
-        }
-        $ref = $value;
-        
+
+        Lms_Application::setArray($sourceValue, $keys, $value);
+
         $incoming->$setMethod($sourceValue)
                  ->save();
         
@@ -589,16 +582,9 @@ class Lms_Api_Server_Cp extends Lms_Api_Server_Abstract
         $setMethod = "set$mainField";
         
         $sourceValue = $movie->$getMethod();
-        
-        $ref =& $sourceValue; 
-        foreach ($keys as $key) {
-            if (!isset($ref[$key])) {
-                $ref[$key] = null;
-            }
-            $ref =& $ref[$key];
-        }
-        $ref = $value;
-        
+
+        Lms_Application::setArray($sourceValue, $keys, $value);
+
         $movie->$setMethod($sourceValue)
               ->save();
         
@@ -620,16 +606,9 @@ class Lms_Api_Server_Cp extends Lms_Api_Server_Abstract
         $setMethod = "set$mainField";
         
         $sourceValue = $file->$getMethod();
-        
-        $ref =& $sourceValue; 
-        foreach ($keys as $key) {
-            if (!isset($ref[$key])) {
-                $ref[$key] = null;
-            }
-            $ref =& $ref[$key];
-        }
-        $ref = $value;
-        
+
+        Lms_Application::setArray($sourceValue, $keys, $value);
+
         $file->$setMethod($sourceValue)
              ->save();
         
@@ -687,16 +666,9 @@ class Lms_Api_Server_Cp extends Lms_Api_Server_Abstract
         $setMethod = "set$mainField";
         
         $sourceValue = $user->$getMethod();
-        
-        $ref =& $sourceValue; 
-        foreach ($keys as $key) {
-            if (!isset($ref[$key])) {
-                $ref[$key] = null;
-            }
-            $ref =& $ref[$key];
-        }
-        $ref = $value;
-        
+
+        Lms_Application::setArray($sourceValue, $keys, $value);
+
         $user->$setMethod($sourceValue)
              ->save();
         

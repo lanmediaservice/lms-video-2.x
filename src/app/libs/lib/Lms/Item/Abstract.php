@@ -19,14 +19,14 @@ abstract class Lms_Item_Abstract
     /**
      * Ссылка на драйвер бд
      *
-     * @var DbSimple_Generic_Database
+     * @var DbSimple_Database
      */
     protected $_slaveDb;    
     
     /**
      * Ссылка на драйвер бд
      *
-     * @var DbSimple_Generic_Database
+     * @var DbSimple_Database
      */
     protected $_masterDb;
     
@@ -53,14 +53,14 @@ abstract class Lms_Item_Abstract
     /**
      * Constructor
      *
-     * @param DbSimple_Generic_Database $_masterDb
-     * @param DbSimple_Generic_Database $_slaveDb
+     * @param DbSimple_Database $_masterDb
+     * @param DbSimple_Database $_slaveDb
      * @param null|int|string $pkValue
      * 
      */
     public function __construct(
-        DbSimple_Generic_Database $masterDb = null,
-        DbSimple_Generic_Database $slaveDb = null,
+        DbSimple_Database $masterDb = null,
+        DbSimple_Database $slaveDb = null,
         $pkValue = null
     )
     {
@@ -75,13 +75,13 @@ abstract class Lms_Item_Abstract
     
     
     /**
-     * �?нициализирует структуру
+     * Инициализирует структуру
      *
      */
     public static function _customInitStructure(
         Lms_Item_Struct $struct,
-        DbSimple_Generic_Database $masterDb,
-        DbSimple_Generic_Database $slaveDb
+        DbSimple_Database $masterDb,
+        DbSimple_Database $slaveDb
     )
     {
         $struct->setDb($masterDb, $slaveDb);
@@ -124,7 +124,7 @@ abstract class Lms_Item_Abstract
     }
     
     /**
-     * �?нициализирует объект
+     * Инициализирует объект
      *
      * @param int $id
      */
@@ -139,7 +139,7 @@ abstract class Lms_Item_Abstract
     }
     
     /**
-     * �?нициализирует связи
+     * Инициализирует связи
      *
      * @param string $className
      */
@@ -324,7 +324,7 @@ abstract class Lms_Item_Abstract
      * Возвращает истину, если текущая сущность сохранена.
      * Устанавливает _scalarPk, если сущность сохранена и $fixScalarPk = true
      *
-     * @param bool $fixScalarPk �?справлять ли значение первичного ключа,
+     * @param bool $fixScalarPk Исправлять ли значение первичного ключа,
      *                          если сущность сохранена в Lms_Item_Store
      * @return bool
      */

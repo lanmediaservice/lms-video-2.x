@@ -86,6 +86,4 @@ class Lms_FileSystem
         $folder = new Lms_FileSystem_Folder($path);
         $folder->delete(true);
     }
-    
-  
 }

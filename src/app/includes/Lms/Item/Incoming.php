@@ -47,7 +47,7 @@ class Lms_Item_Incoming extends Lms_Item_Abstract_Serialized
         $db = Lms_Db::get('main');
         $rows = $db->selectPage(
             $total,
-            'SELECT * FROM incoming WHERE `active` {AND `hidden`=?d} ORDER BY `sort` {LIMIT ?d, }{?d}', 
+            'SELECT * FROM incoming WHERE `active` {AND `hidden`=?d} ORDER BY `sort` {LIMIT ?d, ?d}', 
             $showHidden? DBSIMPLE_SKIP : 0, 
             $offset!==null? $offset : DBSIMPLE_SKIP, 
             $size!==null? $size : DBSIMPLE_SKIP

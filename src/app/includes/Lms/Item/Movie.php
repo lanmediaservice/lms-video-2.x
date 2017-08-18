@@ -872,6 +872,9 @@ class Lms_Item_Movie extends Lms_Item_Abstract_Serialized
         foreach ($files as $parentFile) {
             foreach ($parentFile['childs'] as $childPath) {
                 $child =& $files[$childPath];
+                if (!is_array($child['translation'])) {
+                    $child['translation'] = [];
+                }
                 if (is_array($parentFile['translation'])) {
                     foreach ($parentFile['translation'] as $num => $translation) {
                         if (empty($child['translation'][$num])) {
@@ -931,7 +934,7 @@ class Lms_Item_Movie extends Lms_Item_Abstract_Serialized
                 {AND (m.translation LIKE ? OR f.translation LIKE ?)}
                 {AND (m.name LIKE ? OR m.international_name LIKE ?)}
                 {AND m.`hidden`=?d}
-            ORDER BY m.?# $order {LIMIT ?d, }{?d}",
+            ORDER BY m.?# $order {LIMIT ?d, ?d}",
             (!empty($filter['quality']) || !empty($filter['translation']))? 'files' : DBSIMPLE_SKIP,
 
             !empty($filter['quality'])? $filter['quality'] : DBSIMPLE_SKIP, !empty($filter['quality'])? $filter['quality'] : DBSIMPLE_SKIP,

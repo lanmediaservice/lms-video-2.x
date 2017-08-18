@@ -134,7 +134,7 @@ class Lms_Item_Person extends Lms_Item_Abstract {
             FROM persones 
             WHERE 1=1 
                 {AND (name LIKE ? OR international_name LIKE ?)}
-            ORDER BY ?# $order {LIMIT ?d, }{?d}", 
+            ORDER BY ?# $order {LIMIT ?d, ?d}", 
             !empty($filter['name'])? "%{$filter['name']}%" : DBSIMPLE_SKIP, !empty($filter['name'])? "%{$filter['name']}%" : DBSIMPLE_SKIP,
             $sort,
             $offset!==null? $offset : DBSIMPLE_SKIP, 

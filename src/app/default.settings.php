@@ -20,8 +20,6 @@ error_reporting(E_ALL);
  */
 date_default_timezone_set(@date_default_timezone_get());
 
-ini_set("iconv.internal_encoding", 'CP1251');
-
 /**
  * Заголовок сайта 
  */
@@ -49,7 +47,7 @@ $config['log']['debug_console'] = false;
  */
 
 $config['databases']['main'] = array(
-    'connectUri' => "mysql://root@localhost/lms?ident_prefix=",
+    'connectUri' => "mysqli://root@localhost/lms?ident_prefix=",
     'initSql' => "SET NAMES cp1251",
     'debug' => 0
 );
@@ -129,6 +127,8 @@ $config['indexing']['stop_words'] = preg_split('{\s+}', 'of the or and in to i i
 $config['thumbnail']['key'] = md5(__FILE__);
 $config['thumbnail']['script'] = 'thumbnail.php';
 $config['thumbnail']['cache'] = false;
+$config['thumbnail']['delete_bad_images_chance'] = 0.1;
+$config['thumbnail']['show_bad_images_as_is'] = true;
 
 /**
  * Настройки авторизации и регистрации 
@@ -419,3 +419,5 @@ $config['trailers']['download'] = true;
 
 //временное включение парсинга старого кинопоиска
 $config['parser_service']['old_kinopoisk_mode'] = true;
+
+$config['symlinks'] = array();

@@ -20,7 +20,9 @@ class Lms_NameScheme_Autoload {
         if ($f = @fopen($fname, "r", true)) {
             fclose($f);
             $result = include_once($fname);
-            self::$loadedFiles[] = $fname;
+            if (!preg_match('{\\\\}i', $classname)) {
+                self::$loadedFiles[] = $fname;
+            }
             if (class_exists('Lms_Debug', false)) {
                 //Lms_Debug::debug("Autoloading... $fname");
             }

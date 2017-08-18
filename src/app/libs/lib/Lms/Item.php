@@ -23,13 +23,13 @@ class Lms_Item
     /**
      * Sets master database and optionaly slave database 
      *
-     * @param DbSimple_Generic_Database $masterDb
-     * @param DbSimple_Generic_Database $slaveDb
+     * @param DbSimple_Database $masterDb
+     * @param DbSimple_Database $slaveDb
      */
     
     public static function setDb(
-        DbSimple_Generic_Database $masterDb,
-        DbSimple_Generic_Database $slaveDb = null,
+        DbSimple_Database $masterDb,
+        DbSimple_Database $slaveDb = null,
         $itemNames = 'default'
     )
     {

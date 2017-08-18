@@ -72,12 +72,12 @@ class Lms_Item_Struct
     /**
      * Установить драйвера для доступа к бд
      *
-     * @param DbSimple_Generic_Database $masterDb
-     * @param DbSimple_Generic_Database $slaveDb
+     * @param DbSimple_Database $masterDb
+     * @param DbSimple_Database $slaveDb
      */
     public function setDb(
-        DbSimple_Generic_Database $masterDb,
-        DbSimple_Generic_Database $slaveDb = null
+        DbSimple_Database $masterDb,
+        DbSimple_Database $slaveDb = null
     )
     {
         $this->_masterDb = $masterDb;

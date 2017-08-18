@@ -9,7 +9,7 @@
 //date_default_timezone_set('Europe/Minsk');
 
 $config['databases']['main'] = array(
-    'connectUri' => "mysql://root@localhost/lms?ident_prefix=",
+    'connectUri' => "mysqli://root@localhost/lms?ident_prefix=",
     'initSql' => "SET NAMES cp1251",
     'debug' => 0
 );

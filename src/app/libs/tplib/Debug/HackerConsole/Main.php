@@ -27,7 +27,7 @@ class Debug_HackerConsole_Main
      * handler is set to automatically attach JavaScript showing code to 
      * HTML page.
      */
-    function Debug_HackerConsole_Main($autoAttach=false)
+    function __construct($autoAttach=false)
     {
         if ($autoAttach) ob_start(array(&$this, '_obHandler'));
         $GLOBALS['Debug_HackerConsole_Main_LAST'] =& $this;

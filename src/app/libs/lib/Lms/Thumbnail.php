@@ -39,10 +39,16 @@ class Lms_Thumbnail {
                         return self::getDeferUrl(func_get_args());
                     }
                     $tempPath = $fileDirPath . '/tmp';
-                    self::downloadImage($imgPath, $tempPath);
-                    $imageFormat = self::getFormat($tempPath);
-                    $path = "$fileDirPath/image.$imageFormat";
-                    Lms_Ufs::rename($tempPath, $path);
+                    try {
+                        self::downloadImage($imgPath, $tempPath);
+                        $imageFormat = self::getFormat($tempPath);
+                        $path = "$fileDirPath/image.$imageFormat";
+                        Lms_Ufs::rename($tempPath, $path);
+                    } catch (Exception $e) {
+                        Lms_Debug::warn($e->getMessage());
+                        Lms_Debug::warn($e->getTraceAsString());
+                        $path = self::$errorImagePath;
+                    }                
                 }
             }
         } else {
@@ -114,17 +120,28 @@ class Lms_Thumbnail {
                     Lms_FileSystem::createFolder(dirname($filepath), 0777, true);
                     $obj->savefile($filepath);
                 } catch (Exception $e) {
-                    //$filepath = LMS_PUBLIC_COMMON_MEDIA_DIR . 'error.jpg';
-                    $filepath = self::$errorImagePath;
+                    Lms_Debug::warn("Error while loading image $path: " . $e->getMessage());
+                    $p = Lms_Application::getConfig('thumbnail', 'delete_bad_images_chance');
+                    if (rand(0, 1000) < $p*1000) {
+                        Lms_Debug::warn("Deleting bad image $path");
+                        Lms_Ufs::unlink($path);
+                    } else if (Lms_Application::getConfig('thumbnail', 'show_bad_images_as_is')) {
+                        $filepath = $path;
+                    } else {
+                        $filepath = self::$errorImagePath;
+                    }
                 }
             }
-            $url = $filepath;
+            $url = realpath($filepath);
         } else {
-            $url = $path;
+            $url = realpath($path);
         }
         Lms_Timers::stop('thumbnail2');
         $url = str_replace('\\', '/', $url);
-        $url = str_replace($_SERVER['DOCUMENT_ROOT'], '', $url);
+        $dr = str_replace('\\', '/', realpath(realpath($_SERVER['DOCUMENT_ROOT'])));
+        $url = str_ireplace($dr, '', $url);
+        $url = strtr($url, Lms_Application::getConfig('symlinks'));
+        
         Lms_Timers::stop('thumbnail');
         if (self::$cache) {
             $data = array(
@@ -278,6 +295,9 @@ class Lms_Thumbnail {
         $response = self::$httpClient->setUri($url)
                                      ->setHeaders($headers)
                                      ->request(Zend_Http_Client::GET);
+        if ($response->isError()) {
+            throw new Lms_Exception("Error dowloading $url");
+        }
         $imageContent = $response->getBody();
         Lms_FileSystem::createFolder(dirname($saveTo), 0777, true);
         file_put_contents($saveTo, $imageContent);

@@ -396,6 +396,9 @@ class Lms_Application
     public static function initDb()
     {
         foreach (self::$_config['databases'] as $dbAlias => $dbConfig) {
+            if (function_exists('mysqli_connect')) {
+                $dbConfig['connectUri'] = str_replace('mysql:', 'mysqli:', $dbConfig['connectUri']);
+            }
             Lms_Db::addDb(
                 $dbAlias,
                 $dbConfig['connectUri'],
@@ -1206,4 +1209,17 @@ class Lms_Application
         return $localUrl;
     }
 
+    public static function setArray(&$array, $keys, $value) {
+        if (!is_array($array)) {
+            $array = [];
+        }
+        $current = &$array;
+        foreach($keys as $key) {
+            if (!array_key_exists($key, $current)) {
+                $current[$key] = null;
+            }
+            $current = &$current[$key];
+        }
+        $current = $value;
+    }
 }

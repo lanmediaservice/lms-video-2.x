@@ -75,6 +75,7 @@ class PEAR_NameScheme
      */
     public static function name2Path($classname, $absolutize = false) 
     {
+        $classname = str_replace('\\', "/", $classname);
         $fname = str_replace(PEAR_NameScheme_bar, '/', $classname) . 
                  '.' . PEAR_NameScheme_ext;
         foreach (PEAR_NameScheme::getInc($absolutize) as $libDir) {

@@ -3,7 +3,7 @@ class Lms_Item_Sql
 {
     private static $_db;
 
-    public static function setDb(DbSimple_Generic_Database $db)
+    public static function setDb(DbSimple_Database $db)
     {
         self::$_db = $db;
     }

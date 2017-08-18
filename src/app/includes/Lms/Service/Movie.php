@@ -132,7 +132,7 @@ class Lms_Service_Movie
         return $data;
     }
     
-    public function merge($currentData, $data, $engine, $forceMerge = false)
+    public static function merge($currentData, $data, $engine, $forceMerge = false)
     {
         if ($forceMerge
             || ((isset($currentData['year']) && isset($data['year']) && $currentData['year']==$data['year'])

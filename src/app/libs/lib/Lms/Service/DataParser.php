@@ -7,6 +7,7 @@ class Lms_Service_DataParser extends Lms_Logable{
     private $_serviceUsername;
     private $_servicePassword;
     private $_serviceApp;
+    private $_encoding = 'CP1251';
     
     public function __construct($requestClient = null, $httpClient= null)
     {
@@ -44,6 +45,11 @@ class Lms_Service_DataParser extends Lms_Logable{
         $this->_servicePassword = $password;
     }
     
+    public function setEncoding($encoding)
+    {
+        $this->_encoding = $encoding;
+    }
+    
     function parseUrl($url, $module, $context, $acceptedAttaches = array())
     {
         $res = false;
@@ -53,7 +59,7 @@ class Lms_Service_DataParser extends Lms_Logable{
             'context' => $context,
             'module' => $module,
             'accepted_attaches' => $acceptedAttaches,
-            'encoding' => 'CP1251',
+            'encoding' => $this->_encoding,
             'app' => $this->_serviceApp
         );
         $result = $this->execServiceAction($request);
@@ -87,7 +93,6 @@ class Lms_Service_DataParser extends Lms_Logable{
                                                   ->request();
                 }
             }
-            
             $request['action'] = 'parseResponse';
             $request['response'] = $response->asString();
             $result = $this->execServiceAction($request);
@@ -170,7 +175,7 @@ class Lms_Service_DataParser extends Lms_Logable{
             'action' => 'Utils.searchKinopoiskId',
             'name' => $name,
             'year' => $year,
-            'encoding' => 'CP1251',
+            'encoding' => $this->_encoding,
             'app' => $this->_serviceApp
         );
         $result = $this->execServiceAction($request);

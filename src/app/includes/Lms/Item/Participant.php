@@ -9,8 +9,8 @@ class Lms_Item_Participant extends Lms_Item_Abstract {
 
     public static function _customInitStructure(
         Lms_Item_Struct $struct,
-        DbSimple_Generic_Database $masterDb,
-        DbSimple_Generic_Database $slaveDb
+        DbSimple_Database $masterDb,
+        DbSimple_Database $slaveDb
     )
     {
         parent::_customInitStructure($struct, $masterDb, $slaveDb);

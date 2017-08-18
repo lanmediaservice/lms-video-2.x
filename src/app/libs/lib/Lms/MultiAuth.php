@@ -21,7 +21,8 @@ class Lms_MultiAuth extends Lms_Singleton {
      */
     protected $_storage = null;
 
-    public static function getInstance($class = null) {
+    public static function getInstance($class = null)
+    {
         return parent::getInstance(__CLASS__);
     }
 

@@ -9,11 +9,16 @@ class Lms_Item_Struct_Generator
         self::$_storagePath = $storagePath;
     }
     
+    static private function replaceCallback($m)
+    {
+        return strtoupper($m[1]);
+    }
+
     static public function getTableClassName($tableName)
     {
         $camelCaseTableName = ucfirst(
-            preg_replace(
-                '{_([a-zA-Z])}e', "strtoupper('\\1')",
+            preg_replace_callback(
+                '{_([a-zA-Z])}', "self::replaceCallback",
                 str_replace(
                     '?_', '', 
                     preg_replace('{^[^\.]*\.}', '', $tableName)

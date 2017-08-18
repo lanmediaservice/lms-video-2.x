@@ -428,20 +428,25 @@ class Lms_Text {
     {
         //magnet
         if (preg_match('{dn=([^=&]*)}i', $uri, $matches)) {
-            return 'magnet:' . $matches[1];
+            return 'magnet:' . urldecode($matches[1]);
         } else {
             return $uri;
         }
     }
     
+    private static function replaceLinks($matches)
+    {
+        return "<a href=\"" . htmlspecialchars($matches[1])."\">" . htmlspecialchars(Lms_Text::nameFromUri($matches[1])) . "</a>";
+    }
+
     public static function htmlizeText($text)
     {
         $text = strip_tags($text);
         $text = str_replace(array("\r\n", "\r", "\n"), "<br>", $text);
-        $text = preg_replace('{((?:https?://|magnet:\?|ed2k://)[^\s<]+)}ei', "'<a href=\"'.htmlspecialchars('\\1').'\">'.htmlspecialchars(Lms_Text::nameFromUri('\\1')).'</a>\\2'", $text);
+        $text = preg_replace_callback('{((?:https?://|magnet:\?|ed2k://)[^\s<]+)}i', "self::replaceLinks", $text);
         return $text;
     }
-
+    
     public static function generateString($length = 8, $symbols = '0123456789bcdfghjkmnpqrstvwxyz', $unique = true)
     {
         $string = "";
