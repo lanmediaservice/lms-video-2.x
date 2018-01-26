@@ -23,8 +23,7 @@ class Lms_Service_Adapter_Kinopoisk
             case 'search':
                 if (Lms_Application::getConfig('parser_service', 'old_kinopoisk_mode')) {
                     $query = urlencode($params['query']);
-                    return "http://www.kinopoisk.ru/index.php"
-                         . "?kp_query=$query";
+                    return "http://www.kinopoisk.ru/s/type/film/list/1/find/$query/order/relevant/perpage/25/";
                 }
                 $query = urlencode(Lms_Translate::translate('CP1251', 'UTF-8', $params['query']));
                 return "http://www.kinopoisk.ru/search/?text=$query";
