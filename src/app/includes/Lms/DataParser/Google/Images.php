@@ -34,7 +34,7 @@ class Lms_DataParser_Google_Images extends Lms_DataParser_Generic{
         $result = array();
         if ($response->isSuccessful()) {
             $body = Lms_DataParser::compactTags(Lms_DataParser::utfBodyFromResponse($response));
-            if (preg_match_all('{<a[^>]*?href="(?:http://images\.google\.com)?/imgres\?([^"]*?)"[^>]*?><img[^>]*?src=(.*?)[\s>]}i', $body, $data, PREG_SET_ORDER)) {
+            if (preg_match_all('{<a[^>]*?href="(?:http://images\.google\.com)?/imgres\?([^"]*?)".*?><img[^>]*?src="([^"]*)"}i', $body, $data, PREG_SET_ORDER)) {
                 foreach ($data as $row) {
                     parse_str($row[1], $vars);
                     $info = array();
