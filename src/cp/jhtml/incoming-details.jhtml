@@ -51,9 +51,6 @@
                             <div class="search-box-form-settings clearfix">
                                 <ul class="engine-selector">
                                     <li class="kinopoisk"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'kinopoisk'); return false;"><span class="icon kinopoisk"></span> Кинопоиск</a></li>
-                                    <li class="ozon"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'ozon'); return false;"><span class="icon ozon"></span> Озон</a></li>
-                                    <li class="world-art"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'world-art'); return false;"><span class="icon world-art"></span> World-Art</a></li>
-                                    <li class="sharereactor"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'sharereactor'); return false;"><span class="icon sharereactor"></span> ShareReactor</a></li>
                                     <li class="imdb"><a href="" onclick="window.ui.incoming.onEngineClickHandler(${incoming_id}, 'imdb'); return false;"><span class="icon imdb"></span> IMDb</a></li>
                                 </ul>
                                 <a onclick="$j(this).parents('.search-box-form').removeClass('show-settings')" class="close"><span class="icon close"></span></a>

@@ -1,0 +1,15 @@
+Array
+(
+    [names] => Array
+        (
+            [0] => Laurence Fishburne
+        )
+
+    [born_place] => Augusta, Georgia, USA
+    [photos] => Array
+        (
+            [0] => http://m.media-amazon.com/images/M/MV5BMTc0NjczNDc1MV5BMl5BanBnXkFtZTYwMDU0Mjg1._V1_UX214_CR0,0,214,317_AL_.jpg
+        )
+
+    [version] => $Id$
+)

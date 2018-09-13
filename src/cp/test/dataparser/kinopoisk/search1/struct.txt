@@ -1,0 +1,48 @@
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Матрица
+                            [1] => The Matrix
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/301/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/301.jpg
+                    [info] => США, реж. Лана Вачовски...(фантастика, боевик)
+     Киану Ривз, Лоренс Фишбёрн, ...
+                    [year] => 1999
+                    [country] => США
+                    [director] => Лана Вачовски...
+                    [genre] => фантастика, боевик
+                    [actors] => Киану Ривз, Лоренс Фишбёрн, ...
+                    [rating] => 8.5
+                )
+
+            [1] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Матрица (сериал)
+                            [1] => Matrix
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/400787/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/400787.jpg
+                    [info] => Канада, реж. Хорхе Монтеси...(фэнтези, боевик, триллер...)
+     Ник Манкузо, Филлип Джарретт, ...
+                    [year] => 1993
+                    [country] => Канада
+                    [director] => Хорхе Монтеси...
+                    [genre] => фэнтези, боевик, триллер...
+                    [actors] => Ник Манкузо, Филлип Джарретт, ...
+                    [rating] => 6.0
+                )
+
+        )
+
+    [version] => $Id$
+)

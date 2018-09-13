@@ -1,0 +1,45 @@
+Array
+(
+    [imdb_id] => 1111929
+    [names] => Array
+        (
+            [0] => 1917: La révolution russe 
+        )
+
+    [year] => 2007
+    [posters] => Array
+        (
+            [0] => https://m.media-amazon.com/images/G/01/imdb/images/logos/imdb_fb_logo-1730868325._CB470042400_.png
+        )
+
+    [mpaa] => 
+    [rating] => ok
+    [rating_count] => ok
+    [countries] => Array
+        (
+            [0] => France
+        )
+
+    [description] => 
+    [genres] => Array
+        (
+            [0] => Documentary
+        )
+
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1467550/
+                    [names] => Array
+                        (
+                            [0] => Paul Jenkins
+                        )
+
+                    [role] => director
+                )
+
+        )
+
+    [version] => $Id$
+)

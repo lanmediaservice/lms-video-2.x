@@ -1,0 +1,237 @@
+Array
+(
+    [imdb_id] => 133093
+    [names] => Array
+        (
+            [0] => The Matrix 
+        )
+
+    [year] => 1999
+    [posters] => Array
+        (
+            [0] => https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY1200_CR84,0,630,1200_AL_.jpg
+        )
+
+    [mpaa] => 
+    [rating] => ok
+    [rating_count] => ok
+    [countries] => Array
+        (
+            [0] => USA
+        )
+
+    [description] => Thomas A. Anderson is a man living two lives. By day he is an average computer programmer and by night a hacker known as Neo. Neo has always questioned his reality, but the truth is far beyond his imagination. Neo finds himself targeted by the police when he is contacted by Morpheus, a legendary computer hacker branded a terrorist by the government. Morpheus awakens Neo to the real world, a ravaged wasteland where most of humanity have been captured by a race of machines that live off of the humans' body heat and electrochemical energy and who imprison their minds within an artificial reality known as the Matrix. As a rebel against the machines, Neo must return to the Matrix and confront the agents: super-powerful computer programs devoted to snuffing out Neo and the entire human rebellion.
+    [genres] => Array
+        (
+            [0] => Action
+            [1] => Sci-Fi
+        )
+
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0905154/
+                    [names] => Array
+                        (
+                            [0] => Lana Wachowski
+                        )
+
+                    [role] => director
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0905152/
+                    [names] => Array
+                        (
+                            [0] => Lilly Wachowski
+                        )
+
+                    [role] => director
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0000206/
+                    [names] => Array
+                        (
+                            [0] => Keanu Reeves
+                        )
+
+                    [role] => actor
+                    [character] => Neo
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0000401/
+                    [names] => Array
+                        (
+                            [0] => Laurence Fishburne
+                        )
+
+                    [role] => actor
+                    [character] => Morpheus
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0005251/
+                    [names] => Array
+                        (
+                            [0] => Carrie-Anne Moss
+                        )
+
+                    [role] => actor
+                    [character] => Trinity
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0915989/
+                    [names] => Array
+                        (
+                            [0] => Hugo Weaving
+                        )
+
+                    [role] => actor
+                    [character] => Agent Smith
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0287825/
+                    [names] => Array
+                        (
+                            [0] => Gloria Foster
+                        )
+
+                    [role] => actor
+                    [character] => Oracle
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0001592/
+                    [names] => Array
+                        (
+                            [0] => Joe Pantoliano
+                        )
+
+                    [role] => actor
+                    [character] => Cypher
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0159059/
+                    [names] => Array
+                        (
+                            [0] => Marcus Chong
+                        )
+
+                    [role] => actor
+                    [character] => Tank
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0032810/
+                    [names] => Array
+                        (
+                            [0] => Julian Arahanga
+                        )
+
+                    [role] => actor
+                    [character] => Apoc
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0233391/
+                    [names] => Array
+                        (
+                            [0] => Matt Doran
+                        )
+
+                    [role] => actor
+                    [character] => Mouse
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0565883/
+                    [names] => Array
+                        (
+                            [0] => Belinda McClory
+                        )
+
+                    [role] => actor
+                    [character] => Switch
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0662562/
+                    [names] => Array
+                        (
+                            [0] => Anthony Ray Parker
+                        )
+
+                    [role] => actor
+                    [character] => Dozer
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0323822/
+                    [names] => Array
+                        (
+                            [0] => Paul Goddard
+                        )
+
+                    [role] => actor
+                    [character] => Agent Brown
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0853079/
+                    [names] => Array
+                        (
+                            [0] => Robert Taylor
+                        )
+
+                    [role] => actor
+                    [character] => Agent Jones
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0040058/
+                    [names] => Array
+                        (
+                            [0] => David Aston
+                        )
+
+                    [role] => actor
+                    [character] => Rhineheart
+                )
+
+            [16] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0336802/
+                    [names] => Array
+                        (
+                            [0] => Marc Aden Gray
+                        )
+
+                    [role] => actor
+                    [character] => Choi (as Marc Gray)
+                )
+
+        )
+
+    [version] => $Id$
+)

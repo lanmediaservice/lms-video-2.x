@@ -1,0 +1,22 @@
+Array
+(
+    [kinopoisk_id] => 9838
+    [names] => Array
+        (
+            [0] => Лоренс Фишбёрн
+            [1] => Laurence Fishburne
+        )
+
+    [born_date] => 1961-07-30
+    [born_place] => Огаста, Джорджия, США
+    [profile] => 
+                                Продюсер, 
+                                Режиссер, 
+                                Сценарист, Актер
+    [photos] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/actor_iphone/iphone360_9838.jpg
+        )
+
+    [version] => $Id$
+)

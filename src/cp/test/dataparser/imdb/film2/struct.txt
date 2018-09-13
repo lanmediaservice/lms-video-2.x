@@ -1,0 +1,226 @@
+Array
+(
+    [imdb_id] => 1648099
+    [names] => Array
+        (
+            [0] => Jørgen + Anne = sant 
+        )
+
+    [year] => 2011
+    [posters] => Array
+        (
+            [0] => https://m.media-amazon.com/images/M/MV5BMTUzNzg3NjA3Ml5BMl5BanBnXkFtZTcwMzc1MTMzNQ@@._V1_UY1200_CR24,0,630,1200_AL_.jpg
+        )
+
+    [mpaa] => 
+    [rating] => ok
+    [rating_count] => ok
+    [countries] => Array
+        (
+            [0] => Norway
+        )
+
+    [description] => A 10-year-old Norwegian girl falls in love for the first time. Her friends confront their own feelings as they witness her no-holds-barred battle with a rival student for the affections of a boy who moves into town.
+    [genres] => Array
+        (
+            [0] => Family
+            [1] => Mystery
+        )
+
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm3205815/
+                    [names] => Array
+                        (
+                            [0] => Anne Sewitsky
+                        )
+
+                    [role] => director
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4378414/
+                    [names] => Array
+                        (
+                            [0] => Maria Annette Tanderø Berglyd
+                        )
+
+                    [role] => actor
+                    [character] => Anne Lunde (as Maria Annette Tanderød Berglyd)
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4282844/
+                    [names] => Array
+                        (
+                            [0] => Otto Garli
+                        )
+
+                    [role] => actor
+                    [character] => Jørgen Ruge
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4281363/
+                    [names] => Array
+                        (
+                            [0] => Aurora Bach Rodal
+                        )
+
+                    [role] => actor
+                    [character] => Beate
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4281381/
+                    [names] => Array
+                        (
+                            [0] => Vilde Fredriksen Verlo
+                        )
+
+                    [role] => actor
+                    [character] => Ellen
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4282771/
+                    [names] => Array
+                        (
+                            [0] => Kristin Langsrud
+                        )
+
+                    [role] => actor
+                    [character] => Tone
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4282711/
+                    [names] => Array
+                        (
+                            [0] => Peder Holene
+                        )
+
+                    [role] => actor
+                    [character] => Knut
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4281962/
+                    [names] => Array
+                        (
+                            [0] => Sigurd Saethereng
+                        )
+
+                    [role] => actor
+                    [character] => Einar
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm3422931/
+                    [names] => Array
+                        (
+                            [0] => Torkil Høeg
+                        )
+
+                    [role] => actor
+                    [character] => Ole Lunde (as Torkil Hoeg)
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4283070/
+                    [names] => Array
+                        (
+                            [0] => Adrian Holte Kristiansen
+                        )
+
+                    [role] => actor
+                    [character] => Dag
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4657190/
+                    [names] => Array
+                        (
+                            [0] => Anna Jahr Svalheim
+                        )
+
+                    [role] => actor
+                    [character] => Helga
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm3382467/
+                    [names] => Array
+                        (
+                            [0] => Emir Mulasmanovic
+                        )
+
+                    [role] => actor
+                    [character] => Luca
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm4207697/
+                    [names] => Array
+                        (
+                            [0] => Randolf Walderhaug
+                        )
+
+                    [role] => actor
+                    [character] => Helga's Father
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm3626244/
+                    [names] => Array
+                        (
+                            [0] => Silje Breivik
+                        )
+
+                    [role] => actor
+                    [character] => Anne's Mother
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm3608650/
+                    [names] => Array
+                        (
+                            [0] => Terje Ranes
+                        )
+
+                    [role] => actor
+                    [character] => Anne's father
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0841021/
+                    [names] => Array
+                        (
+                            [0] => Birgitte Victoria Svendsen
+                        )
+
+                    [role] => actor
+                    [character] => Beate's grandmother
+                )
+
+        )
+
+    [version] => $Id$
+)

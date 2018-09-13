@@ -1,0 +1,307 @@
+Array
+(
+    [kinopoisk_id] => 845996
+    [names] => Array
+        (
+            [0] => Здравствуйте, меня зовут Дорис
+            [1] => Hello, My Name Is Doris
+        )
+
+    [posters] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/film_iphone/iphone360_845996.jpg
+        )
+
+    [posters_big] => Array
+        (
+            [0] => http://www.kinopoisk.ru/images/film_big/845996.jpg
+        )
+
+    [year] => 2015
+    [countries] => Array
+        (
+            [0] => США
+        )
+
+    [genres] => Array
+        (
+            [0] => драма
+            [1] => мелодрама
+            [2] => комедия
+        )
+
+    [tagline] => She's not ready to act her age
+    [budget] => $1 000 000
+    [gross] => Array
+        (
+            [usa] => $99 999 999
+        )
+
+    [mpaa] => R
+    [age_limit] => 12
+    [duration] => 90
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/39971/
+                    [names] => Array
+                        (
+                            [0] => Майкл Шоуолтер
+                        )
+
+                    [role] => режиссер
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1864102/
+                    [names] => Array
+                        (
+                            [0] => Laura Terruso
+                        )
+
+                    [role] => сценарий
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/39971/
+                    [names] => Array
+                        (
+                            [0] => Майкл Шоуолтер
+                        )
+
+                    [role] => сценарий
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1749347/
+                    [names] => Array
+                        (
+                            [0] => Дэниэл Краун
+                        )
+
+                    [role] => продюсер
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/466552/
+                    [names] => Array
+                        (
+                            [0] => Кевин Манн
+                        )
+
+                    [role] => продюсер
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1179446/
+                    [names] => Array
+                        (
+                            [0] => Рива Маркер
+                        )
+
+                    [role] => продюсер
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/636216/
+                    [names] => Array
+                        (
+                            [0] => Брайан Бёргойн
+                        )
+
+                    [role] => оператор
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/886728/
+                    [names] => Array
+                        (
+                            [0] => Брайан Х. Ким
+                        )
+
+                    [role] => композитор
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2009040/
+                    [names] => Array
+                        (
+                            [0] => Мелани Джонс
+                        )
+
+                    [role] => художник
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2255808/
+                    [names] => Array
+                        (
+                            [0] => Патрис Эндрю Дэвидсон
+                        )
+
+                    [role] => художник
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1988227/
+                    [names] => Array
+                        (
+                            [0] => Катрин Девани
+                        )
+
+                    [role] => художник
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/241545/
+                    [names] => Array
+                        (
+                            [0] => Роберт Нассау
+                        )
+
+                    [role] => монтаж
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/13477/
+                    [names] => Array
+                        (
+                            [0] => Салли Филд
+                        )
+
+                    [role] => актер
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/173216/
+                    [names] => Array
+                        (
+                            [0] => Edmund Lupinski
+                        )
+
+                    [role] => актер
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1959580/
+                    [names] => Array
+                        (
+                            [0] => Норма Майклс
+                        )
+
+                    [role] => актер
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/22595/
+                    [names] => Array
+                        (
+                            [0] => Стивен Рут
+                        )
+
+                    [role] => актер
+                )
+
+            [16] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/380736/
+                    [names] => Array
+                        (
+                            [0] => Венди МакЛендон-Кови
+                        )
+
+                    [role] => актер
+                )
+
+            [17] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/546423/
+                    [names] => Array
+                        (
+                            [0] => Макс Гринфилд
+                        )
+
+                    [role] => актер
+                )
+
+            [18] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1833413/
+                    [names] => Array
+                        (
+                            [0] => Кумэйл Нанджиани
+                        )
+
+                    [role] => актер
+                )
+
+            [19] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/11476/
+                    [names] => Array
+                        (
+                            [0] => Ребекка Висоцки
+                        )
+
+                    [role] => актер
+                )
+
+            [20] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/228414/
+                    [names] => Array
+                        (
+                            [0] => Рич Соммер
+                        )
+
+                    [role] => актер
+                )
+
+            [21] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/7345/
+                    [names] => Array
+                        (
+                            [0] => Тайн Дейли
+                        )
+
+                    [role] => актер
+                )
+
+        )
+
+    [description] => Дорис Миллер — типичный Нью-Йоркский офисный работник в возрасте за шестьдесят, после смерти своей матери начинает посещать семинары по самопомощи. Приняв советы от гуру мотивации, Дорис становится сексуально одержимой своим новым коллегой Джоном, который вдвое её моложе.
+    [rating] => Array
+        (
+            [imdb] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+            [kinopoisk] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+        )
+
+    [version] => $Id$
+)

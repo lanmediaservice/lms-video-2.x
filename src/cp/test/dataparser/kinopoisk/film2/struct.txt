@@ -1,0 +1,389 @@
+Array
+(
+    [kinopoisk_id] => 94223
+    [type] => series
+    [names] => Array
+        (
+            [0] => Команда «А»
+            [1] => The A-Team
+        )
+
+    [posters] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/film_iphone/iphone360_94223.jpg
+        )
+
+    [posters_big] => Array
+        (
+            [0] => http://www.kinopoisk.ru/images/film_big/94223.jpg
+        )
+
+    [year] => 1983
+    [countries] => Array
+        (
+            [0] => США
+        )
+
+    [genres] => Array
+        (
+            [0] => боевик
+            [1] => криминал
+            [2] => приключения
+        )
+
+    [tagline] => Heroes for hire
+    [age_limit] => 16
+    [duration] => 43
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/336663/
+                    [names] => Array
+                        (
+                            [0] => Майкл О’Херлихи
+                        )
+
+                    [role] => режиссер
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/213973/
+                    [names] => Array
+                        (
+                            [0] => Дэннис Доннелли
+                        )
+
+                    [role] => режиссер
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/75398/
+                    [names] => Array
+                        (
+                            [0] => Крэйг Р. Бэксли
+                        )
+
+                    [role] => режиссер
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/38739/
+                    [names] => Array
+                        (
+                            [0] => Стефен Дж. Кэннел
+                        )
+
+                    [role] => сценарий
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/694756/
+                    [names] => Array
+                        (
+                            [0] => Фрэнк Люпо
+                        )
+
+                    [role] => сценарий
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/580931/
+                    [names] => Array
+                        (
+                            [0] => Билл Насс
+                        )
+
+                    [role] => сценарий
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/25003/
+                    [names] => Array
+                        (
+                            [0] => Джон Эшли
+                        )
+
+                    [role] => продюсер
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/38739/
+                    [names] => Array
+                        (
+                            [0] => Стефен Дж. Кэннел
+                        )
+
+                    [role] => продюсер
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/694756/
+                    [names] => Array
+                        (
+                            [0] => Фрэнк Люпо
+                        )
+
+                    [role] => продюсер
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/694765/
+                    [names] => Array
+                        (
+                            [0] => Брэдли Б. Сикс
+                        )
+
+                    [role] => оператор
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/618066/
+                    [names] => Array
+                        (
+                            [0] => Фрэнк Э. Джонсон
+                        )
+
+                    [role] => оператор
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/612370/
+                    [names] => Array
+                        (
+                            [0] => Пит Карпентер
+                        )
+
+                    [role] => композитор
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/612371/
+                    [names] => Array
+                        (
+                            [0] => Майк Пост
+                        )
+
+                    [role] => композитор
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/613179/
+                    [names] => Array
+                        (
+                            [0] => Гарри Шаймен
+                        )
+
+                    [role] => композитор
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1997784/
+                    [names] => Array
+                        (
+                            [0] => Карлос Бербен
+                        )
+
+                    [role] => художник
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2005110/
+                    [names] => Array
+                        (
+                            [0] => Шерман Лаудермилк
+                        )
+
+                    [role] => художник
+                )
+
+            [16] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2003947/
+                    [names] => Array
+                        (
+                            [0] => Чарльз Л. Хьюз
+                        )
+
+                    [role] => художник
+                )
+
+            [17] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1126554/
+                    [names] => Array
+                        (
+                            [0] => Альберт Дж.Дж. Зунига
+                        )
+
+                    [role] => монтаж
+                )
+
+            [18] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1575086/
+                    [names] => Array
+                        (
+                            [0] => Крис Дж. Уиллингэм
+                        )
+
+                    [role] => монтаж
+                )
+
+            [19] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2004153/
+                    [names] => Array
+                        (
+                            [0] => Рон Спанг
+                        )
+
+                    [role] => монтаж
+                )
+
+            [20] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/118571/
+                    [names] => Array
+                        (
+                            [0] => Джордж Пеппард
+                        )
+
+                    [role] => актер
+                )
+
+            [21] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/52258/
+                    [names] => Array
+                        (
+                            [0] => Дуайт Шульц
+                        )
+
+                    [role] => актер
+                )
+
+            [22] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/24036/
+                    [names] => Array
+                        (
+                            [0] => Мистер Ти
+                        )
+
+                    [role] => актер
+                )
+
+            [23] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/71185/
+                    [names] => Array
+                        (
+                            [0] => Дирк Бенедикт
+                        )
+
+                    [role] => актер
+                )
+
+            [24] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/105194/
+                    [names] => Array
+                        (
+                            [0] => Мелинда Кулеа
+                        )
+
+                    [role] => актер
+                )
+
+            [25] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/78980/
+                    [names] => Array
+                        (
+                            [0] => Лэнс ЛеГолт
+                        )
+
+                    [role] => актер
+                )
+
+            [26] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/33586/
+                    [names] => Array
+                        (
+                            [0] => Карл Франклин
+                        )
+
+                    [role] => актер
+                )
+
+            [27] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/31815/
+                    [names] => Array
+                        (
+                            [0] => Эдди Велес
+                        )
+
+                    [role] => актер
+                )
+
+            [28] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/3140/
+                    [names] => Array
+                        (
+                            [0] => Роберт Вон
+                        )
+
+                    [role] => актер
+                )
+
+            [29] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/123220/
+                    [names] => Array
+                        (
+                            [0] => Марла Хисли
+                        )
+
+                    [role] => актер
+                )
+
+        )
+
+    [description] => В 1972 году военный трибунал приговорил к тюремному заключению группу солдат особого отряда за преступление, которого они не совершали. Несмотря на мощную охрану, они бежали и растворились в Лос-Анджелесе. Их, ставших солдатами удачи, власти разыскивают до сих пор. Если вы попали в беду и вам удастся их найти, вам всегда поможет Команда «А».
+    [rating] => Array
+        (
+            [kinopoisk] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+            [imdb] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+        )
+
+    [version] => $Id$
+)

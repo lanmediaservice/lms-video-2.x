@@ -1,0 +1,48 @@
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Рокки 3
+                            [1] => Rocky III
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/7272/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/7272.jpg
+                    [info] => США, реж. Сильвестр Сталлоне(драма, спорт)
+     Сильвестр Сталлоне, Мистер Ти, ...
+                    [year] => 1982
+                    [country] => США
+                    [director] => Сильвестр Сталлоне
+                    [genre] => драма, спорт
+                    [actors] => Сильвестр Сталлоне, Мистер Ти, ...
+                    [rating] => 7.4
+                )
+
+            [1] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Рокки
+                            [1] => Rocky
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/6462/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/6462.jpg
+                    [info] => США, реж. Джон Г. Эвилдсен(драма, спорт)
+     Сильвестр Сталлоне, Талия Шайр, ...
+                    [year] => 1976
+                    [country] => США
+                    [director] => Джон Г. Эвилдсен
+                    [genre] => драма, спорт
+                    [actors] => Сильвестр Сталлоне, Талия Шайр, ...
+                    [rating] => 8.0
+                )
+
+        )
+
+    [version] => $Id$
+)

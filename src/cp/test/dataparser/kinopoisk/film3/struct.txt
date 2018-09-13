@@ -1,0 +1,399 @@
+Array
+(
+    [kinopoisk_id] => 466924
+    [type] => series
+    [names] => Array
+        (
+            [0] => Жеребец
+            [1] => Hung
+        )
+
+    [posters] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/film_iphone/iphone360_466924.jpg
+        )
+
+    [posters_big] => Array
+        (
+            [0] => http://www.kinopoisk.ru/images/film_big/466924.jpg
+        )
+
+    [year] => 2009
+    [countries] => Array
+        (
+            [0] => США
+        )
+
+    [genres] => Array
+        (
+            [0] => драма
+            [1] => комедия
+        )
+
+    [tagline] => It's hard to make an indecent living
+    [age_limit] => 18
+    [duration] => 43
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/154136/
+                    [names] => Array
+                        (
+                            [0] => Дэниэл Эттиэс
+                        )
+
+                    [role] => режиссер
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/12275/
+                    [names] => Array
+                        (
+                            [0] => Бронуэн Хьюз
+                        )
+
+                    [role] => режиссер
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1959611/
+                    [names] => Array
+                        (
+                            [0] => Ута Бризвитц
+                        )
+
+                    [role] => режиссер
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/27927/
+                    [names] => Array
+                        (
+                            [0] => Колетт Бёрсон
+                        )
+
+                    [role] => сценарий
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/27934/
+                    [names] => Array
+                        (
+                            [0] => Дмитрий Липкин
+                        )
+
+                    [role] => сценарий
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/40184/
+                    [names] => Array
+                        (
+                            [0] => Бретт С. Леонард
+                        )
+
+                    [role] => сценарий
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/27927/
+                    [names] => Array
+                        (
+                            [0] => Колетт Бёрсон
+                        )
+
+                    [role] => продюсер
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/27934/
+                    [names] => Array
+                        (
+                            [0] => Дмитрий Липкин
+                        )
+
+                    [role] => продюсер
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/905376/
+                    [names] => Array
+                        (
+                            [0] => Джон Морайнисс
+                        )
+
+                    [role] => продюсер
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1959611/
+                    [names] => Array
+                        (
+                            [0] => Ута Бризвитц
+                        )
+
+                    [role] => оператор
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/911925/
+                    [names] => Array
+                        (
+                            [0] => Пол МакИльваин
+                        )
+
+                    [role] => оператор
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/905565/
+                    [names] => Array
+                        (
+                            [0] => Уолт Фрайзер
+                        )
+
+                    [role] => оператор
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/611875/
+                    [names] => Array
+                        (
+                            [0] => Крэйг Уэдрен
+                        )
+
+                    [role] => композитор
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2898784/
+                    [names] => Array
+                        (
+                            [0] => Амджад Альбасель
+                        )
+
+                    [role] => композитор
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/3921704/
+                    [names] => Array
+                        (
+                            [0] => Carly Robyn Green
+                        )
+
+                    [role] => композитор
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1529240/
+                    [names] => Array
+                        (
+                            [0] => Ричард Тойон
+                        )
+
+                    [role] => художник
+                )
+
+            [16] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2354829/
+                    [names] => Array
+                        (
+                            [0] => Девора Херберт
+                        )
+
+                    [role] => художник
+                )
+
+            [17] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/4232986/
+                    [names] => Array
+                        (
+                            [0] => Л.Дж. Ходишелл
+                        )
+
+                    [role] => художник
+                )
+
+            [18] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1997834/
+                    [names] => Array
+                        (
+                            [0] => Аннетт Дэвей
+                        )
+
+                    [role] => монтаж
+                )
+
+            [19] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1207546/
+                    [names] => Array
+                        (
+                            [0] => Шон Пейпер
+                        )
+
+                    [role] => монтаж
+                )
+
+            [20] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1965281/
+                    [names] => Array
+                        (
+                            [0] => Байрон Смит
+                        )
+
+                    [role] => монтаж
+                )
+
+            [21] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/3591/
+                    [names] => Array
+                        (
+                            [0] => Томас Джейн
+                        )
+
+                    [role] => актер
+                )
+
+            [22] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/10099/
+                    [names] => Array
+                        (
+                            [0] => Джейн Адамс
+                        )
+
+                    [role] => актер
+                )
+
+            [23] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/476565/
+                    [names] => Array
+                        (
+                            [0] => Чарли Сэкстон
+                        )
+
+                    [role] => актер
+                )
+
+            [24] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1525195/
+                    [names] => Array
+                        (
+                            [0] => Сианоа Смит-МакФи
+                        )
+
+                    [role] => актер
+                )
+
+            [25] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/10275/
+                    [names] => Array
+                        (
+                            [0] => Энн Хеч
+                        )
+
+                    [role] => актер
+                )
+
+            [26] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2497/
+                    [names] => Array
+                        (
+                            [0] => Ребекка Крескофф
+                        )
+
+                    [role] => актер
+                )
+
+            [27] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/21977/
+                    [names] => Array
+                        (
+                            [0] => Грегг Генри
+                        )
+
+                    [role] => актер
+                )
+
+            [28] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/32313/
+                    [names] => Array
+                        (
+                            [0] => Эдди Джемисон
+                        )
+
+                    [role] => актер
+                )
+
+            [29] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/4065/
+                    [names] => Array
+                        (
+                            [0] => Ленни Джеймс
+                        )
+
+                    [role] => актер
+                )
+
+            [30] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/12171/
+                    [names] => Array
+                        (
+                            [0] => Мэрилуиз Бёрк
+                        )
+
+                    [role] => актер
+                )
+
+        )
+
+    [description] => Рэй когда-то был звездой бейсбола, но все это уже далеко позади. Сейчас он работает тренером баскетбольной школьной команды, от него ушла жена, он живет в простом домике со своими двумя детьми, и денег не хватает ни на что. После того как его дом сгорает, а дети переезжают к маме, он понимает, что надо в жизни что-то менять, так как жить на такие гроши больше просто невозможно. Единственное, что его отличает от остальных, так это его большое мужское достоинство, теперь он решает стать мужским эскортом, так как кроме этого он ничего не умеет.
+    [rating] => Array
+        (
+            [imdb] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+            [kinopoisk] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+        )
+
+    [version] => $Id$
+)

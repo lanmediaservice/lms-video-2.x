@@ -40,14 +40,14 @@ class Lms_DataParser {
 
         return call_user_func(array($className, $method), $response, $url, $testMode);
     }
-    
+
     static public function absolutize($path, $parentpath = '', $host = 'www.example.com', $encode = false) {
         $strTransform = array("\\"=>"/");
         $path = strtr($path, $strTransform);
         $parentpath = strtr($parentpath, $strTransform);
         if ($encode) {
-            $start = 0;    
-            if (substr($path, 0, 7)=='http://') $start = 3;
+            $start = 0;
+            if (substr($path, 0, 7)=='http://' || substr($path, 0, 8)=='https://') $start = 3;
             $t = explode("/", $path);
             for ($i = $start; $i<count($t); $i++) {
                 $t[$i] = rawurlencode($t[$i]);
@@ -55,17 +55,24 @@ class Lms_DataParser {
             $path = implode("/", $t);
         }
         if  (substr($parentpath, -1)!='/') $parentpath .= '/';
-        
+
         if ($path{0}=='/') {
-            return 'http://' . $host . $path;
+            if ($path{1}=='/') {
+                return 'http:' . $path;
+            } else {
+                return 'http://' . $host . $path;
+            }
         } elseif (substr($path, 0, 7)=='http://') {
             return $path;
+        } elseif (substr($path, 0, 8)=='https://') {
+            return str_replace('https://', 'http://', $path);
         } elseif ($parentpath{0}=='/') {
             return 'http://' . $host . $parentpath . $path;
         } elseif (substr($parentpath,0,7)=='http://') {
             return $parentpath . $path;
         }
-    }    
+    }
+
 
     static public function compactTags($htmlText, $mode = self::BETWEEN_TAGS_ONLY)
     {
@@ -112,7 +119,8 @@ class Lms_DataParser {
     {
         $entityNum = $matches[1];
         if ($entityNum>=128 && $entityNum<160) {
-            return htmlspecialchars(chr($entityNum));
+            $flags = version_compare(phpversion(), '5.4', '<') ? ENT_COMPAT : (ENT_COMPAT | ENT_HTML401);
+            return htmlspecialchars(chr($entityNum), $flags, 'cp1251');
         } else {
             return $matches[0];
         }

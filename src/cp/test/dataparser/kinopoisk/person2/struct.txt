@@ -1,0 +1,22 @@
+Array
+(
+    [kinopoisk_id] => 27645
+    [names] => Array
+        (
+            [0] => Ричард Уэнк
+            [1] => Richard Wenk
+        )
+
+    [born_date] => 1956
+    [born_place] => Плейнфилд, Нью-Джерси,США
+    [profile] => 
+                                Актер, 
+                                Продюсер, 
+                                Режиссер, Сценарист
+    [photos] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/actor_iphone/iphone360_27645.jpg
+        )
+
+    [version] => $Id$
+)

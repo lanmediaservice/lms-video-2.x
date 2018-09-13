@@ -1,0 +1,21 @@
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => L'inceste, la conspiration des oreilles bouchées
+                        )
+
+                    [year] => 1988
+                    [section] => 
+                    [url] => http://www.imdb.com/title/tt0380438/
+                    [image] => https://m.media-amazon.com/images/G/01/imdb/images/nopicture/32x44/film-3119741174._CB470041627_.png
+                )
+
+        )
+
+    [version] => $Id$
+)

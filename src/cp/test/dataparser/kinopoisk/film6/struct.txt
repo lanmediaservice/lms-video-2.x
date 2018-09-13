@@ -1,0 +1,358 @@
+Array
+(
+    [kinopoisk_id] => 891439
+    [type] => series
+    [names] => Array
+        (
+            [0] => Завучи
+            [1] => Vice Principals
+        )
+
+    [posters] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/film_iphone/iphone360_891439.jpg
+        )
+
+    [posters_big] => Array
+        (
+            [0] => http://www.kinopoisk.ru/images/film_big/891439.jpg
+        )
+
+    [year] => 2016
+    [countries] => Array
+        (
+            [0] => США
+        )
+
+    [genres] => Array
+        (
+            [0] => комедия
+        )
+
+    [tagline] => We all need someone to look up to
+    [duration] => 30
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1071656/
+                    [names] => Array
+                        (
+                            [0] => Джоди Хилл
+                        )
+
+                    [role] => режиссер
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/34778/
+                    [names] => Array
+                        (
+                            [0] => Дэвид Гордон Грин
+                        )
+
+                    [role] => режиссер
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/34783/
+                    [names] => Array
+                        (
+                            [0] => Дэнни МакБрайд
+                        )
+
+                    [role] => режиссер
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1071656/
+                    [names] => Array
+                        (
+                            [0] => Джоди Хилл
+                        )
+
+                    [role] => сценарий
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/34783/
+                    [names] => Array
+                        (
+                            [0] => Дэнни МакБрайд
+                        )
+
+                    [role] => сценарий
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1262985/
+                    [names] => Array
+                        (
+                            [0] => Джон Карсьери
+                        )
+
+                    [role] => сценарий
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/3948657/
+                    [names] => Array
+                        (
+                            [0] => Крис Бауком
+                        )
+
+                    [role] => продюсер
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/3398349/
+                    [names] => Array
+                        (
+                            [0] => Дж. Дэвид Брайтбилл
+                        )
+
+                    [role] => продюсер
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1262985/
+                    [names] => Array
+                        (
+                            [0] => Джон Карсьери
+                        )
+
+                    [role] => продюсер
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1428355/
+                    [names] => Array
+                        (
+                            [0] => Эрик Трэмл
+                        )
+
+                    [role] => оператор
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/546001/
+                    [names] => Array
+                        (
+                            [0] => Майкл Симмондс
+                        )
+
+                    [role] => оператор
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2357544/
+                    [names] => Array
+                        (
+                            [0] => Джозеф Стефенс
+                        )
+
+                    [role] => композитор
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1155490/
+                    [names] => Array
+                        (
+                            [0] => Ричард А. Райт
+                        )
+
+                    [role] => художник
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2001330/
+                    [names] => Array
+                        (
+                            [0] => Мэттью С. Джейкобс
+                        )
+
+                    [role] => художник
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/640038/
+                    [names] => Array
+                        (
+                            [0] => Сара Трост
+                        )
+
+                    [role] => художник
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/544987/
+                    [names] => Array
+                        (
+                            [0] => Джефф Сейбеник
+                        )
+
+                    [role] => монтаж
+                )
+
+            [16] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/539135/
+                    [names] => Array
+                        (
+                            [0] => Тодд Зелин
+                        )
+
+                    [role] => монтаж
+                )
+
+            [17] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1988641/
+                    [names] => Array
+                        (
+                            [0] => Тревис Ситтард
+                        )
+
+                    [role] => монтаж
+                )
+
+            [18] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/34783/
+                    [names] => Array
+                        (
+                            [0] => Дэнни МакБрайд
+                        )
+
+                    [role] => актер
+                )
+
+            [19] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/14969/
+                    [names] => Array
+                        (
+                            [0] => Уолтон Гоггинс
+                        )
+
+                    [role] => актер
+                )
+
+            [20] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1195973/
+                    [names] => Array
+                        (
+                            [0] => Джорджия Кинг
+                        )
+
+                    [role] => актер
+                )
+
+            [21] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/4135611/
+                    [names] => Array
+                        (
+                            [0] => Майя Дж. Лав
+                        )
+
+                    [role] => актер
+                )
+
+            [22] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2125197/
+                    [names] => Array
+                        (
+                            [0] => Шон МакКинни
+                        )
+
+                    [role] => актер
+                )
+
+            [23] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/34780/
+                    [names] => Array
+                        (
+                            [0] => Шей Уигэм
+                        )
+
+                    [role] => актер
+                )
+
+            [24] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/451936/
+                    [names] => Array
+                        (
+                            [0] => Эди Паттерсон
+                        )
+
+                    [role] => актер
+                )
+
+            [25] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/55750/
+                    [names] => Array
+                        (
+                            [0] => Бизи Филиппс
+                        )
+
+                    [role] => актер
+                )
+
+            [26] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1864831/
+                    [names] => Array
+                        (
+                            [0] => Эшли Спайллерс
+                        )
+
+                    [role] => актер
+                )
+
+            [27] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/38574/
+                    [names] => Array
+                        (
+                            [0] => Джеймс М. Коннор
+                        )
+
+                    [role] => актер
+                )
+
+        )
+
+    [description] => Черная комедия про двух истеричных завучей средней школы, которые по иронии судьбы отвечают за дисциплину и учебный план. После того, как директор уходит на пенсию, завучи затевают эпическую борьбу за трон.
+    [rating] => Array
+        (
+            [kinopoisk] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+        )
+
+    [version] => $Id: Kinopoisk.php 75 2010-10-12 08:52:20Z macondos $
+)

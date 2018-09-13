@@ -26,8 +26,11 @@ class Lms_Service_Movie
         if ($parser === null) {
             $httpClient = Lms_Application::getHttpClient();
             $requestClient = new Lms_PhpHttpRequest_Client($httpClient);
-            $parserService = new Lms_Service_DataParser($requestClient,
-                                                        $httpClient);
+            if (Lms_Application::getConfig('parser_service', 'builtin')) {
+                $parserService = new Lms_Service_DataParserLocal($httpClient);
+            } else {
+                $parserService = new Lms_Service_DataParser($requestClient, $httpClient);
+            }
             $config = Lms_Application::getConfig('parser_service');
             $parserService->setServiceUrl($config['url']);
             $parserService->setAuthData(

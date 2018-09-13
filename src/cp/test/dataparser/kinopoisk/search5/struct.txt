@@ -1,0 +1,49 @@
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Игра престолов (сериал)
+                            [1] => Game of Thrones
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/464963/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/464963.jpg
+                    [info] => США... реж. Дэвид Наттер...(фэнтези, боевик, драма...)
+     Питер Динклэйдж, Лина Хиди, ...
+                    [year] => 2011 – ...
+                    [country] => США...
+                    [director] => Дэвид Наттер...
+                    [genre] => фэнтези, боевик, драма...
+                    [actors] => Питер Динклэйдж, Лина Хиди, ...
+                    [rating] => 9.0
+                )
+
+            [1] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Игра престолов: Сезон 2 – Приглашение на съемочную площадку (видео)
+                            [1] => Game of Thrones: Season 2 - Invitation to the Set
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/814017/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/814017.jpg
+                    [info] => США
+     	(документальный, короткометражка)
+     Алфи Аллен, Джейкоб Андерсон, ...
+                    [year] => 2012
+                    [country] => США
+                    [director] => 
+                    [genre] => документальный, короткометражка
+                    [actors] => Алфи Аллен, Джейкоб Андерсон, ...
+                    [rating] => 8.3
+                )
+
+        )
+
+    [version] => $Id$
+)

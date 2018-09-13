@@ -44,16 +44,16 @@
     <tr>
         <td>IMDb:</td>
         <td>
-            ID: <input type="text" value="${movie.imdb_id}" data-field="info/imdb_id" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Рейтинг: <input type="text" value="${movie.rating_imdb_value}" data-field="info/rating_imdb_value" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ID: <input type="text" value="${movie.imdb_id}" data-field="info/imdb_id" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Рейтинг: <input type="text" value="${movie.rating_imdb_value}" data-field="info/rating_imdb_value" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             голосов: <input type="text" value="${movie.rating_imdb_count}" data-field="info/rating_imdb_count" class="form" style="width:60px">
         </td>
     </tr>
     <tr>
         <td>KinoPoisk:</td>
         <td>
-            ID: <input type="text" value="${movie.kinopoisk_id}" data-field="info/kinopoisk_id" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Рейтинг: <input type="text" value="${movie.rating_kinopoisk_value}" data-field="info/rating_kinopoisk_value" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ID: <input type="text" value="${movie.kinopoisk_id}" data-field="info/kinopoisk_id" class="form" style="width:75px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Рейтинг: <input type="text" value="${movie.rating_kinopoisk_value}" data-field="info/rating_kinopoisk_value" class="form" style="width:50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             голосов: <input type="text" value="${movie.rating_kinopoisk_count}" data-field="info/rating_kinopoisk_count" class="form" style="width:60px">
         </td>
     </tr>

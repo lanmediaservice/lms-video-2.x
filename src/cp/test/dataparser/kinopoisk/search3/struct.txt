@@ -1,0 +1,48 @@
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Шестеро заболевают
+                            [1] => Six Men Getting Sick
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/15811/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/15811.jpg
+                    [info] => США, реж. Дэвид Линч(мультфильм, короткометражка, ужасы)
+     
+                    [year] => 1966
+                    [country] => США
+                    [director] => Дэвид Линч
+                    [genre] => мультфильм, короткометражка, ужасы
+                    [actors] => 
+                    [rating] => 5.1
+                )
+
+            [1] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Шесть фигур
+                            [1] => Six Figures
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/105297/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/105297.jpg
+                    [info] => Канада, реж. Дэвид Кристенсен(драма)
+     ДжейАр Борн, Кэролайн Кейв, ...
+                    [year] => 2005
+                    [country] => Канада
+                    [director] => Дэвид Кристенсен
+                    [genre] => драма
+                    [actors] => ДжейАр Борн, Кэролайн Кейв, ...
+                    [rating] => 
+                )
+
+        )
+
+    [version] => $Id$
+)

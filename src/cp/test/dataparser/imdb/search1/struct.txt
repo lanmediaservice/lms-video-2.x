@@ -1,0 +1,34 @@
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => The Matrix
+                        )
+
+                    [year] => 1999
+                    [section] => 
+                    [url] => http://www.imdb.com/title/tt0133093/
+                    [image] => https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX32_CR0,0,32,44_AL_.jpg
+                )
+
+            [1] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Matrix
+                        )
+
+                    [year] => 1993
+                    [section] => 
+                    [url] => http://www.imdb.com/title/tt0106062/
+                    [image] => https://m.media-amazon.com/images/M/MV5BYzUzOTA5ZTMtMTdlZS00MmQ5LWFmNjEtMjE5MTczN2RjNjE3XkEyXkFqcGdeQXVyNTc2ODIyMzY@._V1_UX32_CR0,0,32,44_AL_.jpg
+                )
+
+        )
+
+    [version] => $Id$
+)

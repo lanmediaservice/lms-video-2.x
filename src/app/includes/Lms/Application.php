@@ -478,6 +478,7 @@ class Lms_Application
                    ->add(new Zend_Acl_Resource('rating'))
                    ->add(new Zend_Acl_Resource('user'))
                    ->add(new Zend_Acl_Resource('settings'))
+                   ->add(new Zend_Acl_Resource('parser'))
                    ->add(new Zend_Acl_Resource('image-proxy'));
                    
 

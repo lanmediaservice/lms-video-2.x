@@ -1,0 +1,318 @@
+Array
+(
+    [kinopoisk_id] => 301
+    [names] => Array
+        (
+            [0] => Матрица
+            [1] => The Matrix
+        )
+
+    [posters] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/film_iphone/iphone360_301.jpg
+        )
+
+    [posters_big] => Array
+        (
+            [0] => http://www.kinopoisk.ru/images/film_big/301.jpg
+        )
+
+    [year] => 1999
+    [countries] => Array
+        (
+            [0] => США
+        )
+
+    [genres] => Array
+        (
+            [0] => фантастика
+            [1] => боевик
+        )
+
+    [tagline] => Добро пожаловать в реальный мир
+    [budget] => $63 000 000
+    [gross] => Array
+        (
+            [usa] => $999 999 999
+            [worldwide] => $999 999 999
+        )
+
+    [mpaa] => R
+    [age_limit] => 16
+    [duration] => 136
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23330/
+                    [names] => Array
+                        (
+                            [0] => Лана Вачовски
+                        )
+
+                    [role] => режиссер
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23329/
+                    [names] => Array
+                        (
+                            [0] => Лилли Вачовски
+                        )
+
+                    [role] => режиссер
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23329/
+                    [names] => Array
+                        (
+                            [0] => Лилли Вачовски
+                        )
+
+                    [role] => сценарий
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23330/
+                    [names] => Array
+                        (
+                            [0] => Лана Вачовски
+                        )
+
+                    [role] => сценарий
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1790/
+                    [names] => Array
+                        (
+                            [0] => Джоэл Силвер
+                        )
+
+                    [role] => продюсер
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/712/
+                    [names] => Array
+                        (
+                            [0] => Брюс Берман
+                        )
+
+                    [role] => продюсер
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1787/
+                    [names] => Array
+                        (
+                            [0] => Дэн Краччиоло
+                        )
+
+                    [role] => продюсер
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/278101/
+                    [names] => Array
+                        (
+                            [0] => Билл Поуп
+                        )
+
+                    [role] => оператор
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/477776/
+                    [names] => Array
+                        (
+                            [0] => Дон Дэвис
+                        )
+
+                    [role] => композитор
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1268948/
+                    [names] => Array
+                        (
+                            [0] => Оуэн Патерсон
+                        )
+
+                    [role] => художник
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1987225/
+                    [names] => Array
+                        (
+                            [0] => Хью Бэйтап
+                        )
+
+                    [role] => художник
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1988843/
+                    [names] => Array
+                        (
+                            [0] => Мишель МакГэхи
+                        )
+
+                    [role] => художник
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/310065/
+                    [names] => Array
+                        (
+                            [0] => Зак Стэнберг
+                        )
+
+                    [role] => монтаж
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/7836/
+                    [names] => Array
+                        (
+                            [0] => Киану Ривз
+                        )
+
+                    [role] => актер
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/9838/
+                    [names] => Array
+                        (
+                            [0] => Лоренс Фишбёрн
+                        )
+
+                    [role] => актер
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/6226/
+                    [names] => Array
+                        (
+                            [0] => Кэрри-Энн Мосс
+                        )
+
+                    [role] => актер
+                )
+
+            [16] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1491/
+                    [names] => Array
+                        (
+                            [0] => Хьюго Уивинг
+                        )
+
+                    [role] => актер
+                )
+
+            [17] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23331/
+                    [names] => Array
+                        (
+                            [0] => Глория Фостер
+                        )
+
+                    [role] => актер
+                )
+
+            [18] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/9030/
+                    [names] => Array
+                        (
+                            [0] => Джо Пантольяно
+                        )
+
+                    [role] => актер
+                )
+
+            [19] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23332/
+                    [names] => Array
+                        (
+                            [0] => Маркус Чонг
+                        )
+
+                    [role] => актер
+                )
+
+            [20] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23333/
+                    [names] => Array
+                        (
+                            [0] => Джулиан Араханга
+                        )
+
+                    [role] => актер
+                )
+
+            [21] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23334/
+                    [names] => Array
+                        (
+                            [0] => Мэтт Доран
+                        )
+
+                    [role] => актер
+                )
+
+            [22] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/23335/
+                    [names] => Array
+                        (
+                            [0] => Белинда МакКлори
+                        )
+
+                    [role] => актер
+                )
+
+        )
+
+    [description] => Жизнь Томаса Андерсона разделена на две части: днём он — самый обычный офисный работник, получающий нагоняи от начальства, а ночью превращается в хакера по имени Нео, и нет места в сети, куда он не смог бы дотянуться. Но однажды всё меняется — герой, сам того не желая, узнаёт страшную правду: всё, что его окружает — не более, чем иллюзия, Матрица, а люди — всего лишь источник питания для искусственного интеллекта, поработившего человечество. И только Нео под силу изменить расстановку сил в этом чужом и страшном мире.
+    [rating] => Array
+        (
+            [kinopoisk] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+            [imdb] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+        )
+
+    [version] => $Id$
+)

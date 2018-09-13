@@ -169,6 +169,7 @@
                     <label>Система парсинга:</label>
                 </td>
             </tr>
+            ${simpleOption('parser_service/builtin', 'использовать встроенную', 'boolean', true)}
             ${simpleOption('parser_service/username', ' логин', 'text')}
             ${simpleOption('parser_service/password', ' пароль', 'password')}
         </tbody>

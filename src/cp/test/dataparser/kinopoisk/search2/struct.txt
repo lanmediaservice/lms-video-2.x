@@ -1,0 +1,48 @@
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Телекинез
+                            [1] => Carrie
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/675631/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/675631.jpg
+                    [info] => США, реж. Кимберли Пирс(триллер, ужасы, драма)
+     Хлоя Грейс Морец, Джулианна Мур, ...
+                    [year] => 2013
+                    [country] => США
+                    [director] => Кимберли Пирс
+                    [genre] => триллер, ужасы, драма
+                    [actors] => Хлоя Грейс Морец, Джулианна Мур, ...
+                    [rating] => 5.9
+                )
+
+            [1] => Array
+                (
+                    [names] => Array
+                        (
+                            [0] => Телекинез
+                            [1] => Yeomryeok
+                        )
+
+                    [url] => http://www.kinopoisk.ru/film/1005000/
+                    [image] => http://www.kinopoisk.ru/images/sm_film/1005000.jpg
+                    [info] => Корея Южная, реж. Ён Сан-хо(комедия, фантастика, боевик)
+     Рю Сын-рён, Щим Ын-гён, ...
+                    [year] => 2018
+                    [country] => Корея Южная
+                    [director] => Ён Сан-хо
+                    [genre] => комедия, фантастика, боевик
+                    [actors] => Рю Сын-рён, Щим Ын-гён, ...
+                    [rating] => 5.9
+                )
+
+        )
+
+    [version] => $Id$
+)

@@ -1,0 +1,538 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Documentation SimpleTest : le rapporteur de test</title>
+<link rel="stylesheet" type="text/css" href="docs.css" title="Styles">
+</head>
+<body>
+<div class="menu_back"><div class="menu">
+<a href="index.html">SimpleTest</a>
+                |
+                <a href="overview.html">Overview</a>
+                |
+                <a href="unit_test_documentation.html">Unit tester</a>
+                |
+                <a href="group_test_documentation.html">Group tests</a>
+                |
+                <a href="mock_objects_documentation.html">Mock objects</a>
+                |
+                <a href="partial_mocks_documentation.html">Partial mocks</a>
+                |
+                <a href="reporter_documentation.html">Reporting</a>
+                |
+                <a href="expectation_documentation.html">Expectations</a>
+                |
+                <a href="web_tester_documentation.html">Web tester</a>
+                |
+                <a href="form_testing_documentation.html">Testing forms</a>
+                |
+                <a href="authentication_documentation.html">Authentication</a>
+                |
+                <a href="browser_documentation.html">Scriptable browser</a>
+</div></div>
+<h1>Documentation sur le rapporteur de test</h1>
+        This page...
+        <ul>
+<li>
+            Afficher <a href="#html">les r?sultats en HTML</a>
+        </li>
+<li>
+            Afficher et <a href="#autres">rapporter les r?sultats</a>
+            dans d'autres formats
+        </li>
+<li>
+            Utilis? <a href="#cli">SimpleTest depuis la ligne de commande</a>
+        </li>
+<li>
+            <a href="#xml">Utiliser XML</a> pour des tests distants
+        </li>
+</ul>
+<div class="content">
+        
+            <p>
+                SimpleTest suit plut?t plus que moins le mod?le MVC (Mod?le-Vue-Contr?leur).
+                Les classes "reporter" sont les vues et les mod?les
+                sont vos sc?narios de test et leur hi?rarchie.
+                Le contr?leur est le plus souvent masqu? ? l'utilisateur
+                de SimpleTest ? moins de vouloir changer la fa?on
+                dont les tests sont effectivement ex?cut?s,
+                auquel cas il est possible de surcharger les objets
+                "runner" (ceux de l'ex?cuteur) depuis l'int?rieur
+                d'un sc?nario de test. Comme d'habitude avec MVC,
+                le contr?leur est plut?t ind?fini et il existe d'autres endroits
+                pour contr?ler l'ex?cution des tests.
+            </p>
+        
+        <h2>
+<a class="target" name="html"></a>Les r?sultats rapport?s au format HTML</h2>
+            <p>
+                L'affichage par d?faut est minimal ? l'extr?me.
+                Il renvoie le succ?s ou l'?chec avec les barres conventionnelles
+                - rouge et verte - et affichent une trace d'arborescence
+                des groupes de test pour chaque assertion erron?e. Voici un tel ?chec...
+                <div class="demo">
+                    <h1>File test</h1>
+                    <span class="fail">Fail</span>: createnewfile-&gt;True assertion failed.<br>
+                    <div style="padding: 8px; margin-top: 1em; background-color: red; color: white;">1/1 test cases complete.
+                    <strong>0</strong> passes, <strong>1</strong> fails and <strong>0</strong> exceptions.</div>
+                </div>
+                Alors qu'ici tous les tests passent...
+                <div class="demo">
+                    <h1>File test</h1>
+                    <div style="padding: 8px; margin-top: 1em; background-color: green; color: white;">1/1 test cases complete.
+                    <strong>1</strong> passes, <strong>0</strong> fails and <strong>0</strong> exceptions.</div>
+                </div>
+                La bonne nouvelle, c'est qu'il existe pas mal de points
+                dans la hi?rarchie de l'affichage pour cr?er des sous-classes.
+            </p>
+            <p>
+                Pour l'affichage bas? sur des pages web,
+                il y a la classe <span class="new_code">HtmlReporter</span> avec la signature suivante...
+<pre>
+class HtmlReporter extends SimpleReporter {
+    public HtmlReporter($encoding) { ... }
+    public makeDry(boolean $is_dry) { ... }
+    public void paintHeader(string $test_name) { ... }
+    public void sendNoCacheHeaders() { ... }
+    public void paintFooter(string $test_name) { ... }
+    public void paintGroupStart(string $test_name, integer $size) { ... }
+    public void paintGroupEnd(string $test_name) { ... }
+    public void paintCaseStart(string $test_name) { ... }
+    public void paintCaseEnd(string $test_name) { ... }
+    public void paintMethodStart(string $test_name) { ... }
+    public void paintMethodEnd(string $test_name) { ... }
+    public void paintFail(string $message) { ... }
+    public void paintPass(string $message) { ... }
+    public void paintError(string $message) { ... }
+    public void paintException(string $message) { ... }
+    public void paintMessage(string $message) { ... }
+    public void paintFormattedMessage(string $message) { ... }
+    protected string getCss() { ... }
+    public array getTestList() { ... }
+    public integer getPassCount() { ... }
+    public integer getFailCount() { ... }
+    public integer getExceptionCount() { ... }
+    public integer getTestCaseCount() { ... }
+    public integer getTestCaseProgress() { ... }
+}
+</pre>
+                Voici ce que certaines de ces m?thodes veulent dire.
+                Premi?rement les m?thodes d'affichage que vous voudrez probablement surcharger...
+                <ul class="api">
+                    <li>
+                        <span class="new_code">HtmlReporter(string $encoding)</span><br>
+                        est le constructeur. Notez que le test unitaire initie
+                        le lien ? l'affichage plut?t que l'oppos?.
+                        L'affichage est principalement un receveur passif
+                        des ?v?nements de tests. Cela permet d'adapter
+                        facilement l'affichage pour d'autres syst?mes
+                        en dehors des tests unitaires, tel le suivi
+                        de la charge de serveurs.
+                        L'"encoding" est le type d'encodage
+                        que vous souhaitez utiliser pour l'affichage du test.
+                        Pour pouvoir effectuer un rendu correct de la sortie
+                        de d?bogage quand on utilise le testeur web,
+                        il doit correspondre ? l'encodage du site test?.
+                        Les cha?nes de caract?res disponibles
+                        sont indiqu?es dans la fonction PHP
+                        <a href="http://www.php.net/manual/fr/function.htmlentities.php">html_entities()</a>.
+                    </li>
+                    <li>
+                        <span class="new_code">void paintHeader(string $test_name)</span><br>
+                        est appel? une fois, au d?but du test quand l'?v?nement
+                        de d?marrage survient. Le premier ?v?nement de d?marrage
+                        est souvent d?livr? par le groupe de tests du niveau
+                        le plus haut et donc c'est de l? que le
+                        <span class="new_code">$test_name</span> arrive.
+                        Il peint les titres de la page, CSS, la balise "body", etc.
+                        Il ne renvoie rien du tout (<span class="new_code">void</span>).
+                    </li>
+                    <li>
+                        <span class="new_code">void paintFooter(string $test_name)</span><br>
+                        est appel? ? la toute fin du test pour fermer
+                        les balises ouvertes par l'ent?te de la page.
+                        Par d?faut il affiche aussi la barre rouge ou verte
+                        et le d?compte final des r?sultats.
+                        En fait la fin des tests arrive quand l'?v?nement
+                        de fin de test arrive avec le m?me nom
+                        que celui qui l'a initi? au m?me niveau.
+                        Le nid des tests en quelque sorte.
+                        Fermer le dernier test finit l'affichage.
+                    </li>
+                    <li>
+                        <span class="new_code">void paintMethodStart(string $test_name)</span><br>
+                        est appel? au d?but de chaque m?thode de test.
+                        Normalement le nom vient de celui de la m?thode.
+                        Les autres ?v?nements de d?part de test
+                        se comportent de la m?me mani?re sauf que
+                        celui du groupe de tests indique au rapporteur
+                        le nombre de sc?narios de test qu'il contient.
+                        De la sorte le rapporteur peut afficher une barre
+                        de progr?s au fur et ? mesure que l'ex?cuteur
+                        passe en revue les sc?narios de test.
+                    </li>
+                    <li>
+                        <span class="new_code">void paintMethodEnd(string $test_name)</span><br>
+                        cl?t le test lanc? avec le m?me nom.
+                    </li>
+                    <li>
+                        <span class="new_code">void paintFail(string $message)</span><br>
+                        peint un ?chec. Par d?faut il ne fait qu'afficher
+                        le mot "fail", une trace d'arborescence
+                        affichant la position du test en cours
+                        et le message transmis par l'assertion.
+                    </li>
+                    <li>
+                        <span class="new_code">void paintPass(string $message)</span><br>
+                        ne fait rien, par d?faut.
+                    </li>
+                    <li>
+                        <span class="new_code">string getCss()</span><br>
+                        renvoie les styles CSS sous la forme d'une cha?ne
+                        ? l'attention de la m?thode d'ent?tes d'une page.
+                        Des styles additionnels peuvent ?tre ajout?s ici
+                        si vous ne surchargez pas les ent?tes de la page.
+                        Vous ne voudrez pas utiliser cette m?thode dans
+                        des ent?tes d'une page surcharg?e si vous souhaitez
+                        inclure le feuille de style CSS d'origine.
+                    </li>
+                </ul>
+                Il y a aussi des accesseurs pour aller chercher l'information
+                sur l'?tat courant de la suite de test. Vous les utiliserez
+                pour enrichir l'affichage...
+                <ul class="api">
+                    <li>
+                        <span class="new_code">array getTestList()</span><br>
+                        est la premi?re m?thode tr?s commode pour les sous-classes.
+                        Elle liste l'arborescence courante des tests
+                        sous la forme d'une liste de noms de tests.
+                        Le premier test -- celui le plus proche du coeur --
+                        sera le premier dans la liste et la m?thode de test
+                        en cours sera la derni?re.
+                    </li>
+                    <li>
+                        <span class="new_code">integer getPassCount()</span><br>
+                        renvoie le nombre de succ?s atteint. Il est n?cessaire
+                        pour l'affichage ? la fin.
+                    </li>
+                    <li>
+                        <span class="new_code">integer getFailCount()</span><br>
+                        renvoie de la m?me mani?re le nombre d'?checs.
+                    </li>
+                    <li>
+                        <span class="new_code">integer getExceptionCount()</span><br>
+                        renvoie quant ? lui le nombre d'erreurs.
+                    </li>
+                    <li>
+                        <span class="new_code">integer getTestCaseCount()</span><br>
+                        est le nombre total de sc?narios lors de l'ex?cution des tests.
+                        Il comprend aussi les tests group?s.
+                    </li>
+                    <li>
+                        <span class="new_code">integer getTestCaseProgress()</span><br>
+                        est le nombre de sc?narios r?alis?s jusqu'? pr?sent.
+                    </li>
+                </ul>
+                Une modification simple : demander ? l'HtmlReporter d'afficher
+                aussi bien les succ?s que les ?checs et les erreurs...
+<pre><strong>
+class ShowPasses extends HtmlReporter {
+    
+    function paintPass($message) {
+        parent::paintPass($message);
+        print "&amp;&lt;span class=\"pass\"&gt;Pass&lt;/span&gt;: ";
+        $breadcrumb = $this-&gt;getTestList();
+        array_shift($breadcrumb);
+        print implode("-&amp;gt;", $breadcrumb);
+        print "-&amp;gt;$message&lt;br /&gt;\n";
+    }
+    
+    protected function getCss() {
+        return parent::getCss() . ' .pass { color: green; }';
+    }
+}</strong>
+</pre>
+            </p>
+            <p>
+                Une m?thode qui a beaucoup fait jaser reste la m?thode <span class="new_code">makeDry()</span>.
+                Si vous lancez cette m?thode, sans param?tre,
+                sur le rapporteur avant que la suite de test
+                ne soit ex?cut?e alors aucune m?thode de test
+                ne sera appel?e. Vous continuerez ? avoir
+                les ?v?nements entrants et sortants des m?thodes
+                et sc?narios de test, mais aucun succ?s ni ?chec ou erreur,
+                parce que le code de test ne sera pas ex?cut?.
+            </p>
+            <p>
+                La raison ? Pour permettre un affichage complexe
+                d'une IHM (ou GUI) qui permettrait la s?lection
+                de sc?narios de test individuels.
+                Afin de construire une liste de tests possibles,
+                ils ont besoin d'un rapport sur la structure du test
+                pour l'affichage, par exemple, d'une vue en arbre
+                de la suite de test. Avec un rapporteur lanc?
+                sur une ex?cution s?che qui ne renverrait
+                que les ?v?nements d'affichage, cela devient
+                facilement r?alisable.
+            </p>
+        
+        <h2>
+<a class="target" name="autre"></a>Etendre le rapporteur</h2>
+            <p>
+                Plut?t que de modifier l'affichage existant,
+                vous voudrez peut-?tre produire une pr?sentation HTML
+                compl?tement diff?rente, ou m?me g?n?rer une version texte ou XML.
+                Plut?t que de surcharger chaque m?thode dans 
+                <span class="new_code">HtmlReporter</span> nous pouvons nous rendre
+                une ?tape plus haut dans la hi?rarchie de classe vers
+                <span class="new_code">SimpleReporter</span> dans le fichier source <em>simple_test.php</em>.
+            </p>
+            <p>
+                Un affichage sans rien, un canevas vierge
+                pour votre propre cr?ation, serait...
+<pre><strong>
+require_once('simpletest/simple_test.php');</strong>
+
+class MyDisplay extends SimpleReporter {<strong>
+    </strong>
+    function paintHeader($test_name) {
+    }
+    
+    function paintFooter($test_name) {
+    }
+    
+    function paintStart($test_name, $size) {<strong>
+        parent::paintStart($test_name, $size);</strong>
+    }
+    
+    function paintEnd($test_name, $size) {<strong>
+        parent::paintEnd($test_name, $size);</strong>
+    }
+    
+    function paintPass($message) {<strong>
+        parent::paintPass($message);</strong>
+    }
+    
+    function paintFail($message) {<strong>
+        parent::paintFail($message);</strong>
+    }
+}
+</pre>
+                Aucune sortie ne viendrait de cette classe jusqu'? un ajout de votre part.
+            </p>
+        
+        <h2>
+<a class="target" name="cli"></a>Le rapporteur en ligne de commande</h2>
+            <p>
+                SimpleTest est aussi livr? avec un rapporteur
+                en ligne de commande, minime lui aussi.
+                L'interface imite celle de JUnit,
+                sauf qu'elle envoie les messages d'erreur au fur
+                et ? mesure de leur arriv?e.
+                Pour utiliser le rapporteur en ligne de commande,
+                il suffit de l'intervertir avec celui de la version HTML...
+<pre>
+&lt;?php
+require_once('simpletest/unit_tester.php');
+require_once('simpletest/reporter.php');
+
+$test = &amp;new GroupTest('File test');
+$test-&gt;addTestFile('tests/file_test.php');
+$test-&gt;run(<strong>new TextReporter()</strong>);
+?&gt;
+</pre>
+                Et ensuite d'invoquer la suite de test ? partir d'une ligne de commande...
+<pre class="shell">
+php file_test.php
+</pre>
+                Bien s?r vous aurez besoin d'installer PHP
+                en ligne de commande. Une suite de test qui
+                passerait toutes ses assertions ressemble ?...
+<pre class="shell">
+File test
+OK
+Test cases run: 1/1, Failures: 0, Exceptions: 0
+</pre>
+                Un ?chec d?clenche un affichage comme...
+<pre class="shell">
+File test
+1) True assertion failed.
+    in createnewfile
+FAILURES!!!
+Test cases run: 1/1, Failures: 1, Exceptions: 0
+</pre>
+            </p>
+            <p>
+                Une des principales raisons pour utiliser
+                une suite de test en ligne de commande tient
+                dans l'utilisation possible du testeur avec
+                un processus automatis?. Pour fonctionner comme
+                il faut dans des scripts shell le script de test
+                devrait renvoyer un code de sortie non-nul suite ? un ?chec.
+                Si une suite de test ?choue la valeur <span class="new_code">false</span>
+                est renvoy?e par la m?thode <span class="new_code">SimpleTest::run()</span>.
+                Nous pouvons utiliser ce r?sultat pour terminer le script
+                avec la bonne valeur renvoy?e...
+<pre>
+&lt;?php
+require_once('simpletest/unit_tester.php');
+require_once('simpletest/reporter.php');
+
+$test = &amp;new GroupTest('File test');
+$test-&gt;addTestFile('tests/file_test.php');<strong>
+exit ($test-&gt;run(new TextReporter()) ? 0 : 1);</strong>
+?&gt;
+</pre>
+                Bien s?r l'objectif n'est pas de cr?er deux scripts de test,
+                l'un en ligne de commande et l'autre pour un navigateur web,
+                pour chaque suite de test.
+                Le rapporteur en ligne de commande inclut
+                une m?thode pour d?terminer l'environnement d'ex?cution...
+<pre>
+&lt;?php
+require_once('simpletest/unit_tester.php');
+require_once('simpletest/reporter.php');
+
+$test = &amp;new GroupTest('File test');
+$test-&gt;addTestFile('tests/file_test.php');<strong>
+if (TextReporter::inCli()) {</strong>
+    exit ($test-&gt;run(new TextReporter()) ? 0 : 1);<strong>
+}</strong>
+$test-&gt;run(new HtmlReporter());
+?&gt;
+</pre>
+                Il s'agit l? de la forme utilis?e par SimpleTest lui-m?me.
+            </p>
+        
+        <h2>
+<a class="target" name="xml"></a>Test distant</h2>
+            <p>
+                SimpleTest est livr? avec une classe <span class="new_code">XmlReporter</span>
+                utilis?e pour de la communication interne.
+                Lors de son ex?cution, le r?sultat ressemble ?...
+<pre class="shell">
+&lt;?xml version="1.0"?&gt;
+&lt;run&gt;
+  &lt;group size="4"&gt;
+    &lt;name&gt;Remote tests&lt;/name&gt;
+    &lt;group size="4"&gt;
+      &lt;name&gt;Visual test with 48 passes, 48 fails and 4 exceptions&lt;/name&gt;
+      &lt;case&gt;
+        &lt;name&gt;testofunittestcaseoutput&lt;/name&gt;
+        &lt;test&gt;
+          &lt;name&gt;testofresults&lt;/name&gt;
+          &lt;pass&gt;This assertion passed&lt;/pass&gt;
+          &lt;fail&gt;This assertion failed&lt;/fail&gt;
+        &lt;/test&gt;
+        &lt;test&gt;
+          ...
+        &lt;/test&gt;
+      &lt;/case&gt;
+    &lt;/group&gt;
+  &lt;/group&gt;
+&lt;/run&gt;
+</pre>
+                Vous pouvez utiliser ce format avec le parseur
+                fourni dans SimpleTest lui-m?me.
+                Il s'agit de <span class="new_code">SimpleTestXmlParser</span>
+                et se trouve <em>xml.php</em> ? l'int?rieur du paquet SimpleTest...
+<pre>
+&lt;?php
+require_once('simpletest/xml.php');
+
+...
+$parser = &amp;new SimpleTestXmlParser(new HtmlReporter());
+$parser-&gt;parse($test_output);
+?&gt;
+</pre>
+                <span class="new_code">$test_output</span> devrait ?tre au format XML,
+                ? partir du rapporteur XML, et pourrait venir
+                d'une ex?cution en ligne de commande d'un sc?nario de test.
+                Le parseur envoie des ?v?nements au rapporteur exactement
+                comme tout autre ex?cution de test.
+                Il y a des occasions bizarres dans lesquelles c'est en fait tr?s utile.
+            </p>
+            <p>
+                Un probl?me des tr?s grandes suites de test,
+                c'est qu'elles peuvent venir ? bout de la limite de m?moire
+                par d?faut d'un process PHP - 8Mb.
+                En pla?ant la sortie des groupes de test dans du XML
+                et leur ex?cution dans des process diff?rents,
+                le r?sultat peut ?tre pars? ? nouveau pour agr?ger
+                les r?sultats avec moins d'impact sur le test au premier niveau.
+            </p>
+            <p>
+                Parce que la sortie XML peut venir de n'importe o?,
+                ?a ouvre des possibilit?s d'agr?gation d'ex?cutions de test
+                depuis des serveur distants.
+                Un sc?nario de test pour le r?aliser existe d?j?
+                ? l'int?rieur du framework SimpleTest, mais il est encore exp?rimental...
+<pre>
+&lt;?php<strong>
+require_once('../remote.php');</strong>
+require_once('../reporter.php');
+
+$test_url = ...;
+$dry_url = ...;
+
+$test = &amp;new GroupTest('Remote tests');
+$test-&gt;addTestCase(<strong>new RemoteTestCase($test_url, $dry_url)</strong>);
+$test-&gt;run(new HtmlReporter());
+?&gt;
+</pre>
+                <span class="new_code">RemoteTestCase</span> prend la localisation r?elle
+                du lanceur de test, tout simplement un page web au format XML.
+                Il prend aussi l'URL d'un rapporteur initi?
+                pour effectuer une ex?cution s?che.
+                Cette technique est employ?e pour que les progr?s
+                soient correctement rapport?s vers le haut.
+                <span class="new_code">RemoteTestCase</span> peut ?tre ajout? ?
+                une suite de test comme n'importe quel autre groupe de tests.
+            </p>
+        
+    </div>
+        References and related information...
+        <ul>
+<li>
+            La page du projet SimpleTest sur
+            <a href="http://sourceforge.net/projects/simpletest/">SourceForge</a>.
+        </li>
+<li>
+            La page de t?l?chargement de SimpleTest sur
+            <a href="http://www.lastcraft.com/simple_test.php">LastCraft</a>.
+        </li>
+<li>
+            L'<a href="http://simpletest.org/api/">API pour d?veloppeur de SimpleTest</a>
+            donne tous les d?tails sur les classes et les assertions disponibles.
+        </li>
+</ul>
+<div class="menu_back"><div class="menu">
+<a href="index.html">SimpleTest</a>
+                |
+                <a href="overview.html">Overview</a>
+                |
+                <a href="unit_test_documentation.html">Unit tester</a>
+                |
+                <a href="group_test_documentation.html">Group tests</a>
+                |
+                <a href="mock_objects_documentation.html">Mock objects</a>
+                |
+                <a href="partial_mocks_documentation.html">Partial mocks</a>
+                |
+                <a href="reporter_documentation.html">Reporting</a>
+                |
+                <a href="expectation_documentation.html">Expectations</a>
+                |
+                <a href="web_tester_documentation.html">Web tester</a>
+                |
+                <a href="form_testing_documentation.html">Testing forms</a>
+                |
+                <a href="authentication_documentation.html">Authentication</a>
+                |
+                <a href="browser_documentation.html">Scriptable browser</a>
+</div></div>
+<div class="copyright">
+            Copyright<br>Marcus Baker 2006
+        </div>
+</body>
+</html>

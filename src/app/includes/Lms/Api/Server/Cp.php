@@ -1265,7 +1265,8 @@ class Lms_Api_Server_Cp extends Lms_Api_Server_Abstract
 
         $result['config']['parser_service/username'] = Lms_Application::getConfigDefault('parser_service', 'username');
         $result['config']['parser_service/password'] = Lms_Application::getConfigDefault('parser_service', 'password');
-        
+        $result['config']['parser_service/builtin'] = Lms_Application::getConfigDefault('parser_service', 'builtin');
+
         $result['config']['filesystem/ls_dateformat_in_iso8601'] = Lms_Application::getConfigDefault('filesystem', 'ls_dateformat_in_iso8601');
         $result['config']['filesystem/disable_4gb_support'] = Lms_Application::getConfigDefault('filesystem', 'disable_4gb_support');
         $result['config']['filesystem/encoding/default'] = Lms_Application::getConfigDefault('filesystem', 'encoding', 'default');

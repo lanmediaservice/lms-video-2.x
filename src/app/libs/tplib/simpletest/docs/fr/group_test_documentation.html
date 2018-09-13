@@ -1,0 +1,401 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Documentation SimpleTest : Grouper des tests</title>
+<link rel="stylesheet" type="text/css" href="docs.css" title="Styles">
+</head>
+<body>
+<div class="menu_back"><div class="menu">
+<a href="index.html">SimpleTest</a>
+                |
+                <a href="overview.html">Overview</a>
+                |
+                <a href="unit_test_documentation.html">Unit tester</a>
+                |
+                <a href="group_test_documentation.html">Group tests</a>
+                |
+                <a href="mock_objects_documentation.html">Mock objects</a>
+                |
+                <a href="partial_mocks_documentation.html">Partial mocks</a>
+                |
+                <a href="reporter_documentation.html">Reporting</a>
+                |
+                <a href="expectation_documentation.html">Expectations</a>
+                |
+                <a href="web_tester_documentation.html">Web tester</a>
+                |
+                <a href="form_testing_documentation.html">Testing forms</a>
+                |
+                <a href="authentication_documentation.html">Authentication</a>
+                |
+                <a href="browser_documentation.html">Scriptable browser</a>
+</div></div>
+<h1>Documentation sur le groupement des tests</h1>
+        This page...
+        <ul>
+<li>
+            Plusieurs approches pour <a href="#group">grouper des tests</a> ensemble.
+        </li>
+<li>
+            Combiner des groupes des tests dans des
+            <a href="#plus-haut">groupes plus grands</a>.
+        </li>
+<li>
+            Int?grer des <a href="#heritage">sc?narios de test h?rit?s</a>
+            d'un autre type de PHPUnit.
+        </li>
+</ul>
+<div class="content">
+        <h2>
+<a class="target" name="grouper"></a>Grouper des tests</h2>
+            <p>
+                Pour lancer les sc?narios de tests en tant que groupe,
+                ils devraient ?tre plac?s dans des fichiers sans le code du lanceur...
+<pre>
+<strong>&lt;?php
+    require_once('../classes/io.php');
+
+    class FileTester extends UnitTestCase {
+        ...
+    }
+
+    class SocketTester extends UnitTestCase {
+        ...
+    }
+?&gt;</strong>
+</pre>
+                Autant de sc?narios que n?cessaires peuvent ?tre
+                mis dans un fichier unique. Ils doivent contenir
+                tout le code n?cessaire, entre autres la biblioth?que test?e,
+                mais aucune des biblioth?ques de SimpleTest.
+            </p>
+            <p>
+                Si vous avez ?tendu l'un ou l'autre des sc?narios de test,
+                vous pouvez aussi les inclure.
+<pre>
+&lt;?php
+    require_once('../classes/io.php');
+<strong>
+    class MyFileTestCase extends UnitTestCase {
+        ...
+    }
+    SimpleTestOptions::ignore('MyFileTestCase');</strong>
+
+    class FileTester extends MyFileTestCase {
+        ...
+    }
+
+    class SocketTester extends UnitTestCase {
+        ...
+    }
+?&gt;
+</pre>
+                La classe <span class="new_code">FileTester</span> ne contient aucun test v?ritable,
+                il s'agit d'une classe de base pour d'autres sc?narios de test.
+                Pour cette raison nous utilisons la directive
+                <span class="new_code">SimpleTestOptions::ignore()</span> pour indiquer
+                au prochain groupe de tests de l'ignorer.
+                Cette directive peut se placer n'importe o? dans le fichier
+                et fonctionne quand un fichier complet des sc?narios de test
+                est charg? (cf. ci-dessous).
+                Nous l'appelons <em>file_test.php</em>.
+            </p>
+            <p>
+                Ensuite nous cr?ons un fichier de groupe de tests,
+                disons <em>group_test.php</em>.
+                Vous penserez ? un nom plus convaincant, j'en suis s?r.
+                Nous lui ajoutons le fichier de test avec une m?thode sans risque...
+<pre>
+&lt;?php
+    require_once('simpletest/unit_tester.php');
+    require_once('simpletest/reporter.php');<strong>
+    require_once('file_test.php');
+
+    $test = &amp;new GroupTest('All file tests');
+    $test-&gt;addTestCase(new FileTestCase());
+    $test-&gt;run(new HtmlReporter());</strong>
+?&gt;
+</pre>
+                Ceci instancie le sc?nario de test avant que
+                la suite de test ne soit lanc?e.
+                ?a pourrait devenir assez on?reux avec
+                un grand nombre de sc?narios de test : 
+                il existe donc une autre m?thode qui instancie
+                la classe uniquement quand elle devient n?cessaire...
+<pre>
+&lt;?php
+    require_once('simpletest/unit_tester.php');
+    require_once('simpletest/reporter.php');
+    require_once('file_test.php');
+
+    $test = &amp;new GroupTest('All file tests');<strong>
+    $test-&gt;addTestClass('FileTestCase');</strong>
+    $test-&gt;run(new HtmlReporter());
+?&gt;
+</pre>
+                Le probl?me de cette technique est que pour
+                chaque sc?nario de test suppl?mentaire nous aurons ? importer
+                (via <span class="new_code">require_once()</span>) le fichier de code de test
+                et ? instancier manuellement chaque sc?nario de test.
+                Nous pouvons nous ?pargner beaucoup de dactylographie avec...
+<pre>
+&lt;?php
+    require_once('simpletest/unit_tester.php');
+    require_once('simpletest/reporter.php');
+
+    $test = &amp;new GroupTest('All file tests');<strong>
+    $test-&gt;addTestFile('file_test.php');</strong>
+    $test-&gt;run(new HtmlReporter());
+?&gt;
+</pre>
+                Voici ce qui vient de se passer :
+                la classe <span class="new_code">GroupTest</span> a r?alis? le
+                <span class="new_code">require_once()</span> pour nous.
+                Ensuite elle v?rifie si de nouvelles classes de sc?nario
+                de test ont ?t? cr??es par ce nouveau fichier
+                et les ajoute automatiquement au groupe de tests.
+                D?sormais tout ce qu'il nous reste ? faire,
+                c'est d'ajouter chaque nouveau fichier.
+            </p>
+            <p>
+                Il y a deux choses qui peuvent planter
+                et qui demandent un minimum d'attention...
+                <ol>
+                    <li>
+                        Le fichier peut d?j? avoir ?t? analys? par PHP
+                        et dans ce cas aucune classe ne sera ajout?e.
+                        Pensez ? bien v?rifier que les sc?narios de test
+                        ne sont inclus que dans ce fichier et dans aucun autre
+                        (Note : avec la nouvelle fonctionnalit? <cite>autorun</cite>,
+                        ce probl?me a maintenant ?t? r?solu).
+                    </li>
+                    <li>
+                        Les nouvelles classes d'extension de sc?nario
+                        de test qui sont incluses seront plac?es
+                        dans le groupe de tests et ex?cut?es par la m?me occasion.
+                        Vous aurez ? ajouter une directive
+                        <span class="new_code">SimpleTestOptions::ignore()</span> pour ces classes
+                        ou alors pensez ? les ajouter avant la ligne
+                        <span class="new_code">GroupTest::addTestFile()</span>.
+                    </li>
+                </ol>
+            </p>
+        
+        <h2>
+<a class="target" name="plus-haut"></a>Groupements de plus haut niveau</h2>
+            <p>
+                La technique ci-dessus place tous les sc?narios de test
+                dans un unique et grand groupe.
+                Sauf que pour des projets plus cons?quents,
+                ce n'est probablement pas assez souple;
+                vous voudriez peut-?tre grouper les tests tout ? fait diff?remment.
+            </p>
+            <p>
+                Pour obtenir un groupe de tests plus souple
+                nous pouvons sous classer <span class="new_code">GroupTest</span>
+                et ensuite l'instancier au cas par cas...
+<pre>
+&lt;?php
+    require_once('simpletest/unit_tester.php');
+    require_once('simpletest/reporter.php');
+    <strong>
+    class FileGroupTest extends GroupTest {
+        function FileGroupTest() {
+            $this-&gt;GroupTest('All file tests');
+            $this-&gt;addTestFile('file_test.php');
+        }
+    }</strong>
+?&gt;
+</pre>
+                Ceci nomme le test dans le constructeur
+                et ensuite ajoute ? la fois nos sc?narios
+                de test et un unique groupe en dessous.
+                Bien s?r nous pouvons ajouter plus d'un groupe ? cet instant.
+                Nous pouvons maintenant invoquer les tests
+                ? partir d'un autre fichier d'ex?cution...
+<pre>
+&lt;?php
+    require_once('file_group_test.php');
+    <strong>
+    $test = &amp;new FileGroupTest();
+    $test-&gt;run(new HtmlReporter());</strong>
+?&gt;
+</pre>
+                ...ou alors nous pouvons les grouper
+                dans un groupe de tests encore plus grand...
+<pre>
+&lt;?php
+    require_once('file_group_test.php');
+    <strong>
+    $test = &amp;new BigGroupTest('Big group');
+    $test-&gt;addTestCase(new FileGroupTest());
+    $test-&gt;addTestCase(...);
+    $test-&gt;run(new HtmlReporter());</strong>
+?&gt;
+</pre>
+                Si nous souhaitons lancer le groupe de tests original
+                sans utiliser ses petits fichiers d'ex?cution,
+                nous pouvons mettre le code du lanceur de test
+                derri?re des barreaux quand nous cr?ons chaque groupe.
+<pre>
+&lt;?php
+    class FileGroupTest extends GroupTest {
+        function FileGroupTest() {
+            $this-&gt;GroupTest('All file tests');
+            $test-&gt;addTestFile('file_test.php');
+        }
+    }
+    <strong>
+    if (! defined('RUNNER')) {
+        define('RUNNER', true);</strong>
+        $test = &amp;new FileGroupTest();
+        $test-&gt;run(new HtmlReporter());
+    }
+?&gt;
+</pre>
+                Cette approche exige aux barri?res d'?tre activ?es
+                ? l'inclusion du fichier de groupe de tests,
+                mais c'est quand m?me moins de tracas que beaucoup
+                de fichiers de lancement ?parpill?s.
+                Reste ? inclure des barreaux identiques
+                au niveau sup?rieur afin de s'assurer que
+                le <span class="new_code">run()</span> ne sera lanc? qu'une seule fois
+                ? partir du script de haut niveau qui l'a invoqu?.
+<pre>
+&lt;?php
+    define('RUNNER', true);
+
+    require_once('file_group_test.php');
+    $test = &amp;new BigGroupTest('Big group');
+    $test-&gt;addTestCase(new FileGroupTest());
+    $test-&gt;addTestCase(...);
+    $test-&gt;run(new HtmlReporter());
+?&gt;
+</pre>
+                Comme les sc?narios de test normaux,
+                un <span class="new_code">GroupTest</span> peut ?tre charg? avec la m?thode
+                <span class="new_code">GroupTest::addTestFile()</span>.
+<pre>  
+&lt;?php   
+    define('RUNNER', true); 
+        
+    $test = &amp;new BigGroupTest('Big group');<strong> 
+    $test-&gt;addTestFile('file_group_test.php');  
+    $test-&gt;addTestFile(...);</strong>   
+    $test-&gt;run(new HtmlReporter()); 
+?&gt;  
+</pre>
+            </p>
+        
+        <h2>
+<a class="target" name="heritage"></a>Int?grer des sc?narios de test h?rit?s</h2>
+            <p>
+                Si vous avez d?j? des tests unitaires pour votre code
+                ou alors si vous ?tendez des classes externes
+                qui ont d?j? leurs propres tests, il y a peu de chances
+                pour que ceux-ci soient d?j? au format SimpleTest.
+                Heureusement il est possible d'incorporer ces sc?narios
+                de test en provenance d'autres testeurs unitaires
+                directement dans des groupes de test SimpleTest.
+            </p>
+            <p>
+                Par exemple, supposons que nous ayons
+                ce sc?nario de test pr?vu pour
+                <a href="http://sourceforge.net/projects/phpunit">PhpUnit</a>
+                dans le fichier <em>config_test.php</em>...
+<pre>
+<strong>class ConfigFileTest extends TestCase {
+    function ConfigFileTest() {
+        $this-&gt;TestCase('Config file test');
+    }
+    
+    function testContents() {
+        $config = new ConfigFile('test.conf');
+        $this-&gt;assertRegexp('/me/', $config-&gt;getValue('username'));
+    }
+}</strong>
+</pre>
+                Le groupe de tests peut le reconna?tre ? partir
+                du moment o? nous mettons l'adaptateur appropri?
+                avant d'ajouter le fichier de test...
+<pre>
+&lt;?php
+    require_once('simpletest/unit_tester.php');
+    require_once('simpletest/reporter.php');<strong>
+    require_once('simpletest/adapters/phpunit_test_case.php');</strong>
+
+    $test = &amp;new GroupTest('All file tests');<strong>
+    $test-&gt;addTestFile('config_test.php');</strong>
+    $test-&gt;run(new HtmlReporter());
+?&gt;
+</pre>
+                Il n'y a que deux adaptateurs,
+                l'autre est pour le paquet testeur unitaire de
+                <a href="http://pear.php.net/manual/en/package.php.phpunit.php">PEAR</a>...
+<pre>
+&lt;?php
+    require_once('simpletest/unit_tester.php');
+    require_once('simpletest/reporter.php');<strong>
+    require_once('simpletest/adapters/pear_test_case.php');</strong>
+
+    $test = &amp;new GroupTest('All file tests');<strong>
+    $test-&gt;addTestFile('some_pear_test_cases.php');</strong>
+    $test-&gt;run(new HtmlReporter());
+?&gt;
+</pre>
+                Les sc?narios de test de PEAR peuvent ?tre
+                librement m?lang?s avec ceux de SimpleTest
+                mais vous ne pouvez pas utiliser les assertions
+                de SimpleTest au sein des versions h?rit?es
+                des sc?narios de test. La raison ?
+                Une simple v?rification que vous ne rendez pas
+                par accident vos sc?narios de test compl?tement
+                d?pendants de SimpleTest.
+                Peut-?tre que vous souhaitez publier
+                votre biblioth?que sur PEAR par exemple :
+                ?a voudrait dire la livrer avec des sc?narios de
+                test compatibles avec PEAR::PhpUnit.
+            </p>
+        
+    </div>
+        References and related information...
+        <ul>
+<li>
+            La page du projet SimpleTest sur
+            <a href="http://sourceforge.net/projects/simpletest/">SourceForge</a>.
+        </li>
+<li>
+            La page de t?l?chargement de SimpleTest sur
+            <a href="http://www.lastcraft.com/simple_test.php">LastCraft</a>.
+        </li>
+</ul>
+<div class="menu_back"><div class="menu">
+<a href="index.html">SimpleTest</a>
+                |
+                <a href="overview.html">Overview</a>
+                |
+                <a href="unit_test_documentation.html">Unit tester</a>
+                |
+                <a href="group_test_documentation.html">Group tests</a>
+                |
+                <a href="mock_objects_documentation.html">Mock objects</a>
+                |
+                <a href="partial_mocks_documentation.html">Partial mocks</a>
+                |
+                <a href="reporter_documentation.html">Reporting</a>
+                |
+                <a href="expectation_documentation.html">Expectations</a>
+                |
+                <a href="web_tester_documentation.html">Web tester</a>
+                |
+                <a href="form_testing_documentation.html">Testing forms</a>
+                |
+                <a href="authentication_documentation.html">Authentication</a>
+                |
+                <a href="browser_documentation.html">Scriptable browser</a>
+</div></div>
+<div class="copyright">
+            Copyright<br>Marcus Baker 2006
+        </div>
+</body>
+</html>

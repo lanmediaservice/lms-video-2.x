@@ -107,6 +107,7 @@ $config['optimize']['less_combine'] = 0;
 $config['parser_service']['username'] = 'demo';
 $config['parser_service']['password'] = 'demo';
 $config['parser_service']['url'] = 'http://service.lanmediaservice.com/2/actions.php';
+$config['parser_service']['builtin'] = true;
 
 /**
  * Настройки HTTP-клиента 

@@ -1,0 +1,316 @@
+Array
+(
+    [kinopoisk_id] => 79925
+    [names] => Array
+        (
+            [0] => Дневной дозор
+        )
+
+    [posters] => Array
+        (
+            [0] => http://st.kp.yandex.net/images/film_iphone/iphone360_79925.jpg
+        )
+
+    [posters_big] => Array
+        (
+            [0] => http://www.kinopoisk.ru/images/film_big/79925.jpg
+        )
+
+    [year] => 2005
+    [countries] => Array
+        (
+            [0] => Россия
+        )
+
+    [genres] => Array
+        (
+            [0] => фэнтези
+            [1] => боевик
+            [2] => триллер
+        )
+
+    [tagline] => Первый фильм года
+    [budget] => $4 200 000
+    [gross] => Array
+        (
+            [usa] => $450 897
+            [russia] => $31 965 087
+            [worldwide] => $38 862 717
+        )
+
+    [mpaa] => R
+    [duration] => 146
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/464015/
+                    [names] => Array
+                        (
+                            [0] => Тимур Бекмамбетов
+                        )
+
+                    [role] => режиссер
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/464015/
+                    [names] => Array
+                        (
+                            [0] => Тимур Бекмамбетов
+                        )
+
+                    [role] => сценарий
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/553759/
+                    [names] => Array
+                        (
+                            [0] => Сергей Лукьяненко
+                        )
+
+                    [role] => сценарий
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/1205055/
+                    [names] => Array
+                        (
+                            [0] => Александр Талал
+                        )
+
+                    [role] => сценарий
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/569016/
+                    [names] => Array
+                        (
+                            [0] => Варя Авдюшко
+                        )
+
+                    [role] => продюсер
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/231415/
+                    [names] => Array
+                        (
+                            [0] => Константин Эрнст
+                        )
+
+                    [role] => продюсер
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/569017/
+                    [names] => Array
+                        (
+                            [0] => Алексей Кублицкий
+                        )
+
+                    [role] => продюсер
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/464020/
+                    [names] => Array
+                        (
+                            [0] => Сергей Трофимов
+                        )
+
+                    [role] => оператор
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/284396/
+                    [names] => Array
+                        (
+                            [0] => Юрий Потеенко
+                        )
+
+                    [role] => композитор
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2003708/
+                    [names] => Array
+                        (
+                            [0] => Валерий Викторов
+                        )
+
+                    [role] => художник
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/569016/
+                    [names] => Array
+                        (
+                            [0] => Варя Авдюшко
+                        )
+
+                    [role] => художник
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/2000605/
+                    [names] => Array
+                        (
+                            [0] => Дмитрий Киселёв
+                        )
+
+                    [role] => монтаж
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/231512/
+                    [names] => Array
+                        (
+                            [0] => Константин Хабенский
+                        )
+
+                    [role] => актер
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/464039/
+                    [names] => Array
+                        (
+                            [0] => Мария Порошина
+                        )
+
+                    [role] => актер
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/174283/
+                    [names] => Array
+                        (
+                            [0] => Владимир Меньшов
+                        )
+
+                    [role] => актер
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/456568/
+                    [names] => Array
+                        (
+                            [0] => Галина Тюнина
+                        )
+
+                    [role] => актер
+                )
+
+            [16] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/256837/
+                    [names] => Array
+                        (
+                            [0] => Виктор Вержбицкий
+                        )
+
+                    [role] => актер
+                )
+
+            [17] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/558414/
+                    [names] => Array
+                        (
+                            [0] => Жанна Фриске
+                        )
+
+                    [role] => актер
+                )
+
+            [18] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/569015/
+                    [names] => Array
+                        (
+                            [0] => Дмитрий Мартынов
+                        )
+
+                    [role] => актер
+                )
+
+            [19] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/261648/
+                    [names] => Array
+                        (
+                            [0] => Валерий Золотухин
+                        )
+
+                    [role] => актер
+                )
+
+            [20] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/231508/
+                    [names] => Array
+                        (
+                            [0] => Алексей Чадов
+                        )
+
+                    [role] => актер
+                )
+
+            [21] => Array
+                (
+                    [url] => http://www.kinopoisk.ru/name/290095/
+                    [names] => Array
+                        (
+                            [0] => Нуржуман Ихтымбаев
+                        )
+
+                    [role] => актер
+                )
+
+        )
+
+    [description] => Ночью в подъезде своего дома убита молодая женщина. На теле не обнаружено никаких следов насилия… Зыбкое равновесие между Светлыми и Темными нарушено. И чаша весов склоняется в сторону Темных. Но убитая — Темная иная, а значит подозрение падает на Светлых.<br><br>Гессер срочно собирает команду: обвинение в убийстве — серьезная проблема. Он обязан реагировать. И, прежде всего, понять кто где был и чем занимался в указанное Темными время. Выясняется, что алиби отсутствует только у Городецкого…
+    [rating] => Array
+        (
+            [kinopoisk] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+            [imdb] => Array
+                (
+                    [value] => ok
+                    [count] => ok
+                )
+
+        )
+
+    [trailer] => Array
+        (
+            [video] => http://kp.cdn.yandex.net/79925/kinopoisk.ru-Dnevnoy-dozor-14867.mov
+            [preview] => http://kp.cdn.yandex.net/79925/3_2934.jpg
+            [width] => 480
+            [height] => 204
+            [name] => Международный трейлер
+        )
+
+    [version] => $Id: Kinopoisk.php 75 2010-10-12 08:52:20Z macondos $
+)

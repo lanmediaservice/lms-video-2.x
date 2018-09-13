@@ -1,0 +1,94 @@
+Array
+(
+    [imdb_id] => 460649
+    [names] => Array
+        (
+            [0] => How I Met Your Mother 
+        )
+
+    [posters] => Array
+        (
+            [0] => https://m.media-amazon.com/images/M/MV5BMTA5MzAzNTcyNjZeQTJeQWpwZ15BbWU3MDUyMzE1MTk@._V1_UY1200_CR91,0,630,1200_AL_.jpg
+        )
+
+    [mpaa] => 
+    [rating] => ok
+    [rating_count] => ok
+    [countries] => Array
+        (
+            [0] => USA
+        )
+
+    [description] => Ted Mosby sits down with his kids, to tell them the story of how he met their mother. The story is told through memories of his friends Marshall, Lily, Robin, and Barney Stinson. All legendary 9 seasons lead up to the moment of Ted's final encounter with "the one."
+    [genres] => Array
+        (
+            [0] => Comedy
+            [1] => Romance
+        )
+
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1102140/
+                    [names] => Array
+                        (
+                            [0] => Josh Radnor
+                        )
+
+                    [role] => actor
+                    [character] => Ted Mosby / ... 208 episodes, 2005-2014
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0781981/
+                    [names] => Array
+                        (
+                            [0] => Jason Segel
+                        )
+
+                    [role] => actor
+                    [character] => Marshall Eriksen / ... 208 episodes, 2005-2014
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1130627/
+                    [names] => Array
+                        (
+                            [0] => Cobie Smulders
+                        )
+
+                    [role] => actor
+                    [character] => Robin Scherbatsky208 episodes, 2005-2014
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0000439/
+                    [names] => Array
+                        (
+                            [0] => Neil Patrick Harris
+                        )
+
+                    [role] => actor
+                    [character] => Barney Stinson208 episodes, 2005-2014
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0004989/
+                    [names] => Array
+                        (
+                            [0] => Alyson Hannigan
+                        )
+
+                    [role] => actor
+                    [character] => Lily Aldrin / ... 208 episodes, 2005-2014
+                )
+
+        )
+
+    [version] => $Id$
+)

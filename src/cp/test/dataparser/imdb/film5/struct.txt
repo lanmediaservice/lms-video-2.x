@@ -1,0 +1,229 @@
+Array
+(
+    [imdb_id] => 1980162
+    [names] => Array
+        (
+            [0] => Kung Fu Panda: Secrets of the Masters 
+        )
+
+    [year] => 2011
+    [posters] => Array
+        (
+            [0] => https://m.media-amazon.com/images/M/MV5BMTkyNzQ0MTc3NF5BMl5BanBnXkFtZTgwNDk5NTA2MDE@._V1_UY1200_CR96,0,630,1200_AL_.jpg
+        )
+
+    [mpaa] => 
+    [rating] => ok
+    [rating_count] => ok
+    [countries] => Array
+        (
+            [0] => USA
+        )
+
+    [description] => Po breaks into the Hall of Heroes with Tigress and Mantis to see the new exhibits, especially for the ones featuring Masters Thundering Rhino, Storming Ox and Croc. Once there, Po tells the story of how that trio began as small time street fighters until the villainous Wu Sisters escape with plans to conquer China. Against this threat, Master Oogway convinces the selfish trio to accompany him on a quest to stop the sisters. In the challenges that follow, those masters find that the grandiose promises of riches they heard are fading as they learn that there are things far more worthy to fight for.
+    [genres] => Array
+        (
+            [0] => Animation
+            [1] => Short
+            [2] => Action
+            [3] => Comedy
+            [4] => Family
+        )
+
+    [persones] => Array
+        (
+            [0] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1902232/
+                    [names] => Array
+                        (
+                            [0] => Tony Leondis
+                        )
+
+                    [role] => director
+                )
+
+            [1] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0085312/
+                    [names] => Array
+                        (
+                            [0] => Jack Black
+                        )
+
+                    [role] => actor
+                    [character] => Po (voice)
+                )
+
+            [2] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0001401/
+                    [names] => Array
+                        (
+                            [0] => Angelina Jolie
+                        )
+
+                    [role] => actor
+                    [character] => Tigress (voice)
+                )
+
+            [3] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0000163/
+                    [names] => Array
+                        (
+                            [0] => Dustin Hoffman
+                        )
+
+                    [role] => actor
+                    [character] => Shifu (voice)
+                )
+
+            [4] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0736622/
+                    [names] => Array
+                        (
+                            [0] => Seth Rogen
+                        )
+
+                    [role] => actor
+                    [character] => Mantis (voice)
+                )
+
+            [5] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0453641/
+                    [names] => Array
+                        (
+                            [0] => Randall Duk Kim
+                        )
+
+                    [role] => actor
+                    [character] => Oogway (voice)
+                )
+
+            [6] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0371660/
+                    [names] => Array
+                        (
+                            [0] => Dennis Haysbert
+                        )
+
+                    [role] => actor
+                    [character] => Ox (voice)
+                )
+
+            [7] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1179677/
+                    [names] => Array
+                        (
+                            [0] => Paul Scheer
+                        )
+
+                    [role] => actor
+                    [character] => Rhino (voice)
+                )
+
+            [8] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1902232/
+                    [names] => Array
+                        (
+                            [0] => Tony Leondis
+                        )
+
+                    [role] => actor
+                    [character] => Croc (voice)
+                )
+
+            [9] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0599019/
+                    [names] => Array
+                        (
+                            [0] => Sumalee Montano
+                        )
+
+                    [role] => actor
+                    [character] => Su Wu / Wing Wu / Wan Wu (voice)
+                )
+
+            [10] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0901099/
+                    [names] => Array
+                        (
+                            [0] => Paul Vogt
+                        )
+
+                    [role] => actor
+                    [character] => Pig Announcer (voice)
+                )
+
+            [11] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1787651/
+                    [names] => Array
+                        (
+                            [0] => Todd Berger
+                        )
+
+                    [role] => actor
+                    [character] => Pig Server / Rabbit (voice)
+                )
+
+            [12] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0298412/
+                    [names] => Array
+                        (
+                            [0] => Donald Fullilove
+                        )
+
+                    [role] => actor
+                    [character] => Gorilla Guard #1 (voice) (as Don Fullilove)
+                )
+
+            [13] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0184748/
+                    [names] => Array
+                        (
+                            [0] => David Cowgill
+                        )
+
+                    [role] => actor
+                    [character] => Master Flying Rhino (voice)
+                )
+
+            [14] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm1660488/
+                    [names] => Array
+                        (
+                            [0] => Joseph Izzo
+                        )
+
+                    [role] => actor
+                    [character] => Little Birdie (voice)
+                )
+
+            [15] => Array
+                (
+                    [url] => http://www.imdb.com/name/nm0592437/
+                    [names] => Array
+                        (
+                            [0] => Edie Mirman
+                        )
+
+                    [role] => actor
+                    [character] => Mom Bunny (voice)
+                )
+
+        )
+
+    [version] => $Id$
+)
