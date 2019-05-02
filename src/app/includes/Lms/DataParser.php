@@ -101,13 +101,16 @@ class Lms_DataParser {
         if (preg_match("{charset=([a-zA-Z0-9\-]*)}i", $contentType, $matches)) {
             $encoding = $matches[1];
         }
-        if (stripos('utf', $encoding)===false) {
+        if (!preg_match('{utf}i', $encoding)) {
             //$body = html_entity_decode($body, ENT_QUOTES, $encoding);
             $body = preg_replace_callback('{&#(\d+);}i' , array(__CLASS__, '_entReplaceDec'), $body);
             $body = preg_replace_callback('{&#x([0-9a-fA-F]+);}i' , array(__CLASS__, '_entReplaceHex'), $body);
             $body = mb_convert_encoding($body, 'UTF-8', $encoding);
-            $body = html_entity_decode($body, ENT_QUOTES, 'UTF-8');
+        } else {
+            $body = preg_replace_callback('{&#(\d+);}i' , array(__CLASS__, '_entReplaceDecUtf8'), $body);
+            $body = preg_replace_callback('{&#x([0-9a-fA-F]+);}i' , array(__CLASS__, '_entReplaceHexUtf8'), $body);
         }
+        $body = html_entity_decode($body, ENT_COMPAT | ENT_HTML5, 'UTF-8');
         return $body;
     }
     private static function _entReplaceHex($matches)
@@ -121,6 +124,20 @@ class Lms_DataParser {
         if ($entityNum>=128 && $entityNum<160) {
             $flags = version_compare(phpversion(), '5.4', '<') ? ENT_COMPAT : (ENT_COMPAT | ENT_HTML401);
             return htmlspecialchars(chr($entityNum), $flags, 'cp1251');
+        } else {
+            return $matches[0];
+        }
+    }
+    private static function _entReplaceHexUtf8($matches)
+    {
+        $matches[1] = hexdec($matches[1]);
+        return self::_entReplaceDecUtf8($matches);
+    }
+    private static function _entReplaceDecUtf8($matches)
+    {
+        $entityNum = $matches[1];
+        if ($entityNum>=128 && $entityNum<160) {
+            return mb_convert_encoding(chr($entityNum), 'UTF-8', 'CP1251');
         } else {
             return $matches[0];
         }

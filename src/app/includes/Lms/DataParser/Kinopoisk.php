@@ -212,11 +212,21 @@ class Lms_DataParser_Kinopoisk extends Lms_DataParser_Generic{
                 $n2 = trim(str_replace("\xC2\xA0"," ",strip_tags($matches[2])));
                 if ($n1)  $result["names"][] = $n1;
                 if ($n2)  $result["names"][] = $n2;
-            } else if (preg_match('{<div[^>]*itemprop="name">(.*?)</div>}is', $body, $matches)){
+            } else if (preg_match('{<div[^>]*itemprop="name">(.*?)</div>}is', $body, $matches)
+                 || preg_match('{<h1[^>]*itemprop="name">(.*?)</h1>}is', $body, $matches)
+            ){
                 //yandex design
-                $result["names"][] = trim(strip_tags($matches[1]));
-                if (preg_match('{<div[^>]*itemprop="alternateName">(.*?)</div>}is', $body, $matches)) {
-                    $result["names"][] = trim(strip_tags($matches[1]));
+                $name = trim(strip_tags($matches[1]));
+                if (preg_match('{(.*?)\s*\(сериал.*?\)}is', $name, $matches)) {
+                    $result["type"] = "series";
+                    $name = $matches[1];
+                }
+                $result["names"][] = $name;
+                if (preg_match('{<div[^>]*itemprop="alternateName">(.*?)</div>}is', $body, $matches) 
+                    || preg_match('{<span[^>]*itemprop="alternativeHeadline">(.*?)</span>}is', $body, $matches)
+                ) {
+                    $name = trim(strip_tags($matches[1]));
+                    $result["names"][] = $name;        
                 }
                 $result["names"] = array_unique($result["names"]);
             } else {
